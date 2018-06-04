@@ -59,3 +59,6 @@ dist-clean: clean
 
 open:
 	gnome-open $(TARGET)
+
+crun:
+	make dist-clean && make && make open
