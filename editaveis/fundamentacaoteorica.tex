@@ -35,19 +35,79 @@
 
       FIGURA REPRESENTANDO ARMADURA DE CLAVE
 
-      \subsection[Intervalos]{Intervalos}
+    \subsection[Intervalos]{Intervalos}
 
-        Classificação quanti / quali -> quanti é isso -> quali é isso -> perfeitos / maior / menores -> aumentados e diminutos -> consonantes e dissonantes
-      \subsection[Escalas]{Escalas}
-        Definição -> maior e menor -> nome de cada nota (foco em tônica e dominante)
-      % \subsection[Modos Litúrgicos]{Modos Litúrgicos}
-      % TODO: falar ou não de modos litúrgicos?
-      \subsection[Contraponto]{Contraponto}
+      % TODO: trocar BEMOL por símbolo
+      % TODO: citar tabela pelo número?
+      A diferença de altura entre duas notas pode ser classificada por meio de intervalos. Os intervalos são classificados quantitativamente e qualitativamente. A classificação qualitativa de um intervalo tem como base a quantidade de notas entre as duas notas, incluindo-as e ignorando acidentes musicais. Por exemplo, a classificação quantitativa do intervalo entre o G4 (sol na quarta oitava) e o E5 (mi na quinta oitava) é sexta (6ª), que é a mesma que o intervalo entre G\#4 (sol sustenido na quarta oitava) e EBEMOL5 (mi bemol na quinta oitava). Já a classificação qualitativa tem como base o número de tons e semitons entre as duas notas analisadas. A tabela X apresenta a relação entre as classificações qualitativas e quantitativas dos intervalos.
 
-    \section[Paradigmas de Solução de Problema]{Paradigmas de Solução de Problema}
-      Discutir vários paradigmas, citar alguns, ligar com CS e DP
+      TABELA COM INTERVALOS
 
-      \subsection[Busca Completa]{Busca Completa}
-        Definição -> exemplo -> aplicação no projeto
-      \subsection[Programação Dinâmica]{Programação Dinâmica}
-        Definição -> exemplo -> aplicação no projeto
+      Cada intervalo pode ser classificado como consonante ou dissonante, uma classificação que define se o som provocado pelas duas notas soando seguidas ou em paralelo causam um efeito de repouso ou tensão, respectivamente. A classificação de um intervalo em relação ao seu efeito pode variar de acordo com a época ou estilo musical, nesse trabalho, será adotada a classificação correspondente às regras do contraponto modal do século XVI. (refContraponto)
+
+      \subsubsection[Intervalos Justos]{Intervalos justos}
+
+        % TODO: colocar abreviações nos primeiros exemplos de cada (1ªJ ou P1, 2ªM ou M2, etc)
+        Os intervalos de primeira, quarta, quinta e oitava podem ser classificados como justos dependendo da distância em semitons.
+
+        Uma nota é a primeira justa de outra se elas tiverem a mesma altura, ou seja, apenas uma nota entre elas e nenhum semitom de diferença, esse intervalo também é chamado de uníssono.
+
+        FIGURA PRIMEIRA JUSTA
+
+        A quarta justa ocorre quando há quatro notas entre elas e a diferença é de dois tons e um semitom.
+
+        FIGURA QUARTA JUSTA
+
+        A quinta justa ocorre quando há cinco notas entre elas e a diferença é de três tons e um semitom.
+
+        FIGURA QUINTA JUSTA
+
+        A oitava justa ocorre quando há oito notas entre elas e a diferença é de cinco tons e dois semitons.
+
+        FIGURA OITAVA JUSTA
+
+        Dentre os intervalos justos, todos, exceto a quarta justa, são considerados consonantes. Vale ressaltar que a quarta justa é considerada um intervalo consonante na música contemporânea. (refBohumil)
+
+      \subsubsection[Intervalos Maiores e Menores]{Intervalos maiores e menores}
+
+        Os intervalos de segunda, terça, sexta e sétima podem ser classificados como maiores ou menos dependendo da distância em semitons.
+
+        A segunda ocorre quando há duas notas entre elas. A segunda menor ocorre quando a diferença é de um semitom, já a segunda maior possui uma diferença de um tom.
+
+        FIGURA SEGUNDA MENOR E MAIOR
+
+
+        A terça ocorre quando há três notas entre elas. A terça menor ocorre quando a diferença é de um tom e um semitom, já a terça maior possui uma diferença de dois tons.
+
+        FIGURA TERÇA MENOR E MAIOR
+
+        A sexta ocorre quando há seis notas entre elas. A sexta menor ocorre quando a diferença é de três tons e dois semitons, já a sexta maior possui uma diferença de quatro tons e um semitom.
+
+        FIGURA SEXTA MENOR E MAIOR
+
+        A sétima ocorre quando há sete notas entre elas. A sétima menor ocorre quando a diferença é de quatro tons e dois semitons, já a sétima maior possui uma diferença de cinco tons e um semitom.
+
+        FIGURA SÉTIMA MENOR E MAIOR
+
+        Os intervalos de terça maior e menor e sexta maior e menor são tidos como consonantes, enquanto os intervalos de segunda maior e menor e sétima maior e menor são tidos como dissonantes.
+
+      \subsubsection[Intervalos Aumentados e Diminutos]{Intervalos aumentados e diminutos}
+      \subsubsection[Intervalos Compostos]{Intervalos compostos}
+
+      Classificação quanti / quali -> quanti é isso -> quali é isso -> perfeitos / maior / menores -> aumentados e diminutos -> consonantes e dissonantes
+
+    \subsection[Escalas]{Escalas}
+      Definição -> maior e menor -> nome de cada nota (foco em tônica e dominante)
+
+    % \subsection[Modos Litúrgicos]{Modos Litúrgicos}
+    % TODO: falar ou não de modos litúrgicos?
+
+    \subsection[Contraponto]{Contraponto}
+
+  \section[Paradigmas de Solução de Problema]{Paradigmas de Solução de Problema}
+    Discutir vários paradigmas, citar alguns, ligar com CS e DP
+
+    \subsection[Busca Completa]{Busca Completa}
+      Definição -> exemplo -> aplicação no projeto
+    \subsection[Programação Dinâmica]{Programação Dinâmica}
+      Definição -> exemplo -> aplicação no projeto
