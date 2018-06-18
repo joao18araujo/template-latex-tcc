@@ -209,10 +209,20 @@
 
   \section[Paradigmas de Solução de Problema]{Paradigmas de Solução de Problema}
 
-    Discutir vários paradigmas, citar alguns, ligar com CS e DP
-    Vai ter que fazer algoritmicamente -> resolve problemas com -> Definição paradigma resolução -> mais conhecidos são
+    O objetivo de encontrar uma sequência de notas que se encaixe nas regras do contraponto pode ser alcançado pela análise de todas as combinações de notas possíveis, verificando se cada uma delas atende às regras e retornando como resposta a primeira sequência que atender. A esse tipo de busca pela solução se dá o nome de Busca Completa.
 
     \subsection[Busca Completa]{Busca Completa}
-      Definição -> exemplo (elencar todas as permutações) -> aplicação no projeto (primeira versão era DFS sem DP)
+
+      Na Busca Completa, todo ou parte do espaço de soluções possíveis é explorado (refCP). No exemplo abaixo é possível observar a geração de todas as combinações de notas possíveis para um contraponto. Contudo, nesse caso, tal abordagem possui alta complexidade em termos de execução. Suponhando um espaço amostral com 90 notas disponíveis e um \textit{cantus firmus} com 50 notas, apenas para o contraponto de primeira espécie há $50^{90}$ sequências possíveis.
+
+      EXEMPLO CÓDIGO
+
+      Para diminuir a complexidade de uma busca completa, podas podem ser aplicadas. Podas são aplicadas quando uma parte gerada da solução já indica que ela certamente não gerará uma solução. No caso do contraponto, por exemplo, podemos podar soluções parciais que já apresentem um número de movimentos reversos maior que o definido pelas regras mesmo antes de chegarem à última nota.
+
     \subsection[Programação Dinâmica]{Programação Dinâmica}
+
+      Mesmo após a aplicações de todas as podas possíveis, ainda há o caso de diversos estados serem recalculados. Como explicado anteriormente, uma nota em nosso grafo pode ter mais de um pai, isto é, mais de uma nota pode ter a nota atual como a seguinte em uma possível solução. Entretanto, uma vez alcançada a nota atual, o resto da solução é o mesmo, sendo redundante calcular esse estado (e se ele levará a possíveis soluções ou não) mais de uma vez. Tendo subestados que se repetem entre soluções, é possível aplicar um paradigma de solução de problemas chamado Programação Dinâmica.
+
+      A Programação Dinâmica...
+
       Definição -> exemplo (fibonacci da massa) -> aplicação no projeto
