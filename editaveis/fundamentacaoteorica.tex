@@ -136,9 +136,6 @@
 
         As escalas são utilizadas na composição de contrapontos definindo quais notas podem ser utilizadas para a geração do contraponto, de acordo com a escala da melodia principal.
 
-    % \subsection[Modos Litúrgicos]{Modos Litúrgicos}
-    % TODO: falar ou não de modos litúrgicos?
-
     \subsection[Contraponto]{Contraponto}
 
       Contraponto é a arte de tornar independentes linhas melódicas de expressão autônoma (refKoellreutter), ou seja, combinar duas linhas melódicas simultâneas de forma que sejam melódicamente independentes, mas harmonicamente interdependentes. O objeto de estudo desse trabalho é o contraponto modal do século XVI, também chamado de contraponto palestriniano. Esse tipo de contraponto possui diversas espécies, cada uma definida pelo número de notas que um contraponto deve ter para cada nota da melodia principal (ou \textit{cantus firmus}). Nesse trabalho, serão tratados os contrapontos de primeira e segunda espécie.
@@ -160,7 +157,7 @@
           \item Deve-se priorizar movimento contrário (utilizar intervalo melódico ascendente se o \textit{cantus firmus} estiver em intervalo melódico descendente e vice-versa)
         \end{itemize}
 
-        FIGURA EXEMPLO SIMPLES CONTRAPONTO PRIMEIRA ORDEM
+        FIGURA EXEMPLO SIMPLES CONTRAPONTO PRIMEIRA ESPÉCIE
 
       \subsubsection[Contraponto de Segunda Espécie]{Contraponto de Segunda Espécie}
 
@@ -174,13 +171,48 @@
           \item Evitar quintas e oitavas em \textit{thesis} sucessivas, por se aproximarem de quintas e oitavas paralelas
         \end{itemize}
 
-        FIGURA EXEMPLO SIMPLES CONTRAPONTO SEGUNDA ORDEM
+        FIGURA EXEMPLO SIMPLES CONTRAPONTO SEGUNDA ESPÉCIE
+
+
+  \section[Grafos]{Grafos}
+
+    Na geração de um contraponto, cada nota dele depende da nota dos \textit{cantus firmus} tocada em simultâneo devido a regras definidas com base no intervalo harmônico -- como a proibição de intervalos dissonantes, por exemplo. Porém, as notas disponíveis para um dado tempo do contraponto também depende das notas anteriores a ela devido a regras relacionadas à intervalos melódicos e repetição ou uso demasiado de intervalos harmônicos repetidos -- como a proibição de oitavas paralelas. Sendo assim, a nota atual define, em conjunto com a próxima nota do \textit{cantus firmus}, quais notas podem ser empregadas no próximo tempo. Dada tal organização, essa estrutura pode ser representada por um grafo. Grafo é uma estrutura formada por vértices (os nós que representam a unidade fundamental da estrutura) e arestas (ligações que indicam quais outros vértices podem ser alcançados a partir de um). Na figura X está representado um exemplo de estrutura formada pelas notas possíveis em um contraponto. Vale ressaltar que, como a estrutura do contraponto não é diretamente representada por um grafo na solução proposta, ela é definida como um grafo implícito. (refCP)
+
+    FIGURA NOTAS POSSÍVEIS
+
+    \subsection[Grafos Direcionados Acíclicos]{Grafos Direcionados Acíclicos}
+
+      Um grafo pode possui diversas classificações. Uma classificação clássica é quanto à sua direção. Se as arestas de um grafo não definem a direção da ligação, isto é, se os vértices X e Y estão ligados por uma aresta, significa que X é diretamente alcançável (apenas um vértice é necessário para navegar da origem ao destino) a partir de Y e Y é diretamente alcançável a partir de X, esse grafo é classificado como não-direcionado. Mas se as arestas possuem direção e X ser diretamente alcançável por Y não garante que Y é diretamente alcançável a partir de X, esse grafo é direcionado. (refCP)
+
+      FIGURA DIRECIONADO X NÃO-DIRECIONADO
+
+      Grafos direcionados podem ser classificados como cíclicos ou acíclicos. Grafos acíclicos são grafos que não possuem ciclos, isto é, para todo vértice A, se A alcança B, B não alcança A. Se para pelo menos um par de vértices A e B, A alcançar B e B alcançar A, esse grafo é considerado cíclico.
+
+      Dadas tais definições, é possível perceber que a estrutura do contraponto é um grafo direcionado acíclico (ou DAG, sigla para \textit{Direct Acyclic Graph}). Nesse tipo de grafo, cada vértice possui um ou mais pais -- vértices que apontam para ele. Assemelhando-se à estrutura de uma árvore (grafo com raiz definida como o único vértice sem pai e que cada outro vértice tem apenas um pai), o DAG difere-se por cada vértice por ter mais de um pai e vários vértices sem pai, mas mantém a propriedade de ser navegável em apenas uma direção, impedindo a formação de \textit{loops} que tornariam a exploração da solução um processo infinito.
+
+      FIGURA NÃO-DAG x DAG x Árvore
+
+    \subsection[Travessia de Grafos]{Travessia de Grafos}
+
+      Há diversas formas de se visitar todos os vértices de um grafo. O número total de formas é o fatorial do número de vértices, pois uma travessia difere-se de outra apenas pela ordem em que os vértices são visitados, contudo, algumas travessias possuem propriedades específicas e utilizam as arestas para definí-las, as duas travessias mais conhecidas são a busca por profundidade (DFS) e a busca por largura (BFS).
+
+      A busca por profundidade funciona de forma recursiva. Primeiramente, um vértice é escolhido como o vértice inicial, antes de explorá-lo (analisar o valor contido no vértice), visitamos todos as suas conexões, para cada vértice conectado, antes de explorá-lo, visitamos sua conexões. Esse processo de visita ocorre até atingir um vértice que não possui arestas ou possui apenas conexões já visitadas. Ao chegar nesse ponto, o algoritmo explora, recursivamente, os vértices previamente visitados. Utilizando uma estrutura de dados conhecida, uma DFS pode ser implementada por meio do uso de pilhas devido à propriedade delas que definem que o último a entrar na estrutura é o primeiro a ser analisado.
+
+      FIGURA PASSOS DFS
+
+      A busca por largura inicia em um vértice e visita todos os filhos (vértices para os quais o vértice atual aponta) antes de visitar os filhos destes. Desse modo, em um DAG, o primeiro nível (composto por vértices sem pai) é completamente visitado antes de o segundo nível (filhos destes) ser visitado e assim sucessivamente. Utilizando uma estrutura de dados conhecida, uma BFS pode ser implementado por meio do uso de filas devida à propriedade delas que define que o primeiro a entrar na estrutura é o primeiro a ser analisado.
+
+      FIGURA PASSOS BFS
+
+      Para a solução proposta nesse trabalho será usada a DFS por dois motivos. O primeiro é que a DFS chega a uma folha (vértice sem filhos) primeiro, o que é interessante para a solução pois busca-se a primeira solução disponível. O segundo motivo é que a DFS permite que seja utilizado um único vetor, inserindo e retirando no final deste (consequentemente, funcionando de forma análoga a uma pilha), economizando memória e diminuindo o tempo de execução que levaria para fazer cópias do vetor em uma BFS, pois o comportamento análogo a uma fila exigiria isso.
+
 
   \section[Paradigmas de Solução de Problema]{Paradigmas de Solução de Problema}
 
     Discutir vários paradigmas, citar alguns, ligar com CS e DP
+    Vai ter que fazer algoritmicamente -> resolve problemas com -> Definição paradigma resolução -> mais conhecidos são
 
     \subsection[Busca Completa]{Busca Completa}
-      Definição -> exemplo -> aplicação no projeto
+      Definição -> exemplo (elencar todas as permutações) -> aplicação no projeto (primeira versão era DFS sem DP)
     \subsection[Programação Dinâmica]{Programação Dinâmica}
-      Definição -> exemplo -> aplicação no projeto
+      Definição -> exemplo (fibonacci da massa) -> aplicação no projeto
