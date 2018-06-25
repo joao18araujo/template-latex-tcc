@@ -1,14 +1,16 @@
 \chapter[Fundamentação Teórica]{Fundamentação Teórica}
 
+  Este capítulo apresenta a base teórica para o entendimento do algoritmo a ser implementado. Nele, são explicados conceitos referentes a teoria musical, grafos e paradigmas de solução de problemas. Na seção sobre teoria musical, são abordados os tópicos de notação musical, intervalos, escalas e contrapontos. Na seção sobre grafos, são explicadas classificações para um grafo, o que são grafos direcionados acíclicos e tipos de travessia em grafos. Na seção sobre paradigmas de solução de problemas, são abordados dois paradigmas de solução de problema: busca completa e programação dinâmica.
+
   \section[Teoria Musical]{Teoria Musical}
 
     A música é a arte de combinar sons e silêncios. Segundo Med, a música é constituída, principalmente, por melodia, harmonia, ritmo e contraponto. A melodia caracteriza-se por sons em ordem sucessiva, enquanto a harmonia caracteriza-se por sons em ordem simultânea. O ritmo é a ordem e proporção do sons de uma música. Já o contraponto é definido por meio de duas melodias dispostas simultaneamente.
 
-    Os sons são parte fundamental da música, cada som possui diversas características como altura (frequência do som que o torna mais grave ou mais agudo), duração, intensidade e timbre. Quando o som é regular (possui altura definida), ele pode ser expresso por meio de notação musical.
+    Os sons são parte fundamental da música. Cada som possui diversas características como altura (frequência do som que o torna mais grave ou mais agudo), duração, intensidade e timbre. Quando o som é regular (possui altura definida), ele pode ser expresso por meio de notação musical.
 
     \subsection[Notação Musical]{Notação Musical}
 
-      As notas musicais são utilizadas para representar os sons de uma música. Há sete notas musicais - usualmente nomeadas Dó, Ré, Mi, Fá, Sol, Lá, Si ou, respectivamente, C, D, E, F, G, A, B - que podem variar de acordo com a oitava ou acidentes musicais empregados, para representação de tais modificações, elas são dispostas em uma pauta.
+      As notas musicais são utilizadas para representar os sons de uma música. Há sete notas musicais -- usualmente nomeadas Dó, Ré, Mi, Fá, Sol, Lá, Si ou, respectivamente, C, D, E, F, G, A, B -- que podem variar de acordo com a oitava ou acidentes musicais empregados, para representação de tais modificações, elas são dispostas em uma pauta, conforme exemplificado na Figura \ref{pauta}.
 
       \begin{figure}[htb]
         \centering
@@ -17,7 +19,7 @@
         \label{pauta}
       \end{figure}
 
-      A pauta é utilizada para a representação de uma música, contendo linhas e espaços que definem a nota e em qual oitava está posicionada tendo como base a clave definida. Cada clave define uma nota específica e todas as outras notas da pauta são definidas a partir desta. Por exemplo, a clave de Sol é a mais comumente usada e define que a nota da linha 2 é o G4 (Sol da quarta oitava).
+      A pauta é utilizada para a representação de uma música, contendo linhas e espaços que definem a nota e em qual oitava está posicionada tendo como base a clave definida. Cada clave define uma nota específica e todas as outras notas da pauta são definidas a partir desta. Por exemplo, a clave de Sol é a mais comumente usada e define que a nota da linha 2 é o G4 (Sol da quarta oitava, Figura \ref{notas}).
 
       \begin{figure}[htb]
         \centering
@@ -27,10 +29,11 @@
       \end{figure}
 
       % TODO: jeito certo de citar tabela
-      Além da altura, cada som possui uma duração representada pela figura musical na pauta. No sistema atual, começa-se pela semibreve, que possui valor 1. A partir dela, a próxima subdivisão equivale à metade do tempo da anterior. Sendo assim, a mínima possui metade da duração da semibreve e possui valor 2, a semínima possui metade da duração da mínima e possui valor 4 e assim sucessivamente. As figuras, seus valores e durações estão representados na tabela \ref{figurasmusicais}.
+      Além da altura, cada som possui uma duração representada pela figura musical na pauta. No sistema atual, começa-se pela semibreve, que possui valor 1. A partir dela, a próxima subdivisão equivale à metade do tempo da anterior. Sendo assim, a mínima possui metade da duração da semibreve e possui valor 2, a semínima possui metade da duração da mínima e possui valor 4 e assim sucessivamente. As figuras, seus valores e durações estão representados na Tabela \ref{figurasmusicais}.
 
       \begin{table}[h]
       	\centering
+        \caption{Figuras Musicais}
       	\begin{tabular}{cccc}
       		\toprule
       		\textbf{Nome} & \textbf{Figura} & \textbf{Valor} &
@@ -43,23 +46,23 @@
       		Semicolcheia & \musSixteenth & 16 & $\nicefrac{1}{2}$ \musCorchea \\
       		\bottomrule
       	\end{tabular}
-
-      	\caption{Figuras Musicais}
       	\label{figurasmusicais}
       \end{table}
 
       A duração em segundos de uma nota é definida pela sua figura e pelo andamento da música. O andamento define quantas notas de uma determinada figura de ritmo pode ser tocada em um espaço de tempo. Comumente, utiliza-se a quantidade de semínimas que podem ser tocadas durante um minuto para se definir o andamento de uma música.
 
-      Em uma pauta, as figuras de ritmo são agrupadas em compassos. Cada compasso pode agrupar um determinado número de notas de acordo com sua estrutura, definida pela quantidade de figuras e a figura de ritmo usada como base. Por exemplo, um compasso 3/4 possui 3 como a quantidade de valores e 4 como a figura de ritmo, sendo assim, esse tipo de compasso é preenchido por três semínimas -- que possui valor 4. Desse modo, é possível também encaixar seis colcheias (que possui metade da duração de uma semínima) ou uma mínima e uma semínima em um compasso 3/4. Na música, a estrutura do compasso também define os tempos fortes e fracos da música. Em uma música 2/4, por exemplo, o primeiro tempo é forte (ou \textit{arsis}) e o segundo tempo é fraco (ou \textit{thesis}).
+      Em uma pauta, as figuras de ritmo são agrupadas em compassos. Cada compasso pode agrupar um determinado número de notas de acordo com sua estrutura, definida pela quantidade de figuras e a figura de ritmo usada como base. Por exemplo, um compasso 3/4 possui 3 como a quantidade de valores e 4 como a figura de ritmo, sendo assim, esse tipo de compasso é preenchido por três semínimas -- que possui valor 4. Desse modo, é possível também encaixar seis colcheias (que possui metade da duração de uma semínima) ou uma mínima e uma semínima em um compasso 3/4. Na música, a estrutura do compasso também define os tempos fortes e fracos da música. Em uma música 2/4, por exemplo, o primeiro tempo é forte (ou \textit{arsis}) e o segundo tempo é fraco (ou \textit{thesis}). Veja a Figura \ref{compassos}.
 
       \begin{figure}[htb]
         \centering
         \includegraphics[scale=0.6]{figuras/compassos.eps}
-        \caption{Exemplos de compasso}
+        \caption{Exemplos de compasso e seus respectivos tempos fortes e fracos}
         \label{compassos}
       \end{figure}
 
-      Outro elemento que pode ser representado na pauta são os acidentes musicais. Cada nota possui a distância relativa de um tom ou um semitom das notas adjacentes, como representado na figura abaixo. Essa distância calculada em tons e semitons também é utilizada para a definição de intervalos e pode ser modificada por meio de acidentes musicais. Existem dois tipos de acidentes musicais, o bemol e o sustenido. O bemol abaixa a nota original em um semitom, como exemplo, o Fá e o Sol possuem um tom entre eles, porém, o Fá e o Sol bemol possuem um semitom entre eles. Já o sustenido aumenta a nota original em um semitom. Outras variações desses acidentes são o dobrado bemol, que abaixa a nota em um tom, o dobrado sustenido, que aumenta a nota em um tom e o bequadro, que retorna uma nota modificada ao seu valor original. Os símbolos de cada acidente estão representados na figura \ref{acidentes}.
+      Outro elemento que pode ser representado na pauta são os acidentes musicais. Cada nota possui a distância relativa de um tom ou um semitom das notas adjacentes, como representado na Figura \ref{acidentes}. Essa distância calculada em tons e semitons também é utilizada para a definição de intervalos e pode ser modificada por meio de acidentes musicais.
+
+      Existem dois tipos de acidentes musicais, o bemol (\fl) e o sustenido (\sh). O bemol abaixa a nota original em um semitom, como exemplo, o Fá e o Sol possuem um tom entre eles, porém, o Fá e o Sol bemol possuem um semitom entre eles. Já o sustenido aumenta a nota original em um semitom. Outras variações desses acidentes são o dobrado bemol, que abaixa a nota em um tom, o dobrado sustenido, que aumenta a nota em um tom e o bequadro, que retorna uma nota modificada ao seu valor original. Os símbolos de cada acidente estão representados na figura \ref{acidentes}.
 
       \begin{figure}[htb]
         \centering
@@ -68,7 +71,7 @@
         \label{acidentes}
       \end{figure}
 
-      Esses acidentes podem ser pontuais ou recorrentes durante uma música. Quando são pontuais, eles são expressos ao lado da nota que modificam, modificando também as notas de mesma altura naquele compasso. Quando são recorrentes, são representados no início da clave ou do primeiro compasso que modificam. Enquanto a representação pontual modifica apenas um único som em uma oitava específica, a representação no início modifica qualquer som daquela mesma nota, e a esse conjunto de acidentes representados no início da pauta dá-se o nome de armadura de clave.
+      Esses acidentes podem ser pontuais ou recorrentes durante uma música. Quando são pontuais, eles são expressos ao lado da nota que modificam, modificando também as notas de mesma altura naquele compasso. Quando são recorrentes, são representados no início da clave ou do primeiro compasso que modificam. Enquanto a representação pontual modifica apenas um único som em uma oitava específica, a representação no início modifica qualquer som daquela mesma nota, e a esse conjunto de acidentes representados no início da pauta dá-se o nome de armadura de clave. Veja a Figura \ref{armadura}.
 
       \begin{figure}[htb]
         \centering
@@ -79,16 +82,18 @@
 
     \subsection[Intervalos]{Intervalos}
 
-      A diferença de altura entre duas notas pode ser classificada por meio de intervalos. Os intervalos podem ser harmônicos (quando se compara duas notas simultâneas) e melódicos (quando se compara duas notas em sequência). Um intervalo melódico pode ser ascendente, se a primeira nota for mais grave que a segunda, e descendente, se a primeira nota for mais aguda que a segunda. Eles também são classificados quantitativamente e qualitativamente. A classificação qualitativa de um intervalo tem como base a quantidade de notas entre as duas notas, incluindo-as e ignorando acidentes musicais. Por exemplo, a classificação quantitativa do intervalo entre o G4 (Sol na quarta oitava) e o E5 (Mi na quinta oitava) é sexta (6ª), que é a mesma que o intervalo entre G\sh4 (Sol sustenido na quarta oitava) e E\fl5 (Mi bemol na quinta oitava). Já a classificação qualitativa tem como base o número de tons e semitons entre as duas notas analisadas. Dependendo da quantidade de semitons, o intervalo pode ser justo (no caso de intervalos de primeira, quarta, quinta e oitava), maior, menor (no caso de intervalos de segunda, terça, sexta e sétima), aumentados ou diminutos.
+      A diferença de altura entre duas notas pode ser classificada por meio de intervalos. Os intervalos podem ser harmônicos (quando se compara duas notas simultâneas) e melódicos (quando se compara duas notas em sequência). Um intervalo melódico pode ser ascendente, se a primeira nota for mais grave que a segunda, e descendente, se a primeira nota for mais aguda que a segunda.
 
-      Cada intervalo pode ser classificado como consonante ou dissonante, uma classificação que define se o som provocado pelas duas notas soando seguidas ou em paralelo causam um efeito de repouso ou tensão, respectivamente. A classificação de um intervalo em relação ao seu efeito pode variar de acordo com a época ou estilo musical, nesse trabalho, será adotada a classificação correspondente às regras do contraponto modal do século XVI. (refContraponto)
+      Os intervalos também são classificados quantitativamente e qualitativamente. A classificação quantitativa de um intervalo tem como base a quantidade de notas entre as duas notas, incluindo-as e ignorando acidentes musicais. Por exemplo, a classificação quantitativa do intervalo entre o G4 (Sol na quarta oitava) e o E5 (Mi na quinta oitava) é sexta (6ª), que é a mesma que o intervalo entre G\sh4 (Sol sustenido na quarta oitava) e E\fl5 (Mi bemol na quinta oitava). Já a classificação qualitativa tem como base o número de tons e semitons entre as duas notas analisadas. Dependendo da quantidade de semitons, o intervalo pode ser justo (no caso de intervalos de primeira, quarta, quinta e oitava), maior, menor (no caso de intervalos de segunda, terça, sexta e sétima), aumentados ou diminutos.
+
+      Cada intervalo pode ser classificado como consonante ou dissonante, uma classificação que define se o som provocado pelas duas notas soando seguidas ou em paralelo causam um efeito de repouso ou tensão, respectivamente. A classificação de um intervalo em relação ao seu efeito pode variar de acordo com a época ou estilo musical. Neste trabalho, será adotada a classificação correspondente às regras do contraponto modal do século XVI. (refContraponto)
 
       \subsubsection[Intervalos Justos]{Intervalos Justos}
 
         % TODO: colocar abreviações nos primeiros exemplos de cada (1ªJ ou P1, 2ªM ou M2, etc)
-        Os intervalos de primeira, quarta, quinta e oitava podem ser classificados como justos dependendo da distância em semitons.
+        Os intervalos de primeira, quarta, quinta e oitava podem ser classificados como justos, dependendo da distância em semitons.
 
-        Uma nota é a primeira justa de outra se elas tiverem a mesma altura, ou seja, apenas uma nota entre elas e nenhum semitom de diferença, esse intervalo também é chamado de uníssono.
+        Uma nota é a primeira justa (1ªJ ou P1\footnotemark \footnotetext{Sigla para \textit{perfect first}}) de outra se elas tiverem a mesma altura, ou seja, apenas uma nota entre elas e nenhum semitom de diferença, esse intervalo também é chamado de uníssono (Figura \ref{primeirajusta}).
 
         \begin{figure}[htb]
           \centering
@@ -98,7 +103,7 @@
         \end{figure}
 
 
-        A quarta justa ocorre quando há quatro notas entre elas e a diferença é de dois tons e um semitom.
+        A quarta justa (4ªJ ou P4) ocorre quando há quatro notas entre elas e a diferença é de dois tons e um semitom. Veja a Figura \ref{quartajusta}.
 
         \begin{figure}[htb]
           \centering
@@ -107,7 +112,7 @@
           \label{quartajusta}
         \end{figure}
 
-        A quinta justa ocorre quando há cinco notas entre elas e a diferença é de três tons e um semitom.
+        A quinta justa (5ªJ ou P5) ocorre quando há cinco notas entre elas e a diferença é de três tons e um semitom. A Figura \ref{quintajusta} traz um exemplo de quinta justa.
 
         \begin{figure}[htb]
           \centering
@@ -116,7 +121,7 @@
           \label{quintajusta}
         \end{figure}
 
-        A oitava justa ocorre quando há oito notas entre elas e a diferença é de cinco tons e dois semitons.
+        A oitava justa (8ªJ ou P8) ocorre quando há oito notas entre elas e a diferença é de cinco tons e dois semitons (Figura \ref{oitavajusta}).
 
         \begin{figure}[htb]
           \centering
@@ -129,9 +134,9 @@
 
       \subsubsection[Intervalos Maiores e Menores]{Intervalos Maiores e Menores}
 
-        Os intervalos de segunda, terça, sexta e sétima podem ser classificados como maiores ou menores dependendo da distância em semitons.
+        Os intervalos de segunda, terça, sexta e sétima podem ser classificados como maiores ou menores, dependendo da distância em semitons.
 
-        A segunda ocorre quando há duas notas entre elas. A segunda menor ocorre quando a diferença é de um semitom, já a segunda maior possui uma diferença de um tom.
+        A segunda ocorre quando há duas notas entre elas. A segunda menor (2ªm ou m2) ocorre quando a diferença é de um semitom, já a segunda maior (2ªM ou M2) possui uma diferença de um tom. Veja a Figura \ref{segundas}.
 
         \begin{figure}[htb]
           \centering
@@ -141,7 +146,7 @@
         \end{figure}
 
 
-        A terça ocorre quando há três notas entre elas. A terça menor ocorre quando a diferença é de um tom e um semitom, já a terça maior possui uma diferença de dois tons.
+        A terça ocorre quando há três notas entre elas. A terça menor (3ªm ou m3) ocorre quando a diferença é de um tom e um semitom, já a terça maior (3ªM ou M3) possui uma diferença de dois tons (Figura \ref{tercas}).
 
         \begin{figure}[htb]
           \centering
@@ -150,7 +155,7 @@
           \label{tercas}
         \end{figure}
 
-        A sexta ocorre quando há seis notas entre elas. A sexta menor ocorre quando a diferença é de três tons e dois semitons, já a sexta maior possui uma diferença de quatro tons e um semitom.
+        A sexta ocorre quando há seis notas entre elas. A sexta menor (6ªm ou m6) ocorre quando a diferença é de três tons e dois semitons, já a sexta maior (6ªM ou M6) possui uma diferença de quatro tons e um semitom. Veja a Figura \ref{sextas}.
 
         \begin{figure}[htb]
           \centering
@@ -159,7 +164,7 @@
           \label{sextas}
         \end{figure}
 
-        A sétima ocorre quando há sete notas entre elas. A sétima menor ocorre quando a diferença é de quatro tons e dois semitons, já a sétima maior possui uma diferença de cinco tons e um semitom.
+        A sétima ocorre quando há sete notas entre elas. A sétima menor (7ªm ou m7) ocorre quando a diferença é de quatro tons e dois semitons, já a sétima maior (7ªM ou M7) possui uma diferença de cinco tons e um semitom (Figura \ref{setimas}).
 
         \begin{figure}[htb]
           \centering
@@ -174,7 +179,7 @@
 
         Se a distância em semitons das duas notas do intervalo não identificá-lo como justo, maior ou menor, ele será classificado como aumentado ou diminuto.
 
-        Intervalos aumentados possuem mais semitons que os intervalos justos ou maiores. Se o intervalo possuir um semitom a mais, ele é chamado de aumentado, se forem dois semitons a mais, é chamado de superaumentado, se forem três semitons a mais, é chamado de três vezes aumentado e assim sucessivamente, até os maiores intervalos possíveis que são os cinco vezes aumentados.
+        Intervalos aumentados possuem mais semitons que os intervalos justos ou maiores. Se o intervalo possuir um semitom a mais, ele é chamado de aumentado, se forem dois semitons a mais, é chamado de superaumentado, se forem três semitons a mais, é chamado de três vezes aumentado e assim sucessivamente, até os maiores intervalos possíveis que são os cinco vezes aumentados. Na Figura \label{aumentadas}, há exemplos de quarta aumentada (4ªA ou A4), quarta superaumentada (4ªSA ou SA4) e quarta 3x aumentada (4ª3xA ou 3xA4).
 
         \begin{figure}[htb]
           \centering
