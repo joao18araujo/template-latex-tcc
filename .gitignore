@@ -6,11 +6,9 @@
 *.backup
 *.aux
 
+tcc.pdf
 #logs
 *.log
-
-#PDFs
-*.pdf
 
 *.lof
 *.lot
