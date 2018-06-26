@@ -361,13 +361,24 @@
 
       Há diversas formas de se visitar todos os vértices de um grafo. O número total de formas é igual ao fatorial do número de vértices, pois uma travessia difere-se de outra apenas pela ordem em que os vértices são visitados. Contudo, algumas travessias possuem propriedades específicas e utilizam as arestas para definí-las. As duas travessias mais conhecidas são a busca por profundidade (DFS, sigla para \textit{Depth-First Search}) e a busca por largura (BFS, sigla para \textit{Breadth-First Search}).
 
-      A busca por profundidade funciona de forma recursiva. Primeiramente, um vértice é escolhido como o vértice inicial, antes de explorá-lo (analisar o valor contido no vértice), visitamos todos as suas conexões, para cada vértice conectado, antes de explorá-lo, visitamos sua conexões. Esse processo de visita ocorre até atingir um vértice que não possui arestas ou possui apenas conexões já visitadas. Ao chegar nesse ponto, o algoritmo explora, recursivamente, os vértices previamente visitados. Utilizando uma estrutura de dados conhecida, uma DFS pode ser implementada por meio do uso de pilhas, devido à propriedade delas que definem que o último a entrar na estrutura é o primeiro a sair.
+      A busca por profundidade funciona de forma recursiva. Primeiramente, um vértice é escolhido como o vértice inicial, antes de explorá-lo (analisar o valor contido no vértice), visitamos todos as suas conexões, para cada vértice conectado, antes de explorá-lo, visitamos sua conexões. Esse processo de visita ocorre até atingir um vértice que não possui arestas ou possui apenas conexões já visitadas. Ao chegar nesse ponto, o algoritmo explora, recursivamente, os vértices previamente visitados. Utilizando uma estrutura de dados conhecida, uma DFS pode ser implementada por meio do uso de pilhas, devido à propriedade delas que definem que o último a entrar na estrutura é o primeiro a sair. Veja a Figura \ref{dfs}.
 
-      FIGURA PASSOS DFS
+      \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=0.25]{figuras/dfs.eps}
+        \caption{Exemplo de DFS}
+        \label{dfs}
+      \end{figure}
 
-      A busca por largura inicia em um vértice e visita todos os filhos (vértices para os quais o vértice atual aponta) antes de visitar os filhos destes. Desse modo, em um DAG, o primeiro nível (composto por vértices sem pai) é completamente visitado antes de o segundo nível (filhos destes) ser visitado e assim sucessivamente. Utilizando uma estrutura de dados conhecida, uma BFS pode ser implementado por meio do uso de filas devida à propriedade delas que define que o primeiro a entrar na estrutura é o primeiro a sair.
 
-      FIGURA PASSOS BFS
+      A busca por largura inicia em um vértice e visita todos os filhos (vértices para os quais o vértice atual aponta) antes de visitar os filhos destes. Desse modo, em um DAG, o primeiro nível (composto por vértices sem pai) é completamente visitado antes de o segundo nível (filhos destes) ser visitado e assim sucessivamente. Utilizando uma estrutura de dados conhecida, uma BFS pode ser implementado por meio do uso de filas devida à propriedade delas que define que o primeiro a entrar na estrutura é o primeiro a sair. Veja a Figura \ref{bfs}.
+
+      \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=0.25]{figuras/bfs.eps}
+        \caption{Exemplo de BFS}
+        \label{bfs}
+      \end{figure}
 
       Para a solução proposta nesse trabalho será usada a DFS por dois motivos. O primeiro é que a DFS chega a uma folha (vértice sem filhos) primeiro, o que é interessante para a solução pois busca-se a primeira solução disponível. O segundo motivo é que a DFS permite que seja utilizado um único vetor, inserindo e retirando no final deste (consequentemente, funcionando de forma análoga a uma pilha), economizando memória e diminuindo o tempo de execução que levaria para fazer cópias do vetor em uma BFS, pois o comportamento análogo a uma fila exigiria isso.
 
