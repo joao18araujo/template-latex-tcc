@@ -389,9 +389,28 @@
 
     \subsection[Busca Completa]{Busca Completa}
 
-      Na Busca Completa, todo ou parte do espaço de soluções possíveis é explorado (refCP). No código \ref{codecs} é possível observar a geração de todas as combinações de notas possíveis para um contraponto. Contudo, nesse caso, tal abordagem possui alta complexidade em termos de execução. Suponhando um espaço amostral com 90 notas disponíveis e um \textit{cantus firmus} com 50 notas, apenas para o contraponto de primeira espécie há $50^{90}$ sequências possíveis.
+      Na Busca Completa, todo ou parte do espaço de soluções possíveis é explorado (refCP). No código \ref{codecs} é possível observar a geração de todas as combinações de notas possíveis para um contraponto por meio de um algoritmo de \textit{backtracking} (algoritmo recursivo de busca completa). Contudo, nesse caso, tal abordagem possui alta complexidade em termos de execução. Suponhando um espaço amostral com 88 notas disponíveis e um \textit{cantus firmus} com 50 notas, apenas para o contraponto de primeira espécie há $88^{50}$ sequências possíveis.
 
-      EXEMPLO CÓDIGO
+      \begin{lstlisting}[language={C}, caption={Busca Completa}, label={codecs}]
+      // Vector with 88 musicais notes found on piano
+      vector<Note> available_notes(88);
+
+      void backtracking(vector<Note> counterpoint) {
+        // Process solution if
+        // counterpoint candidate and cantus firmus
+        // has the same number of notes
+        if(counterpoint.size() == CANTUS_FIRMUS_SIZE){
+          process_solution(counterpoint);
+        }
+
+        // Append each available note to counterpoint
+        for(int i = 0; i < (int) available_notes.size(); i++){
+          counterpoint.push_back(available_notes[i]);
+          backtracking(counterpoint);
+          counterpoint.pop_back();
+        }
+      }
+      \end{lstlisting}
 
       Para diminuir a complexidade de uma busca completa, podas podem ser aplicadas. Podas são aplicadas quando uma parte gerada da solução já indica que ela certamente não gerará uma solução. No caso do contraponto, por exemplo, podemos podar soluções parciais que já apresentem um número de movimentos reversos maior que o definido pelas regras mesmo antes de chegarem à última nota.
 
@@ -411,8 +430,13 @@
 
       No cálculo dos números de Fibonacci, o estado em uma dada posição N é o valor do N-ésimo número de Fibonacci. Para calculá-lo, utiliza-se os dois números de Fibonacci anteriores a ele na sequência, sendo essa a transição do algoritmo. Os únicos dois casos em que o cálculo não necessita dos dois anteriores são os números de Fibonacci nas posições 0 e 1, para esses, a solução é, por definição, 0 e 1, respectivamente. Dessa forma, 0 e 1 são nossos casos-base.
 
-      Tomando como exemplo o cálculo de F(5), calculando-o sem memorização de estados, é necessário calcular F(4) e F(3). Para calcular o F(4), é preciso calcular o F(3) e o F(2). Sem a memorização, após o cálculo do F(4), o F(3), que já havia sido calculado para o F(4), será recalculado, bem como o F(2) para o cálculo do F(3). Contudo, se o valor de F(3) for memorizado em alguma estrutura de dados (geralmente um vetor) para consultas futuras, seria necessário calcular cada estado apenas uma vez. Na figura \ref{nodpxdp} há um comparativo entre a árvore de chamadas para F(5) com e sem a memorização característica de uma DP.
+      Tomando como exemplo o cálculo de F(5), calculando-o sem memorização de estados, é necessário calcular F(4) e F(3). Para calcular o F(4), é preciso calcular o F(3) e o F(2). Sem a memorização, após o cálculo do F(4), o F(3), que já havia sido calculado para o F(4), será recalculado, bem como o F(2) para o cálculo do F(3). Contudo, se o valor de F(3) for memorizado em alguma estrutura de dados (geralmente um vetor) para consultas futuras, seria necessário calcular cada estado apenas uma vez. Na figura \ref{nodpxdp} há um comparativo entre a árvore de chamadas para F(5) com e sem a memorização característica de uma DP, os nós em amarelo representam os nós que utilizam recursão, os nós vermelhos são os casos-base e os nós verdes utilizam valores previamente memorizados.
 
-      FIGURA ARVORE SEM DP X COM DP
+      \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=0.5]{figuras/nodpxdp.eps}
+        \caption{Comparativo entre a abordagem não-DP e DP para o cálculo do F(5)}
+        \label{nodpxdp}
+      \end{figure}
 
       Neste trabalho, a DP será utilizada para a geração do contraponto. O estado sendo caracterizado por uma dada nota em uma dada posição no contraponto com um número específico de movimentos paralelos e terças e sextas paralelas. A transição é definida pela solução da próxima nota no contraponto, partindo da nota atual. O caso-base é definido por quando o algoritmo atinge o final do \textit{cantus firmus}, retornando que aquela solução é válida, já que não foi podada nenhuma vez durante a construção daquela solução.

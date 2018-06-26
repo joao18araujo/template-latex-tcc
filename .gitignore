@@ -12,6 +12,7 @@ tcc.pdf
 
 *.lof
 *.lot
+*.lol
 *.bbl
 *.blg
 *.brf
