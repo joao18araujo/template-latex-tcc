@@ -58,7 +58,24 @@
 
   \subsection[Protótipo]{Protótipo}
 
+    Assim como os requisitos, o protótipo também foi desenvolvido na primeira parte do trabalho. O protótipo possui a finalidade de testar o conceito da solução por meio um MVP (produto mínimo viável ou \textit{minimum viable product}). O protótipo proposto possuía as seguintes funcionalidades:
 
+    \begin{enumerate}
+      \item Módulo de notas musicais, incluindo leitura de arquivo Lilypond simplificado e armazenamentos de notas de uma melodia;
+      \item Módulo de intervalos, incluindo a construção de intervalos a partir de notas ou \textit{strings} padronizadas e retorno de nota ao se receber nota e intervalo;
+      \item Módulo de escalas, incluindo construção de escalas a partir do modo ou de um conjunto de intervalos;
+      \item Módulo de contrapontos de primeira espécie implementado utilizando busca completa;
+      \item Módulo de contrapontos de primeira espécie implementado utilizando programação;
+      \item Módulo de contrapontos de segunda espécie, com leitura de tempo de compasso.
+    \end{enumerate}
+
+    O protótipo contém os módulos de notação, intervalos e escalas pois são considerados módulos básicos para a construção de contrapontos.
+
+    O módulo de contrapontos de primeira espécie com algoritmo de busca completa pretende testar se a geração de contrapontos de forma \textit{naive} (a implementação mais simples possível) é correta e computacionalmente viável.
+
+    O módulo de contrapontos de segunda espécie com algoritmo de DP pretende testar se a programação dinâmica efetivamente diminui o tempo de execução do algoritmo e se essa diminuição é relevante o suficiente para justificar o uso desse paradigma.
+
+    O módulo de contrapontos de segunda espécie busca validar a corretude do módulo de primeira espécie uma vez que tenha sido escalado. Dentre as novas dificuldades, há o fato de que há duas notas no contraponto para cada do \textit{cantus firmus}, a posição da nota no compasso possui papel decisivo no algoritmo, invalidando a estratégia de avaliar os intervalos nota a nota e adicionando um estado à DP.
 
   \subsection[Desenvolvimento]{Desenvolvimento}
 
