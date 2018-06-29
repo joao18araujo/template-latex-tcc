@@ -1,7 +1,111 @@
 \chapter[Metodologia]{Metodologia}
 
-  A implementação do \textit{software} utilizará a metodologia ágil \textit{Extreme Programming (XP)} como ciclo de vida de desenvolvimento, dado o escopo, o nível de definição dos requisitos e o tamanho da equipe. Sendo dividido em iterações que evoluem a aplicação de forma incremental. Além disso, será realizada uma revisão sistemática do tema a fim de se levantar o que já foi produzido e quais são as lacunas deixadas por eles, isso permitirá que o escopo do projeto seja definido de forma que traga algo relevante, baseado no que já foi feito.
+  A implementação do \textit{software} utilizará a metodologia ágil \textit{Extreme Programming (XP)} como ciclo de vida de desenvolvimento, dado o escopo, o nível de definição dos requisitos e o tamanho da equipe. O XP é um ciclo de vida de desenvolvimento voltado para projetos com equipes pequenas, sistemas orientados a objeto e com desenvolvimento incremental, segundo \citeonline{vinicius}. Sendo dividido em iterações que evoluem a aplicação de forma incremental.
+
+  \section[Atividades e Cronograma]{Atividades e Cronograma}
+
+  O desenvolvimento do sistema terá as seguintes atividades:
+
+  \begin{enumerate}
+    \item \label{t1} Definição dos requisitos do sistema;
+    \item \label{t2} Estudo sobre teoria musical, incluindo notação musical, intervalos, escalas e contrapontos;
+    \item \label{t3} Implementação do protótipo de parser de um arquivo lilypond;
+    \item \label{t4} Implementação do módulo de notas musicais;
+    \item \label{t5} Implementação do módulo de intervalos;
+    \item \label{t6} Implementação do módulo de escalas;
+    \item \label{t7} Implementação do protótipo do módulo de contrapontos;
+    \item \label{t8} Implementação do módulo de contrapontos de primeira espécie utilizando busca completa;
+    \item \label{t9} Implementação do módulo de contrapontos de primeira espécie utilizando programação dinâmica;
+    \item \label{t10} Escrita do TCC1;
+    \item \label{t11} Implementação do módulo de contrapontos de segunda espécie;
+    \item \label{t12} Testes do parser;
+    \item \label{t13} Testes do módulo de notas musicais;
+    \item \label{t14} Testes do módulo de intervalos;
+    \item \label{t15} Testes do módulo de escalas;
+    \item \label{t16} Testes dos módulos de contrapontos de primeira e segunda espécie;
+    \item \label{t17} Otimização do parser;
+    \item \label{t18} Implementação e testes do módulo de contrapontos de terceira espécie;
+    \item \label{t19} Implementação e testes do módulo de contrapontos de quarta espécie;
+    \item \label{t20} Implementação e testes do módulo de contrapontos de quinta espécie;
+    \item \label{t21} Escrita do TCC2.
+  \end{enumerate}
+
+  O cronograma do trabalho está apresentado na Tabela \ref{tab:cronograma}.
+
+  \definecolor{midgray}{gray}{.5}
+  \begin{table}[!htbp]
+    \centering
+    \caption{Cronograma do Trabalho}
+    \label{tab:cronograma}
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+      &\multicolumn{10}{c|}{2018}\\
+      \hline
+      &MAR&ABR&MAI&JUN&JUL&AGO&SET&OUT&NOV&DEZ\\
+      \hline
+      \ref{t1}&\cellcolor{green}&&&&&&&&&\\
+      \hline
+      \ref{t2}&\cellcolor{green}&\cellcolor{green}&&&&&&&&\\
+      \hline
+      \ref{t3}&\cellcolor{green}&&&&&&&&&\\
+      \hline
+      \ref{t4}&\cellcolor{green}&&&&&&&&&\\
+      \hline
+      \ref{t5}&&\cellcolor{green}&&&&&&&&\\
+      \hline
+      \ref{t6}&&&\cellcolor{green}&&&&&&&\\
+      \hline
+      \ref{t7}&&\cellcolor{green}&\cellcolor{green}&&&&&&&\\
+      \hline
+      \ref{t8}&&\cellcolor{green}&&&&&&&&\\
+      \hline
+      \ref{t9}&&\cellcolor{green}&\cellcolor{green}&&&&&&&\\
+      \hline
+      \ref{t10}&&\cellcolor{green}&\cellcolor{green}&\cellcolor{green}&&&&&&\\
+      \hline
+      \ref{t11}&&&&\cellcolor{yellow}&\cellcolor{yellow}&&&&&\\
+      \hline
+      \ref{t12}&&&&&\cellcolor{red}&\cellcolor{red}&&&&\\
+      \hline
+      \ref{t13}&&&&&\cellcolor{red}&\cellcolor{red}&&&&\\
+      \hline
+      \ref{t14}&&&&&\cellcolor{red}&\cellcolor{red}&&&&\\
+      \hline
+      \ref{t15}&&&&&\cellcolor{red}&\cellcolor{red}&&&&\\
+      \hline
+      \ref{t16}&&&&&\cellcolor{red}&\cellcolor{red}&&&&\\
+      \hline
+      \ref{t17}&&&&&&\cellcolor{red}&&&&\\
+      \hline
+      \ref{t18}&&&&&&\cellcolor{red}&\cellcolor{red}&&&\\
+      \hline
+      \ref{t19}&&&&&&&\cellcolor{red}&\cellcolor{red}&&\\
+      \hline
+      \ref{t20}&&&&&&&&\cellcolor{red}&\cellcolor{red}&\\
+      \hline
+      \ref{t21}&&&&&&&&\cellcolor{red}&\cellcolor{red}&\cellcolor{red}\\
+      \hline
+      \multicolumn{11}{|c|}{Legendas}\\ \hline
+      \multicolumn{10}{|l|}{Tarefas não realizadas} &\cellcolor{red}\\
+      \hline
+      \multicolumn{10}{|l|}{Tarefas em andamento} &\cellcolor{yellow}\\
+      \hline
+      \multicolumn{10}{|l|}{Tarefas realizadas}&\cellcolor{green}\\
+      \hline
+      \end{tabular}
+  \end{table}
 
   \section[Ciclo de Vida de Desenvolvimento]{Ciclo de Vida de Desenvolvimento}
+
+    O ciclo de vida de desenvolvimento contará com três fases bem definidas. Primeiramente, serão levantados os requisitos. Então, serão escolhidas as ferramentas a serem utilizadas. Após isso, será desenvolvido um protótipo focado em contrapontos de primeira espécie. Os resultados do protótipo guiarão o desenvolvimento posterior, que será focado na composição algorítmica de contrapontos palestrinianos de até quinta espécie.
+
+
+
+  \subsection[Requisitos]{Requisitos}
+
+    As fases de levantamento de requisitos e prototipação ocorreram
+  \subsection[Protótipo]{Protótipo}
+  \subsection[Desenvolvimento]{Desenvolvimento}
+
+
   \section[Ferramentas Utilizadas]{Ferramentas Utilizadas}
-  \section[Cronograma]{Cronograma}
