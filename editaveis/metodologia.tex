@@ -79,9 +79,25 @@
 
   \subsection[Desenvolvimento]{Desenvolvimento}
 
+    Após a definição dos requisitos e a construção do protótipo, o sistema terá o restante de suas funcionalidades implementadas e testadas. As atividades previstas para a fase de desenvolvimento são:
 
-  \section[Ferramentas Utilizadas]{Ferramentas Utilizadas}
+    \begin{enumerate}
+      \item Testes dos módulos de notação, intervalos e escalas;
+      \item Testes dos módulos de contraponto de primeira e segunda espécie;
+      \item Otimização do \textit{parser};
+      \item Implementação e testes do módulo de contrapontos de terceira espécie;
+      \item Implementação e testes do módulo de contrapontos de quarta espécie;
+      \item Implementação e testes do módulo de contrapontos de quinta espécie;
+      \item Implementação e testes do módulo de construção de MIDI.
+    \end{enumerate}
 
+    A segunda parte do trabalho, que engloba o desenvolvimento, começará com testes das funcionalidades implementadas no protótipo. O objetivo é garantir que a solução do protótipo é adequada e completa antes de começar a implementação definitiva, refatorando o código e removendo \textit{bugs} identificados.
+
+    Após isso, há a otimização do \textit{parser}. O \textit{parser} atual lê apenas um arquivo Lilypond modificado para conter apenas o tempo, a escala e as notas. Pretende-se criar um \textit{parser} que, ainda que simples, seja capaz de ler arquivos Lilypond padrão.
+
+    Seguindo a otimização do \textit{parser}, haverá a implementação e teste dos contrapontos de terceira, quarta e quinta espécie. Baseado no código já implementado dos contrapontos de primeira e segunda espécie, eles serão desenvolvidos sequencialmente, já que as novas regras de uma espécie somam-se às regras da anterior.
+
+    Por fim, haverá a implementação e teste de um módulo de construção de MIDI com as especificações definidas na subseção acerca dos requisitos.
 
   \section[Atividades e Cronograma]{Atividades e Cronograma}
 
@@ -178,3 +194,5 @@
       \hline
       \end{tabular}
   \end{table}
+
+  \section[Ferramentas Utilizadas]{Ferramentas Utilizadas}
