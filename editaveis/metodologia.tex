@@ -2,6 +2,70 @@
 
   A implementação do \textit{software} utilizará a metodologia ágil \textit{Extreme Programming (XP)} como ciclo de vida de desenvolvimento, dado o escopo, o nível de definição dos requisitos e o tamanho da equipe. O XP é um ciclo de vida de desenvolvimento voltado para projetos com equipes pequenas, sistemas orientados a objeto e com desenvolvimento incremental, segundo \citeonline{vinicius}. Sendo dividido em iterações que evoluem a aplicação de forma incremental.
 
+  \section[Ciclo de Vida de Desenvolvimento]{Ciclo de Vida de Desenvolvimento}
+
+    O ciclo de vida de desenvolvimento contará com três fases bem definidas. Primeiramente, serão levantados os requisitos. Então, serão escolhidas as ferramentas a serem utilizadas. Após isso, será desenvolvido um protótipo focado em contrapontos de primeira espécie. Os resultados do protótipo guiarão o desenvolvimento posterior, que será focado na composição algorítmica de contrapontos palestrinianos de até quinta espécie.
+
+  \subsection[Requisitos]{Requisitos}
+
+    Os requisitos foram desenvolvidos na primeira parte do trabalho. O escopo inicial era de um \textit{software} capaz de ler uma melodia monofônica e gerar contrapontos palestrinianos de até quinta espécie para ela, retornando o este no mesmo formato lido, com o formato escolhido sendo o Lilypond\footnotemark \footnotetext{\url{http://lilypond.org/}}, formato de escrita musical baseado em TeX. Veja um fluxograma simplificado da aplicação na Figura \ref{fluxograma}.
+
+    FIGURA FLUXOGRAMA APLICAÇÃO
+
+    Após o estudo da teoria musical necessária para a construção de contrapontos,foram definidos os seguintes módulos a serem desenvolvidos:
+
+    \begin{enumerate}
+      \item Módulo de notas musicais;
+      \item Módulo de intervalos;
+      \item Módulo de escalas;
+      \item Módulo de contrapontos de primeira espécie;
+      \item Módulo de contrapontos de segunda espécie;
+      \item Módulo de contrapontos de terceira espécie;
+      \item Módulo de contrapontos de quarta espécie;
+      \item Módulo de contrapontos de quinta espécie;
+      \item Módulo de construção do MIDI.
+    \end{enumerate}
+
+    \subsubsection[Módulo de Notas Musicais]{Módulo de Notas Musicais}
+
+      Este módulo é responsável pela leitura e armazenamento das notas de uma melodia. Ele conta com as seguintes capacidades: armazenamento do atributos de uma nota, \textit{parser} de uma nota em formato Lilypond e armazenamento de uma melodia completa. O armazenamento de uma nota inclui tais atributos: a figura musical que representa a duração, o tempo absoluto da nota, os acidentes aplicados a ela, a oitava em que ela está inserida, seu número MIDI e seu número em relação a notas sem contar acidentes. Além disso, essa parte deve ser capaz de devolver notas enarmônicas a uma nota -- notas com nomenclatura diferente, mas som e número de semitons (em relação a uma nota qualquer) iguais, como C\sh{}  e D\fl.
+
+      O \textit{parser} de uma nota deve ser feito a partir de um arquivo Lilypond e armazenado na estrutura responsável pelo armazenamento de notas já citada. Além disso, ele deve ser capaz de retornar uma nota armazenada no mesmo formato lido.
+
+      O armazenamento da melodia completa deve ser capaz de armazenar as notas de uma melodia preservando sua ordem, além de armazenar o tempo dos compassos e a escala da música.
+
+    \subsubsection[Módulo de Intervalos]{Módulo de Intervalos}
+
+      O módulo de intervalos deve ser capaz de armazenar intervalos, gerá-los a partir de duas notas ou de uma \textit{string} e ser capaz de retornar a outra nota dados uma nota e um intervalo, por exemplo, retornar G\sh5 ao receber C5 e um intervalo de quinta aumentada.
+
+      O armazenamento de intervalos deve possuir os seguintes atributos: classificaçõs quantitativa e qualitativa, número de semitons e se o intervalo é ascendente ou não (considerando a nota recebida como a primeira).
+
+      O retorno da nota dado uma nota e um intervalo deve ser capaz de retornar a segunda nota para qualquer intervalo definido, de forma que a distância entre as duas notas seja compatível com a classificação quantitativa e qualitativa do intervalo. Ele também deve ser capaz de indicar se é impossível gerar tal nota e retornar uma nota em uma dada escala previamente definida, quando necessário.
+
+    \subsubsection[Módulo de Escalas]{Módulo de Escalas}
+
+      O módulo de escalas deve ser capaz de armazenar uma escala e responder se uma nota faz ou não parte dela. O armazenamento da escala deve ser capaz de armazenar quais notas estão presentes nela a partir da primeira nota e do modo (maior ou menor) ou da primeira nota e de um conjunto de intervalos.
+
+      O objeto de uma escala deve ser capaz de receber um objeto de nota e dizer se aquela nota está ou não presente, baseada em seu número de MIDI e sua representação, por exemplo, a nota B está presente na escala de Dó Maior, mas não a nota C\fl{}, embora elas sejam enarmônicas.
+
+    \subsubsection[Módulos de Contraponto]{Módulo de Contraponto}
+
+      Cada módulo deve ser capaz de gerar um contraponto palestriniano de acordo com as regras definidas pela espécie do contraponto. Eles devem receber uma melodia monofônica e gerar um contraponto daquela espécie de acordo com os parâmetros fornecidos em relação a número de movimentos reversos, consonâncias condicionais paralelas e outros parâmetros relacionados a regras que não sejam exatas. Como exemplo, tem-se a regra que se evita, mas não se proíbe movimentos paralelos, cabendo ao usuário definir o número de movimentos paralelos aceitáveis. Com tais parâmetros, o módulo deve ser capaz de gerar um contraponto aleatório para cada iteração do algoritmo.
+
+    \subsubsection[Módulo de Construção do MIDI]{Módulo de Construção do MIDI}
+
+      O módulo de construção do MIDI é um módulo que deve automatizar a construção de um MIDI tendo como base o arquivo Lilypond original e o contraponto gerado. Com esses dois, esse módulo deve inserir o contraponto em uma cópia do arquivo original e gerar o MIDI utilizando o pacote do Lilypond para Linux.
+
+  \subsection[Protótipo]{Protótipo}
+
+
+
+  \subsection[Desenvolvimento]{Desenvolvimento}
+
+
+  \section[Ferramentas Utilizadas]{Ferramentas Utilizadas}
+
+
   \section[Atividades e Cronograma]{Atividades e Cronograma}
 
   O desenvolvimento do sistema terá as seguintes atividades:
@@ -27,7 +91,8 @@
     \item \label{t18} Implementação e testes do módulo de contrapontos de terceira espécie;
     \item \label{t19} Implementação e testes do módulo de contrapontos de quarta espécie;
     \item \label{t20} Implementação e testes do módulo de contrapontos de quinta espécie;
-    \item \label{t21} Escrita do TCC2.
+    \item \label{t21} Implementação e testes do módulo de construção de MIDI;
+    \item \label{t22} Escrita do TCC2.
   \end{enumerate}
 
   O cronograma do trabalho está apresentado na Tabela \ref{tab:cronograma}.
@@ -83,7 +148,9 @@
       \hline
       \ref{t20}&&&&&&&&\cellcolor{red}&\cellcolor{red}&\\
       \hline
-      \ref{t21}&&&&&&&&\cellcolor{red}&\cellcolor{red}&\cellcolor{red}\\
+      \ref{t21}&&&&&&&&&\cellcolor{red}&\cellcolor{red}\\
+      \hline
+      \ref{t22}&&&&&&&&\cellcolor{red}&\cellcolor{red}&\cellcolor{red}\\
       \hline
       \multicolumn{11}{|c|}{Legendas}\\ \hline
       \multicolumn{10}{|l|}{Tarefas não realizadas} &\cellcolor{red}\\
@@ -94,18 +161,3 @@
       \hline
       \end{tabular}
   \end{table}
-
-  \section[Ciclo de Vida de Desenvolvimento]{Ciclo de Vida de Desenvolvimento}
-
-    O ciclo de vida de desenvolvimento contará com três fases bem definidas. Primeiramente, serão levantados os requisitos. Então, serão escolhidas as ferramentas a serem utilizadas. Após isso, será desenvolvido um protótipo focado em contrapontos de primeira espécie. Os resultados do protótipo guiarão o desenvolvimento posterior, que será focado na composição algorítmica de contrapontos palestrinianos de até quinta espécie.
-
-
-
-  \subsection[Requisitos]{Requisitos}
-
-    As fases de levantamento de requisitos e prototipação ocorreram
-  \subsection[Protótipo]{Protótipo}
-  \subsection[Desenvolvimento]{Desenvolvimento}
-
-
-  \section[Ferramentas Utilizadas]{Ferramentas Utilizadas}
