@@ -1,6 +1,17 @@
 \chapter[Metodologia]{Metodologia}
 
-  A implementação do \textit{software} utilizará a metodologia ágil \textit{Extreme Programming (XP)} como ciclo de vida de desenvolvimento, dado o escopo, o nível de definição dos requisitos e o tamanho da equipe. O XP é um ciclo de vida de desenvolvimento voltado para projetos com equipes pequenas, sistemas orientados a objeto e com desenvolvimento incremental, segundo \citeonline{vinicius}. Sendo dividido em iterações que evoluem a aplicação de forma incremental.
+  A implementação do \textit{software} utilizará a metodologia ágil \textit{Extreme Programming (XP)} como ciclo de vida de desenvolvimento, dado o escopo, o nível de definição dos requisitos e o tamanho da equipe. O XP é um ciclo de vida de desenvolvimento voltado para projetos com equipes pequenas, sistemas orientados a objeto e com desenvolvimento incremental, segundo \citeonline{vinicius}. Sendo dividido em iterações que evoluem a aplicação de forma incremental. Primeiramente, é definido o escopo e as ferramentas a serem utilizadas. Então, há o desenvolvimento do protótipo e, por fim, o desenvolvimento da solução planejada.
+
+  \section[Ferramentas Utilizadas]{Ferramentas Utilizadas}
+
+    Antes do início da implementação da solução, foram escolhidas as ferramentas a serem utilizadas no projeto, de acordo com os requisitos levantados. Durante o desenvolvimento, essas serão as ferramentas utilizadas:
+
+  \begin{enumerate}
+    \item GitHub\footnotemark \footnotetext{\url{https://github.com/}}: plataforma para hospedagem de código-fonte que utiliza o Git como sistema de controle de versão. Será utilizado para o armazenamento do código da solução pelo seu caráter aberto e gratuito;
+    \item C++\footnotemark \footnotetext{\url{http://www.cplusplus.com/}}, linguagem de programação compilada multiparadigma. Será utilizada como linguagem de implementação principal pelo suporte à programação orientada a objetos e domínio dela pela equipe;
+    \item Lilypond\footnotemark \footnotetext{\url{http://lilypond.org/}}, formato de escrita musical baseado em TeX. Será utilizado para representação da melodia por ter um formato padronizado e menos verboso se comparado a outras opções como o MusicXML. Além disso, seu pacote para Linux conta com métodos como midi2ly e musicxml2ly que permite converter músicas de formatos populares para o formato .ly padrão do Lilypond;
+    \item MuseScore\footnotemark \footnotetext{\url{https://musescore.com/}}, editor de partituras. Será utilizado para criação e edição de partitura pelo fato da equipe ter domínio sobre a ferramenta e ser compatível com Linux e Windows, ao contrário de alternativas similares como o Encore;
+  \end{enumerate}
 
   \section[Ciclo de Vida de Desenvolvimento]{Ciclo de Vida de Desenvolvimento}
 
@@ -8,9 +19,15 @@
 
   \subsection[Requisitos]{Requisitos}
 
-    Os requisitos foram desenvolvidos na primeira parte do trabalho. O escopo inicial era de um \textit{software} capaz de ler uma melodia monofônica e gerar contrapontos palestrinianos de até quinta espécie para ela, retornando o este no mesmo formato lido, com o formato escolhido sendo o Lilypond\footnotemark \footnotetext{\url{http://lilypond.org/}}, formato de escrita musical baseado em TeX. Veja um fluxograma simplificado da aplicação na Figura \ref{fluxograma}.
+    Os requisitos foram desenvolvidos na primeira parte do trabalho. O escopo inicial era de um \textit{software} capaz de ler uma melodia monofônica e gerar contrapontos palestrinianos de até quinta espécie para ela, retornando o este no mesmo formato lido, com o formato escolhido sendo o Lilypond. Veja um fluxograma simplificado da aplicação na Figura \ref{fluxograma}.
 
-    FIGURA FLUXOGRAMA APLICAÇÃO
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[scale=0.45]{figuras/fluxograma.eps}
+      \caption{Fluxograma simplificado da aplicação}
+      \label{fluxograma}
+    \end{figure}
+
 
     Após o estudo da teoria musical necessária para a construção de contrapontos,foram definidos os seguintes módulos a serem desenvolvidos:
 
@@ -194,5 +211,3 @@
       \hline
       \end{tabular}
   \end{table}
-
-  \section[Ferramentas Utilizadas]{Ferramentas Utilizadas}
