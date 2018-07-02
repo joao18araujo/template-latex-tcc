@@ -31,7 +31,12 @@
 
       Por ser um protótipo, todos os atributos e métodos são públicos, isso será mudado na versão final, a Figura \ref{noteclass} descreve os atributos, métodos e construtores da classe.
 
-      FIGURA CLASSE NOTA
+      \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=0.7]{figuras/noteclass.eps}
+        \caption{Diagrama da Classe \textit{Note}}
+        \label{noteclass}
+      \end{figure}
 
     \subsection[\textit{Note Reader}]{\textit{Note Reader}}
 
@@ -48,7 +53,12 @@
 
       A Figura \ref{notereaderclass} representa os métodos da classe.
 
-      FIGURA CLASSES NOTE READER
+      \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=0.8]{figuras/notereaderclass.eps}
+        \caption{Diagrama da Classe \textit{Note Reader}}
+        \label{notereaderclass}
+      \end{figure}
 
     \subsection[\textit{Compass Time}]{\textit{Compass Time}}
 
@@ -69,7 +79,12 @@
 
       A Figura \ref{compasstimeclass} representa os atributos e métodos da classe.
 
-      FIGURA CLASSES COMPASS TIME
+      \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=0.7]{figuras/compasstimeclass.eps}
+        \caption{Diagrama da Classe \textit{Compass Time}}
+        \label{compasstimeclass}
+      \end{figure}
 
     \subsection[\textit{Song}]{\textit{Song}}
 
@@ -81,14 +96,20 @@
         \item \textit{Compass Time}: Armazena o tempo de compasso de uma música, assumindo que não há troca de tempo no meio da canção.
       \end{enumerate}
 
-      Ela possui apenas um método chamado \textit{Size} que retorna o número de notas da música.
+      Ela possui apenas um método chamado \textit{Size} que retorna o número de notas da música. A Figura \ref{songclass} representa os atributos e métodos da classe.
+
+      \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=0.7]{figuras/songclass.eps}
+        \caption{Diagrama da Classe \textit{Song}}
+        \label{songclass}
+      \end{figure}
 
 
   \section[Módulo de Intervalos]{Módulo de Intervalos}
 
-    Responsável pela geração e armazenamento de intervalos, este módulo possui a classe \textit{Interval}. A Figura \ref{songclass} representa os atributos e métodos da classe.
+    Responsável pela geração e armazenamento de intervalos, este módulo possui a classe \textit{Interval}.
 
-    FIGURA CLASSES SONG
 
     \subsection[\textit{Interval}]{\textit{Interval}}
 
@@ -111,7 +132,12 @@
 
       A Figura \ref{intervalclass} representa os atributos e métodos da classe.
 
-      FIGURA INTERVAL CLASSE
+      \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=0.7]{figuras/intervalclass.eps}
+        \caption{Diagrama da Classe \textit{Interval}}
+        \label{intervalclass}
+      \end{figure}
 
   \section[Módulo de Escalas]{Módulo de Escalas}
 
@@ -129,7 +155,12 @@
 
     A Figura \ref{scaleclass} representa os atributos e métodos da classe.
 
-    FIGURA SCALE CLASSE
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[scale=0.7]{figuras/scaleclass.eps}
+      \caption{Diagrama da Classe \textit{Scale}}
+      \label{scaleclass}
+    \end{figure}
 
   \section[Módulo de Contraponto]{Módulo de Contraponto}
 
@@ -145,7 +176,12 @@
 
     Atualmente, essa classe é utilizada como classe pai da \textit{First Order Counterpoint} e será pai das classes dos contrapontos de outras espécies. A Figura \ref{counterpointclass} apresenta os métodos da classe.
 
-    FIGURA COUNTERPOINT CLASSE
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[scale=0.7]{figuras/counterpointclass.eps}
+      \caption{Diagrama da Classe \textit{Counterpoint}}
+      \label{counterpointclass}
+    \end{figure}
 
     \subsection[\textit{First Order Counterpoint}]{\textit{First Order Counterpoint}}
 
@@ -168,7 +204,12 @@
 
       A Figura \ref{firstordercounterpointclass} apresenta os métodos e atributos da classe.
 
-      FIGURA FIRST ORDER COUNTERPOINT CLASSE
+      \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=0.7]{figuras/firstordercounterpointclass.eps}
+        \caption{Diagrama da Classe \textit{First Order Counterpoint}}
+        \label{firstordercounterpointclass}
+      \end{figure}
 
 
   \section[\textit{Main}]{\textit{Main}}
@@ -181,7 +222,7 @@
 
     Para validar os algoritmo construído, foram feitos experimentos em músicas pequenas para melhor análise do resultado. O teste da execução do algoritmo foi feito utilizando várias músicas. Serão apresentados os testes feitos com a música infantil \textit{Twinkle Twinkle Little Star}. O código-fonte da solução está disponível em \textit{\url{https://github.com/joao18araujo/ly_parser}}.
 
-    A música original pode ser observada em formato Lilypond e em pártitura no código \ref{twinkle} e na figura \ref{twinkleoriginal}, respectivamente.
+    A música original pode ser observada em formato Lilypond e em pártitura no código \ref{twinklecode} e na figura \ref{twinkleoriginal}, respectivamente.
 
     Após a primeira execução do algoritmo, o contraponto gerado pode ser visto em formato Lilypond no código \ref{cont1.1} e em partitura na Figura \ref{cont1.2}.
 
