@@ -36,7 +36,7 @@
     \subsection[\textit{Note Reader}]{\textit{Note Reader}}
 
 
-      A classe \textit{Note Reader} é responsável pelo \textit{parser} de \textit{string} representado notas em formato Lilypond para instâncias da classe \textit{Note} e vice-versa. Sem a necessidade de atributos e com apenas métodos estáticos, a classe age como uma biblioteca, sendo utilizada sem instanciação. Ela possui os seguintes métodos:
+      A classe \textit{Note Reader} é responsável pelo \textit{parser} de \textit{string} representado notas em formato Lilypond para instâncias da classe \textit{Note} e vice-versa. Sem a necessidade de atributos e com apenas métodos de classe, a classe age como uma biblioteca, sendo utilizada sem instanciação. Ela possui os seguintes métodos:
 
 
       \begin{enumerate}
@@ -106,7 +106,7 @@
       \begin{enumerate}
         \item \textit{Is Dissonant}: retorna um booleano definindo se o intervalo é ou não dissonante, baseado nas regras do Contraponto Palestriniano.
         \item \textit{Is Consonant}: retorna um booleano definindo se o intervalo é ou não consonante.
-        \item \textit{Interval to Note}: método estático que retorna uma nota ao receber uma nota e um intervalo. A nota recebida é considerada a primeira ao utilizar a propriedade do intervalo ser ascendente ou descendente, pois uma nota e um intervalo sem atributo de ascendência pode gerar até duas notas, uma acima e outra abaixo da nota original.
+        \item \textit{Interval to Note}: método de classe que retorna uma nota ao receber uma nota e um intervalo. A nota recebida é considerada a primeira ao utilizar a propriedade do intervalo ser ascendente ou descendente, pois uma nota e um intervalo sem atributo de ascendência pode gerar até duas notas, uma acima e outra abaixo da nota original.
       \end{enumerate}
 
       A Figura \ref{intervalclass} representa os atributos e métodos da classe.
@@ -123,7 +123,7 @@
 
     \begin{enumerate}
       \item \textit{Is Valid Note}: recebe uma nota e diz se ela está ou não presente na escala.
-      \item \textit{Interval To Note On Scale}: método estático que retorna uma nota, dado uma nota, um intervalo e uma escala. Retorna inválido se a nota não estiver presente na escala.
+      \item \textit{Interval To Note On Scale}: método de classe que retorna uma nota, dado uma nota, um intervalo e uma escala. Retorna inválido se a nota não estiver presente na escala.
     \end{enumerate}
 
 
@@ -137,7 +137,7 @@
 
     \subsection[\textit{Counterpoint}]{\textit{Counterpoint}}
 
-    A classe \textit{Counterpoint} funciona como uma biblioteca e não possui atributos de instância. Inicialmente utilizada para a implementação do contraponto de primeira ordem, atualmente possui o método ad-hoc de geração de contrapontos e o método de análise de notas para inserção no contraponto.
+    A classe \textit{Counterpoint} funciona como uma biblioteca e não possui atributos de instância. Inicialmente utilizada para a implementação do contraponto de primeira ordem, atualmente possui o método ad-hoc de geração de contrapontos e o método de análise de notas para inserção no contraponto chamado \textit{Analyse and Add Interval}.
 
     A solução inicialmente concebida utiliza um algoritmo de seleção aleatório. Iniciando na primeira nota do \textit{cantus firmus}, monta-se um vetor de notas possíveis para o contraponto em seu estado atual, escolhe-se aleatoriamente uma das notas do vetor e a insere no vetor do contraponto, seguindo para a próxima nota. O vetor de notas possíveis era montado de acordo com as regras do contraponto de primeira espécie anteriormente citadas.
 
@@ -148,6 +148,27 @@
     FIGURA COUNTERPOINT CLASSE
 
     \subsection[\textit{First Order Counterpoint}]{\textit{First Order Counterpoint}}
+
+      A classe \textit{First Order Counterpoint} herda da classe \textit{Counterpoint} e é uma biblioteca, possuindo atributos e métodos de classe. Possui os seguintes métodos:
+
+      \begin{enumerate}
+        \item \textit{DFS Generate Counterpoint}: recebe uma instância de \textit{Song}, um booleano que define se o contraponto será superior ou inferior e os números de terças e sextas paralelas e movimentos paralelos permitidos. Retorna um vetor de notas correspondente ao contraponto gerado.
+        \item \textit{Solve}: Método recursivo que executa a busca completa para gerar contrapontos. Tem como parâmetros a posição atual no \textit{cantus firmus}, o número atual de terças ou sextas paralelas, o número de movimentos paralelos já ocorridos, a instância do \textit{cantus firmus} e da proposta de contraponto atual passadas por referência e um booleano indicando se o contraponto é inferior ou superior.
+      \end{enumerate}
+
+      O método que retorna o vetor de contrapontos encapsula a solução e chama o mẽtodo recursivo. O algoritmo funciona da seguinta forma, iniciando na primeira posição do \textit{cantus firmus}, o estado da DP é definido por quatro parâmetros: posição, número MIDI da nota atual, número de terças ou sextas paralelas anteriormente executadas e número de movimentos paralelos.
+
+      A transição ocorre após a geração do vetor de notas possíveis, de acordo com as regras do contraponto. Para cada nota do vetor de intervalos, adiciona-se a nota ao final do vetor de contrapontos se a inserção dela não fizer ultrapassar o número de terças, sextas e movimentos paralelos. Após a adição da nota, o método \textit{Solve} é chamado para a posição mais um, com o número de terças, sextas e movimentos paralelos atualizados. O retorno do método \textit{Solve} é um booleano que indica se há um contraponto válido ao explorar aquele caminho. Portanto, se o retorno for \textit{false}, a nota adicionada no final do vetor de contrapontos é removida e a próxima nota do vetor de notas possíveis é testada. Contudo, se o retorno for \textit{true}, ela também retorna \textit{true} e não remove a nota atual, mantendo o vetor de contraponto gerado como solução. Se a análise das notas não adicionar nenhuma nota no vetor de notas possíveis, o método retorna também \textit{false}. Vale ressaltar que o vetor de notas possíveis é embaralhado aleatoriamente para garantir uma solução diferente a cada execução do algoritmo. Além disso, primeiro adiciona-se as notas que geram movimento contrário, embaralha-se a primeira parte do vetor, em seguida, adiciona-se as notas que geram movimento paralelo e embaralha-se a segunda parte do vetor. Isso é feito para que a solução priorize o menor número de movimentos paralelos possível.
+
+      O caso-base da DP é quando a posição é maior que o tamanho do \textit{cantus firmus}. Se o algoritmo chegar a essa posição, significa que a proposta de contraponto atual é um contraponto válido, portanto, retorna-se \textit{true}.
+
+      Para que o algoritmo funcione efetivamente como uma DP, é utilizado um vetor de memorização, sendo um atributo de classe, é um vetor booleano de quatro dimensões, uma para cada estado. A primeira possui 201 espaços, permitindo que um contraponto seja gerado para um \textit{cantus firmus} com, no máximo, 201 notas. A segunda dimensão possui 90 espaços e representa o número MIDI da nota atual e cobre as 88 primeiras notas do piano. A terceira dimensão possui 5 espaços e cobre as 4 terças ou sextas paralelas seguidas permitidas pelo algoritmo. A quarta dimensão representa o número de movimentos paralelos que aconteceram durante o contraponto, possui 100 espaços pois o máximo de movimentos paralelos permitidos pelo algoritmo é metade do tamanho do contraponto ou menos.
+
+      Utilizando o vetor de DP, ele inicia todas as posições com \textit{true}. Quando o algoritmo encontra um estado que é não possui solução, memoriza como \textit{false} na posição do vetor de DP que representa aquele e todas as posteriores consultas àquele estado retornam falso sem explorar esse candidato de solução novamente. Um exemplo é se o algoritmo definir que o estado atual -- na posição 10, na nota C4 (\textit{MIDI number} 60), com 2 terças ou sextas paralelas e 13 movimentos paralelos -- não é uma solução, memoriza-se \textit{false} em dp[10][60][2][13]. Na próxima consulta a esse estado, retorna falso imediatamente sem explorar. Memorizar estados que retornam \textit{true} é irrelevante pois o primeiro estado completo que chega ao final retornando \textit{true} é definido como a solução.
+
+      A Figura \ref{firstordercounterpointclass} apresenta os métodos e atributos da classe.
+
+      FIGURA FIRST ORDER COUNTERPOINT CLASSE
 
   \section[Experimentos]{Experimentos}
   \subsection[\textit{Solução Ad-hoc}]{Solução Ad-hoc}
