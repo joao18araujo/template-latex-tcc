@@ -4,7 +4,7 @@
 
   \section[Módulo de Notação Musical]{Módulo de Notação Musical}
 
-    O módulo de notação musical possui duas classes: \textit{Note} e \textit{Note Reader}.
+    O módulo de notação musical possui quatro classes: \textit{Note}, \textit{Note Reader}, \textit{Compass Time} e \textit{Song}.
 
     \subsection[\textit{Note}]{\textit{Note}}
 
@@ -50,9 +50,45 @@
 
       FIGURA CLASSES NOTE READER
 
+    \subsection[\textit{Compass Time}]{\textit{Compass Time}}
+
+      A classe \textit{Compass Time} armazena o tempo de compasso de uma música. Possui os seguintes atributos:
+
+      \begin{enumerate}
+        \item \textit{Times}: Número inteiro, armazena a quantidade de batidas que o compasso possui, por exemplo, em um compasso 3/4, ele armazena o valor 3.
+        \item \textit{Base Note}: Número inteiro, armazena qual é a figura musical base do compasso, por exemplo, em um compasso 3/4, ele armazena o valor 4.
+      \end{enumerate}
+
+      Além dos atributos, essa classe possui dois métodos:
+
+      \begin{enumerate}
+        \item \textit{Base Note Duration}: Retorna a duração da nota base.
+        \item \textit{Compass Duration}: Retorna a duração total do compasso, multiplicando a duração da nota base pela quantidade de batidas.
+      \end{enumerate}
+
+
+      A Figura \ref{compasstimeclass} representa os atributos e métodos da classe.
+
+      FIGURA CLASSES COMPASS TIME
+
+    \subsection[\textit{Song}]{\textit{Song}}
+
+      A classe \textit{Song} armazena as informações básicas de uma música. Possui os seguintes atributos:
+
+      \begin{enumerate}
+        \item \textit{Notes}: Vetor que armazena as notas de uma música em ordem de execução.
+        \item \textit{Scale}: Armazena a escala de uma música.
+        \item \textit{Compass Time}: Armazena o tempo de compasso de uma música, assumindo que não há troca de tempo no meio da canção.
+      \end{enumerate}
+
+      Ela possui apenas um método chamado \textit{Size} que retorna o número de notas da música.
+
+
   \section[Módulo de Intervalos]{Módulo de Intervalos}
 
-    Responsável pela geração e armazenamento de intervalos, este módulo possui a classe \textit{Interval}.
+    Responsável pela geração e armazenamento de intervalos, este módulo possui a classe \textit{Interval}. A Figura \ref{songclass} representa os atributos e métodos da classe.
+
+    FIGURA CLASSES SONG
 
     \subsection[\textit{Interval}]{\textit{Interval}}
 
@@ -96,6 +132,9 @@
     FIGURA SCALE CLASSE
 
   \section[Módulo de Contraponto]{Módulo de Contraponto}
+
+    O módulo de contraponto é responsável pela geração de contrapontos
+
     \subsection[\textit{Counterpoint}]{\textit{Counterpoint}}
     \subsection[\textit{First Order Counterpoint}]{\textit{First Order Counterpoint}}
 
