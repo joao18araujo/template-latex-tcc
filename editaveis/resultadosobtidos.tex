@@ -11,22 +11,22 @@
       A classe \textit{Note} é responsável pelo armazenamento das informações de uma nota. Os atributos dos objetos dessa classe são:
 
       \begin{enumerate}
-        \item \textit{Duration}: Número inteiro que representa a quantidade de tempo que a nota é tocada dentro de um compasso.
-        \item \textit{Absolute Time}: Número inteiro que indica a posição absoluta da nota na melodia, importante para contrapontos de segunda espécie em diante que utilizam da posição da nota no compasso.
-        \item \textit{Note}: \textit{String} que armazena qual nota musical, entre A e G, ou R quando for uma pausa.
-        \item \textit{Accidental}: \textit{String} que armazena os acidentes musicais que ocorrem à nota, se houver.
-        \item \textit{Octave}: Número inteiro que indica qual de qual oitava a nota é.
-        \item \textit{MIDI Number}: Número inteiro que representa a nota no formato padronizado MIDI, por exemplo, o Dó na quarta oitava é representado pelo número 72.
-        \item \textit{Note Number}: Número inteiro que representa a nota desconsiderando acidentes, utilizado para a classificação quantitativa de intervalos.
-        \item \textit{Valid}: Atributo booleano que indica se a nota é válida não, útil para retornar notas inválidas sem utilizar ponteiros, quando necessário.
+        \item \textit{Duration}: número inteiro que representa a quantidade de tempo que a nota é tocada dentro de um compasso.
+        \item \textit{Absolute Time}: número inteiro que indica a posição absoluta da nota na melodia, importante para contrapontos de segunda espécie em diante que utilizam da posição da nota no compasso.
+        \item \textit{Note}: \textit{string} que armazena qual nota musical, entre A e G, ou R quando for uma pausa.
+        \item \textit{Accidental}: \textit{string} que armazena os acidentes musicais que ocorrem à nota, se houver.
+        \item \textit{Octave}: número inteiro que indica qual de qual oitava a nota é.
+        \item \textit{MIDI Number}: número inteiro que representa a nota no formato padronizado MIDI, por exemplo, o Dó na quarta oitava é representado pelo número 72.
+        \item \textit{Note Number}: número inteiro que representa a nota desconsiderando acidentes, utilizado para a classificação quantitativa de intervalos.
+        \item \textit{Valid}: atributo booleano que indica se a nota é válida não, útil para retornar notas inválidas sem utilizar ponteiros, quando necessário.
       \end{enumerate}
 
       Além de construtores, a classe possui os seguintes métodos:
 
       \begin{enumerate}
-        \item \textit{Full Note}: Retorna uma \textit{string} representando a nota.
-        \item \textit{Set Full Note}: Constrói os outros atributos da uma nota a partir de uma \textit{string} padronizada, utilizada em construtores e outros métodos.
-        \item \textit{Enarmonies}: Retorna um vetor com as notas enarmônicas à nota do objeto.
+        \item \textit{Full Note}: retorna uma \textit{string} representando a nota.
+        \item \textit{Set Full Note}: constrói os outros atributos da uma nota a partir de uma \textit{string} padronizada, utilizada em construtores e outros métodos.
+        \item \textit{Enarmonies}: retorna um vetor com as notas enarmônicas à nota do objeto.
       \end{enumerate}
 
       Por ser um protótipo, todos os atributos e métodos são públicos, isso será mudado na versão final, a Figura \ref{noteclass} descreve os atributos, métodos e construtores da classe.
@@ -34,10 +34,67 @@
       FIGURA CLASSE NOTA
 
     \subsection[\textit{Note Reader}]{\textit{Note Reader}}
+
+
+      A classe \textit{Note Reader} é responsável pelo \textit{parser} de \textit{string} representado notas em formato Lilypond para objetos da classe \textit{Note} e vice-versa. Sem a necessidade de atributos e com apenas métodos estáticos, a classe age como uma biblioteca, sendo utilizada sem instanciação. Ela possui os seguintes métodos:
+
+
+      \begin{enumerate}
+        \item \textit{String To Note}: retorna um objeto \textit{Note} ao receber uma \textit{string} e uma nota. A nota recebida como parâmetro é a nota anterior, pois o formato Lilypond omite a duração da nota se for a mesma da anterior.
+        \item \textit{Note To String}: retorna uma \textit{string} que representa uma nota em formato Lilypond ao receber um objeto \textit{Note}.
+        \item \textit{MSB}: retorna o bit mais significativo, utilizado no cálculo da figura musical baseado na duração da nota. Quanto mais for o valor da figura musical, menor a duração, mas pontos de aumento podem modificar a duração da nota e o bit mais significativo é usado para inferir o valor da figura musical, pois as figuras sem pontos de aumento sempre geram durações representadas por potências de 2.
+        \item \textit{Number Of On Bits}: retorna o número de bits ligados de um inteiro, útil pois deriva o número de pontos de aumento de uma nota (para gerar a \textit{string}) a partir da representação binária da duração.
+      \end{enumerate}
+
+      A Figura \ref{notereaderclass} representa os métodos da classe.
+
+      FIGURA CLASSES NOTE READER
+
   \section[Módulo de Intervalos]{Módulo de Intervalos}
+
+    Responsável pela geração e armazenamento de intervalos, este módulo possui a classe \textit{Interval}.
+
     \subsection[\textit{Interval}]{\textit{Interval}}
+
+      A classe \textit{Interval} armazena intervalos e possui método para gerar uma nota a partir de outra e um intervalos. Ela possui os seguintes atributos:
+
+      \begin{enumerate}
+        \item \textit{Quantitative}: número inteiro, representa a classificação quantitativa do intervalo.
+        \item \textit{Qualitative}: \textit{string} que representa a classificação qualitativa do intervalo.
+        \item \textit{Half Tones}: número inteiro, representa a quantidade de semitons característica do intervalo.
+        \item \textit{Ascendant}: booleano que indica se o intervalo é ou não ascendente, no caso de intervalos melódicos.
+      \end{enumerate}
+
+      Excetuando-se métodos de impressão de atributos, a classe possui os seguintes métodos:
+
+      \begin{enumerate}
+        \item \textit{Is Dissonant}: retorna um booleano definindo se o intervalo é ou não dissonante, baseado nas regras do Contraponto Palestriniano.
+        \item \textit{Is Consonant}: retorna um booleano definindo se o intervalo é ou não consonante.
+        \item \textit{Interval to Note}: método estático que retorna uma nota ao receber uma nota e um intervalo. A nota recebida é considerada a primeira ao utilizar a propriedade do intervalo ser ascendente ou descendente, pois uma nota e um intervalo sem atributo de ascendência pode gerar até duas notas, uma acima e outra abaixo da nota original.
+      \end{enumerate}
+
+      A Figura \ref{intervalclass} representa os atributos e métodos da classe.
+
+      FIGURA INTERVAL CLASSE
+
   \section[Módulo de Escalas]{Módulo de Escalas}
+
+    O módulo de escalas é responsável pela geração e armazenamento de escalas musicais. Ele possui uma classe, a \textit{Scale}.
+
     \subsection[\textit{Scale}]{\textit{Scale}}
+
+    A classe \textit{Scale} armazena as notas de uma escala, possuindo apenas um atributo, um \textit{set} de \textit{strings} chamado \textit{Permitter Notes} que define as notas permitidas para aquela escala. Além disso, ela possui os seguintes métodos:
+
+    \begin{enumerate}
+      \item \textit{Is Valid Note}: recebe uma nota e diz se ela está ou não presente na escala.
+      \item \textit{Interval To Note On Scale}: método estático que retorna uma nota, dado uma nota, um intervalo e uma escala. Retorna inválido se a nota não estiver presente na escala.
+    \end{enumerate}
+
+
+    A Figura \ref{scaleclass} representa os atributos e métodos da classe.
+
+    FIGURA SCALE CLASSE
+
   \section[Módulo de Contraponto]{Módulo de Contraponto}
     \subsection[\textit{Counterpoint}]{\textit{Counterpoint}}
     \subsection[\textit{First Order Counterpoint}]{\textit{First Order Counterpoint}}
