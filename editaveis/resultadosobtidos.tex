@@ -8,7 +8,7 @@
 
     \subsection[\textit{Note}]{\textit{Note}}
 
-      A classe \textit{Note} é responsável pelo armazenamento das informações de uma nota. Os atributos dos objetos dessa classe são:
+      A classe \textit{Note} é responsável pelo armazenamento das informações de uma nota. Os atributos de instância dessa classe são:
 
       \begin{enumerate}
         \item \textit{Duration}: número inteiro que representa a quantidade de tempo que a nota é tocada dentro de um compasso.
@@ -36,11 +36,11 @@
     \subsection[\textit{Note Reader}]{\textit{Note Reader}}
 
 
-      A classe \textit{Note Reader} é responsável pelo \textit{parser} de \textit{string} representado notas em formato Lilypond para objetos da classe \textit{Note} e vice-versa. Sem a necessidade de atributos e com apenas métodos estáticos, a classe age como uma biblioteca, sendo utilizada sem instanciação. Ela possui os seguintes métodos:
+      A classe \textit{Note Reader} é responsável pelo \textit{parser} de \textit{string} representado notas em formato Lilypond para instâncias da classe \textit{Note} e vice-versa. Sem a necessidade de atributos e com apenas métodos estáticos, a classe age como uma biblioteca, sendo utilizada sem instanciação. Ela possui os seguintes métodos:
 
 
       \begin{enumerate}
-        \item \textit{String To Note}: retorna um objeto \textit{Note} ao receber uma \textit{string} e uma nota. A nota recebida como parâmetro é a nota anterior, pois o formato Lilypond omite a duração da nota se for a mesma da anterior.
+        \item \textit{String To Note}: retorna uma instância de \textit{Note} ao receber uma \textit{string} e uma nota. A nota recebida como parâmetro é a nota anterior, pois o formato Lilypond omite a duração da nota se for a mesma da anterior.
         \item \textit{Note To String}: retorna uma \textit{string} que representa uma nota em formato Lilypond ao receber um objeto \textit{Note}.
         \item \textit{MSB}: retorna o bit mais significativo, utilizado no cálculo da figura musical baseado na duração da nota. Quanto mais for o valor da figura musical, menor a duração, mas pontos de aumento podem modificar a duração da nota e o bit mais significativo é usado para inferir o valor da figura musical, pois as figuras sem pontos de aumento sempre geram durações representadas por potências de 2.
         \item \textit{Number Of On Bits}: retorna o número de bits ligados de um inteiro, útil pois deriva o número de pontos de aumento de uma nota (para gerar a \textit{string}) a partir da representação binária da duração.
@@ -133,9 +133,20 @@
 
   \section[Módulo de Contraponto]{Módulo de Contraponto}
 
-    O módulo de contraponto é responsável pela geração de contrapontos
+    O módulo de contraponto é responsável pela geração de contrapontos. Utilizando todas as classes anteriormente citadas, atualmente possui duas classes: \textit{Counterpoint} e  \textit{First Order Counterpoint}.
 
     \subsection[\textit{Counterpoint}]{\textit{Counterpoint}}
+
+    A classe \textit{Counterpoint} funciona como uma biblioteca e não possui atributos de instância. Inicialmente utilizada para a implementação do contraponto de primeira ordem, atualmente possui o método ad-hoc de geração de contrapontos e o método de análise de notas para inserção no contraponto.
+
+    A solução inicialmente concebida utiliza um algoritmo de seleção aleatório. Iniciando na primeira nota do \textit{cantus firmus}, monta-se um vetor de notas possíveis para o contraponto em seu estado atual, escolhe-se aleatoriamente uma das notas do vetor e a insere no vetor do contraponto, seguindo para a próxima nota. O vetor de notas possíveis era montado de acordo com as regras do contraponto de primeira espécie anteriormente citadas.
+
+    O problema dessa solução era o fato de escolher randomicamente um caminho e não explorar os outros, o que podia levar a um caminho que não levava a uma solução. Para contornar isso, o algoritmo era rodado diversas vezes até se encontrar uma solução. Contudo, em músicas maiores o tempo de execução chegava a dois minutos ou mais, e em músicas impossíveis de se gerar contraponto, o algoritmo entrava em \textit{loop} infinito.
+
+    Atualmente, essa classe é utilizada como classe pai da \textit{First Order Counterpoint} e será pai das classes dos contrapontos de outras espécies. A Figura \ref{counterpointclass} apresenta os métodos da classe.
+
+    FIGURA COUNTERPOINT CLASSE
+
     \subsection[\textit{First Order Counterpoint}]{\textit{First Order Counterpoint}}
 
   \section[Experimentos]{Experimentos}
