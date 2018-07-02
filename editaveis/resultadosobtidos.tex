@@ -1,5 +1,48 @@
 \chapter[Resultados Obtidos]{Resultados Obtidos}
 
-  \section[\textit{Parser}]{\textit{Parser}}
-  \section[Algoritmo de Composição de Contrapontos]{Algoritmo de Composição de Contrapontos}
+  Na primeira parte desse trabalho, foi implementado um protótipo com as condições mínimas para a execução do algoritmo de composição de contrapontos de primeira espécie. Para isso, foram implementados os módulos de notação musical, intervalos, escalas e contraponto.
+
+  \section[Módulo de Notação Musical]{Módulo de Notação Musical}
+
+    O módulo de notação musical possui duas classes: \textit{Note} e \textit{Note Reader}.
+
+    \subsection[\textit{Note}]{\textit{Note}}
+
+      A classe \textit{Note} é responsável pelo armazenamento das informações de uma nota. Os atributos dos objetos dessa classe são:
+
+      \begin{enumerate}
+        \item \textit{Duration}: Número inteiro que representa a quantidade de tempo que a nota é tocada dentro de um compasso.
+        \item \textit{Absolute Time}: Número inteiro que indica a posição absoluta da nota na melodia, importante para contrapontos de segunda espécie em diante que utilizam da posição da nota no compasso.
+        \item \textit{Note}: \textit{String} que armazena qual nota musical, entre A e G, ou R quando for uma pausa.
+        \item \textit{Accidental}: \textit{String} que armazena os acidentes musicais que ocorrem à nota, se houver.
+        \item \textit{Octave}: Número inteiro que indica qual de qual oitava a nota é.
+        \item \textit{MIDI Number}: Número inteiro que representa a nota no formato padronizado MIDI, por exemplo, o Dó na quarta oitava é representado pelo número 72.
+        \item \textit{Note Number}: Número inteiro que representa a nota desconsiderando acidentes, utilizado para a classificação quantitativa de intervalos.
+        \item \textit{Valid}: Atributo booleano que indica se a nota é válida não, útil para retornar notas inválidas sem utilizar ponteiros, quando necessário.
+      \end{enumerate}
+
+      Além de construtores, a classe possui os seguintes métodos:
+
+      \begin{enumerate}
+        \item \textit{Full Note}: Retorna uma \textit{string} representando a nota.
+        \item \textit{Set Full Note}: Constrói os outros atributos da uma nota a partir de uma \textit{string} padronizada, utilizada em construtores e outros métodos.
+        \item \textit{Enarmonies}: Retorna um vetor com as notas enarmônicas à nota do objeto.
+      \end{enumerate}
+
+      Por ser um protótipo, todos os atributos e métodos são públicos, isso será mudado na versão final, a Figura \ref{noteclass} descreve os atributos, métodos e construtores da classe.
+
+      FIGURA CLASSE NOTA
+
+    \subsection[\textit{Note Reader}]{\textit{Note Reader}}
+  \section[Módulo de Intervalos]{Módulo de Intervalos}
+    \subsection[\textit{Interval}]{\textit{Interval}}
+  \section[Módulo de Escalas]{Módulo de Escalas}
+    \subsection[\textit{Scale}]{\textit{Scale}}
+  \section[Módulo de Contraponto]{Módulo de Contraponto}
+    \subsection[\textit{Counterpoint}]{\textit{Counterpoint}}
+    \subsection[\textit{First Order Counterpoint}]{\textit{First Order Counterpoint}}
+
   \section[Experimentos]{Experimentos}
+  \subsection[\textit{Solução Ad-hoc}]{Solução Ad-hoc}
+  \subsection[\textit{Solução com Busca Completa}]{Solução com Busca Completa}
+    \subsection[\textit{Solução com DP}]{Solução com DP}
