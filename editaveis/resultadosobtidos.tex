@@ -1,6 +1,6 @@
 \chapter[Resultados Obtidos]{Resultados Obtidos}
 
-  Na primeira parte desse trabalho, foi implementado um protótipo com as condições mínimas para a execução do algoritmo de composição de contrapontos de primeira espécie. Para isso, foram implementados os módulos de notação musical, intervalos, escalas e contraponto.
+  Na primeira parte desse trabalho, foi implementado um protótipo com as condições mínimas para a execução do algoritmo de composição de contrapontos de primeira espécie. Para isso, foram implementados os módulos de notação musical, intervalos, escalas e contraponto. A execução dos testes é feita em uma função \textit{Main}.
 
   \section[Módulo de Notação Musical]{Módulo de Notação Musical}
 
@@ -156,7 +156,7 @@
         \item \textit{Solve}: Método recursivo que executa a busca completa para gerar contrapontos. Tem como parâmetros a posição atual no \textit{cantus firmus}, o número atual de terças ou sextas paralelas, o número de movimentos paralelos já ocorridos, a instância do \textit{cantus firmus} e da proposta de contraponto atual passadas por referência e um booleano indicando se o contraponto é inferior ou superior.
       \end{enumerate}
 
-      O método que retorna o vetor de contrapontos encapsula a solução e chama o mẽtodo recursivo. O algoritmo funciona da seguinta forma, iniciando na primeira posição do \textit{cantus firmus}, o estado da DP é definido por quatro parâmetros: posição, número MIDI da nota atual, número de terças ou sextas paralelas anteriormente executadas e número de movimentos paralelos.
+      O método que retorna o vetor de contrapontos encapsula a solução e chama o método recursivo. O algoritmo funciona da seguinta forma, iniciando na primeira posição do \textit{cantus firmus}, o estado da DP é definido por quatro parâmetros: posição, número MIDI da nota atual, número de terças ou sextas paralelas anteriormente executadas e número de movimentos paralelos.
 
       A transição ocorre após a geração do vetor de notas possíveis, de acordo com as regras do contraponto. Para cada nota do vetor de intervalos, adiciona-se a nota ao final do vetor de contrapontos se a inserção dela não fizer ultrapassar o número de terças, sextas e movimentos paralelos. Após a adição da nota, o método \textit{Solve} é chamado para a posição mais um, com o número de terças, sextas e movimentos paralelos atualizados. O retorno do método \textit{Solve} é um booleano que indica se há um contraponto válido ao explorar aquele caminho. Portanto, se o retorno for \textit{false}, a nota adicionada no final do vetor de contrapontos é removida e a próxima nota do vetor de notas possíveis é testada. Contudo, se o retorno for \textit{true}, ela também retorna \textit{true} e não remove a nota atual, mantendo o vetor de contraponto gerado como solução. Se a análise das notas não adicionar nenhuma nota no vetor de notas possíveis, o método retorna também \textit{false}. Vale ressaltar que o vetor de notas possíveis é embaralhado aleatoriamente para garantir uma solução diferente a cada execução do algoritmo. Além disso, primeiro adiciona-se as notas que geram movimento contrário, embaralha-se a primeira parte do vetor, em seguida, adiciona-se as notas que geram movimento paralelo e embaralha-se a segunda parte do vetor. Isso é feito para que a solução priorize o menor número de movimentos paralelos possível.
 
@@ -170,7 +170,17 @@
 
       FIGURA FIRST ORDER COUNTERPOINT CLASSE
 
+
+  \section[\textit{Main}]{\textit{Main}}
+
+    A \textit{Main} é a função principal que executa o programa. Nelam o arquivo .ly é lido -- primeiramente lendo a tônica e o modo da escala, seguido pela leitura do ritmo. Após isso, cada nota é lida e convertida para uma instância de \textit{Note} por meio da \textit{Note Reader}. Para efeitos de teste, atualmente, os intervalos melódicos são calculados e impressos no terminal, bem como a transformação de \textit{Note} para \textit{string} novamente.
+
+    Após a leitura, o algoritmo de contraponto é executado. É gerado um vetor de notas com o contraponto de primeira espécie. Esse vetor é impresso no terminal em notação musical padrão e em notação específica do Lilypond para fácil transferência do contraponto para o arquivo original.
+
   \section[Experimentos]{Experimentos}
-  \subsection[\textit{Solução Ad-hoc}]{Solução Ad-hoc}
-  \subsection[\textit{Solução com Busca Completa}]{Solução com Busca Completa}
+
+    Para validar os algoritmos construídos, foram feitos experimentos em músicas pequenas para melhor análise do resultado dos algoritmos. O teste da execução dos algoritmos foi feito utilizando várias músicas. Serão apresentados os testes feitos com a música infantil \textit{Twinkle Twinkle Little Star}.
+
+    \subsection[\textit{Solução Ad-hoc}]{Solução Ad-hoc}
+    \subsection[\textit{Solução com Busca Completa}]{Solução com Busca Completa}
     \subsection[\textit{Solução com DP}]{Solução com DP}
