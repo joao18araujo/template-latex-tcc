@@ -19,7 +19,7 @@
 
   \subsection[Requisitos]{Requisitos}
 
-    Os requisitos foram desenvolvidos na primeira parte do trabalho. O escopo inicial era de um \textit{software} capaz de ler uma melodia monofônica e gerar contrapontos palestrinianos de até quinta espécie para ela, retornando o este no mesmo formato lido, com o formato escolhido sendo o Lilypond. Veja um fluxograma simplificado da aplicação na Figura \ref{fluxograma}.
+    Os requisitos foram desenvolvidos na primeira parte do trabalho. O escopo inicial era de um \textit{software} capaz de ler uma melodia monofônica e gerar contrapontos palestrinianos de até quinta espécie para ela, retornando este no mesmo formato lido, com o formato escolhido sendo o Lilypond. Veja um fluxograma simplificado da aplicação na Figura \ref{fluxograma}.
 
     \begin{figure}[htb]
       \centering
@@ -45,7 +45,7 @@
 
     \subsubsection[Módulo de Notas Musicais]{Módulo de Notas Musicais}
 
-      Este módulo é responsável pela leitura e armazenamento das notas de uma melodia. Ele conta com as seguintes capacidades: armazenamento do atributos de uma nota, \textit{parser} de uma nota em formato Lilypond e armazenamento de uma melodia completa. O armazenamento de uma nota inclui tais atributos: a figura musical que representa a duração, o tempo absoluto da nota, os acidentes aplicados a ela, a oitava em que ela está inserida, seu número MIDI e seu número em relação a notas sem contar acidentes. Além disso, essa parte deve ser capaz de devolver notas enarmônicas a uma nota -- notas com nomenclatura diferente, mas som e número de semitons (em relação a uma nota qualquer) iguais, como C\sh{}  e D\fl.
+      Este módulo é responsável pela leitura e armazenamento das notas de uma melodia. Ele conta com as seguintes capacidades: armazenamento do atributos de uma nota, \textit{parser} de uma nota em formato Lilypond e armazenamento de uma melodia completa. O armazenamento de uma nota inclui estes atributos: a figura musical que representa a duração, o tempo absoluto da nota, os acidentes aplicados a ela, a oitava em que ela está inserida, seu número MIDI e seu número em relação a notas sem contar acidentes. Além disso, essa parte deve ser capaz de devolver notas enarmônicas a uma nota -- notas com nomenclatura diferente, mas som e número de semitons (em relação a uma nota qualquer) iguais, como C\sh{}  e D\fl.
 
       O \textit{parser} de uma nota deve ser feito a partir de um arquivo Lilypond e armazenado na estrutura responsável pelo armazenamento de notas já citada. Além disso, ele deve ser capaz de retornar uma nota armazenada no mesmo formato lido.
 
@@ -53,11 +53,11 @@
 
     \subsubsection[Módulo de Intervalos]{Módulo de Intervalos}
 
-      O módulo de intervalos deve ser capaz de armazenar intervalos, gerá-los a partir de duas notas ou de uma \textit{string} e ser capaz de retornar a outra nota dados uma nota e um intervalo, por exemplo, retornar G\sh5 ao receber C5 e um intervalo de quinta aumentada.
+      O módulo de intervalos deve ser capaz de armazenar intervalos, gerá-los a partir de duas notas ou de uma \textit{string} e de retornar a outra nota dados uma nota e um intervalo, por exemplo, retornar G\sh5 ao receber C5 e um intervalo de quinta aumentada.
 
-      O armazenamento de intervalos deve possuir os seguintes atributos: classificaçõs quantitativa e qualitativa, número de semitons e se o intervalo é ascendente ou não (considerando a nota recebida como a primeira).
+      O armazenamento de intervalos deve possuir os seguintes atributos: classificações quantitativa e qualitativa, número de semitons e se o intervalo é ascendente ou não (considerando a nota recebida como a primeira).
 
-      O retorno da nota dado uma nota e um intervalo deve ser capaz de retornar a segunda nota para qualquer intervalo definido, de forma que a distância entre as duas notas seja compatível com a classificação quantitativa e qualitativa do intervalo. Ele também deve ser capaz de indicar se é impossível gerar tal nota e retornar uma nota em uma dada escala previamente definida, quando necessário.
+      O método de retorno de uma nota, dado uma nota e um intervalo deve ser capaz de retornar a segunda nota para qualquer intervalo definido, de forma que a distância entre as duas notas seja compatível com a classificação quantitativa e qualitativa do intervalo. Ele também deve ser capaz de indicar se é impossível gerar tal nota e retornar uma nota em uma dada escala previamente definida, quando necessário.
 
     \subsubsection[Módulo de Escalas]{Módulo de Escalas}
 

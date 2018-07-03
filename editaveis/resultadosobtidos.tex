@@ -18,7 +18,7 @@
         \item \textit{Octave}: número inteiro que indica qual de qual oitava a nota é.
         \item \textit{MIDI Number}: número inteiro que representa a nota no formato padronizado MIDI, por exemplo, o Dó na quarta oitava é representado pelo número 72.
         \item \textit{Note Number}: número inteiro que representa a nota desconsiderando acidentes, utilizado para a classificação quantitativa de intervalos.
-        \item \textit{Valid}: atributo booleano que indica se a nota é válida não, útil para retornar notas inválidas sem utilizar ponteiros, quando necessário.
+        \item \textit{Valid}: atributo booleano que indica se a nota é válida ou não, útil para retornar notas inválidas sem utilizar ponteiros, quando necessário.
       \end{enumerate}
 
       Além de construtores, a classe possui os seguintes métodos:
@@ -47,7 +47,7 @@
       \begin{enumerate}
         \item \textit{String To Note}: retorna uma instância de \textit{Note} ao receber uma \textit{string} e uma nota. A nota recebida como parâmetro é a nota anterior, pois o formato Lilypond omite a duração da nota se for a mesma da anterior.
         \item \textit{Note To String}: retorna uma \textit{string} que representa uma nota em formato Lilypond ao receber um objeto \textit{Note}.
-        \item \textit{MSB}: retorna o bit mais significativo, utilizado no cálculo da figura musical baseado na duração da nota. Quanto mais for o valor da figura musical, menor a duração, mas pontos de aumento podem modificar a duração da nota e o bit mais significativo é usado para inferir o valor da figura musical, pois as figuras sem pontos de aumento sempre geram durações representadas por potências de 2.
+        \item \textit{MSB}: retorna o bit mais significativo, utilizado no cálculo da figura musical baseado na duração da nota. Quanto maior for o valor da figura musical, menor a duração, mas pontos de aumento podem modificar a duração da nota e o bit mais significativo é usado para inferir o valor da figura musical, pois as figuras sem pontos de aumento sempre geram durações representadas por potências de 2.
         \item \textit{Number Of On Bits}: retorna o número de bits ligados de um inteiro, útil pois deriva o número de pontos de aumento de uma nota (para gerar a \textit{string}) a partir da representação binária da duração.
       \end{enumerate}
 
@@ -145,7 +145,7 @@
 
     \subsection[\textit{Scale}]{\textit{Scale}}
 
-    A classe \textit{Scale} armazena as notas de uma escala, possuindo apenas um atributo, um \textit{set} de \textit{strings} chamado \textit{Permitter Notes} que define as notas permitidas para aquela escala. Além disso, ela possui os seguintes métodos:
+    A classe \textit{Scale} armazena as notas de uma escala, possuindo apenas um atributo, um \textit{set} de \textit{strings} chamado \textit{Permitted Notes} que define as notas permitidas para aquela escala. Além disso, ela possui os seguintes métodos:
 
     \begin{enumerate}
       \item \textit{Is Valid Note}: recebe uma nota e diz se ela está ou não presente na escala.
@@ -214,7 +214,7 @@
 
   \section[\textit{Main}]{\textit{Main}}
 
-    A \textit{Main} é a função principal que executa o programa. Nelam o arquivo .ly é lido -- primeiramente lendo a tônica e o modo da escala, seguido pela leitura do ritmo. Após isso, cada nota é lida e convertida para uma instância de \textit{Note} por meio da \textit{Note Reader}. Para efeitos de teste, atualmente, os intervalos melódicos são calculados e impressos no terminal, bem como a transformação de \textit{Note} para \textit{string} novamente.
+    A \textit{Main} é a função principal que executa o programa. Nela o arquivo .ly é lido -- primeiramente lendo a tônica e o modo da escala, seguido pela leitura do ritmo. Após isso, cada nota é lida e convertida para uma instância de \textit{Note} por meio da \textit{Note Reader}. Para efeitos de teste, atualmente, os intervalos melódicos são calculados e impressos no terminal, bem como a transformação de \textit{Note} para \textit{string} novamente.
 
     Após a leitura, o algoritmo de contraponto é executado. É gerado um vetor de notas com o contraponto de primeira espécie. Esse vetor é impresso no terminal em notação musical padrão e em notação específica do Lilypond para fácil transferência do contraponto para o arquivo original.
 
