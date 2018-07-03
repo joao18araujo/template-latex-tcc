@@ -1,4 +1,4 @@
-TARGET = TCC_FGA.pdf
+TARGET = TCC_JoaoVitorAraujo_140023518.pdf
 
 BIBTEX = bibtex
 LATEX = latex
