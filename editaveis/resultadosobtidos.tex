@@ -224,20 +224,95 @@
 
     A música original pode ser observada em formato Lilypond e em pártitura no código \ref{twinklecode} e na figura \ref{twinkleoriginal}, respectivamente.
 
+    \begin{lstlisting}[language={C}, caption={\textit{Twinkle Twinkle Little Star}}, label={twinklecode}]
+    \key c \major
+    \time 4/4
+    c''4 c'' g'' g''
+    a'' a'' g''2
+    f''4 f'' e'' e''
+    d'' d'' c''2
+    g''4 g'' f'' f''
+    e'' e'' d''2
+    g''4 g'' f'' f''
+    e'' e'' d''2
+    c''4 c'' g'' g''
+    a'' a'' g''2
+    f''4 f'' e'' e''
+    d'' d'' c''2
+    \end{lstlisting}
+
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[scale=0.6]{figuras/twinkleoriginal.eps}
+      \caption{Partitura de \textit{Twinkle Twinkle Little Star}}
+      \label{twinkleoriginal}
+    \end{figure}
+
     Após a primeira execução do algoritmo, o contraponto gerado pode ser visto em formato Lilypond no código \ref{cont1.1} e em partitura na Figura \ref{cont1.2}.
 
-    CODIGO
+    \begin{lstlisting}[caption={Primeiro contraponto gerado}, label={cont1.1}]
+      c''4 c'4 e'4 e''4
+      c''4 f''4 e''2 d''4
+      d''4 c''4 g'4 b'4
+      f'4 a'2 g'4 b'4
+      d''4 d'4 c''4 g'4
+      b'2 g'4 b'4 d''4
+      d'4 c''4 g'4 d'2
+      a'4 e'4 e'4 b'4
+      a'4 c''4 g'2 d''4
+      d'4 e'4 g'4 b'4
+      f'4 c''2
+    \end{lstlisting}
 
-    FIGURA
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[scale=0.6]{figuras/cont1.2.eps}
+      \caption{Partitura do primeiro contraponto gerado}
+      \label{cont1.2}
+    \end{figure}
 
-    Após a segunda execução do algoritmo, o contraponto gerado pode ser visto em formato Lilypond no código \ref{cont2.2} e em partitura na Figura \ref{cont2.2}.
+    Após a segunda execução do algoritmo, o contraponto gerado pode ser visto em formato Lilypond no código \ref{cont2.1} e em partitura na Figura \ref{cont2.2}.
 
-    CODIGO
+    \begin{lstlisting}[caption={Segundo contraponto gerado}, label={cont2.1}]
+      c'4 e'4 e'4 e''4
+      f'4 f''4 e''2 d''4
+      d''4 c''4 g'4 b'4
+      f'4 a'2 e'4 g'4
+      d''4 d'4 g'4 e'4
+      f'2 e'4 g'4 d''4
+      d'4 g'4 e'4 f'2
+      a'4 e'4 e'4 e''4
+      a'4 c''4 g'2 a'4
+      f'4 g'4 e'4 b'4
+      f'4 c''2
+    \end{lstlisting}
 
-    FIGURA
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[scale=0.6]{figuras/cont2.2.eps}
+      \caption{Partitura do segundo contraponto gerado}
+      \label{cont2.2}
+    \end{figure}
 
-    Após a terceira execução do algoritmo, o contraponto gerado pode ser visto em formato Lilypond no código \ref{cont3.2} e em partitura na Figura \ref{cont3.2}.
+    Após a terceira execução do algoritmo, o contraponto gerado pode ser visto em formato Lilypond no código \ref{cont3.1} e em partitura na Figura \ref{cont3.2}.
 
-    CODIGO
+    \begin{lstlisting}[caption={Terceiro contraponto gerado}, label={cont3.1}]
+      c''4 a'4 e'4 e''4
+      f'4 a'4 b'2 d''4
+      d''4 c''4 g'4 b'4
+      f'4 a'2 g'4 b'4
+      d''4 a'4 c''4 g'4
+      b'2 g'4 b'4 d''4
+      d'4 c''4 c'4 d'2
+      e'4 a'4 e'4 b'4
+      a'4 c''4 e''2 d''4
+      d'4 c''4 c'4 b'4
+      b'4 c''2
+    \end{lstlisting}
 
-    FIGURA
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[scale=0.6]{figuras/cont3.2.eps}
+      \caption{Partitura do terceiro contraponto gerado}
+      \label{cont3.2}
+    \end{figure}
