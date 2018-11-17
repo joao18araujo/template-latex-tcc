@@ -4,7 +4,7 @@
 
   \section[Módulo de Notação Musical]{Módulo de Notação Musical}
 
-    O módulo de notação musical possui quatro classes: \textit{Note}, \textit{Compass Time}, \textit{Song} e \textit{Song Reader}.
+    O módulo de notação musical possui quatro classes: \textit{Note}, \textit{Compass Time} e \textit{Song}.
 
     \subsection[\textit{Note}]{\textit{Note}}
 
@@ -94,36 +94,6 @@
         \includegraphics[scale=0.7]{figuras/songclass.eps}
         \caption{Diagrama da Classe \textit{Song}}
         \label{songclass}
-      \end{figure}
-
-    \subsection[\textit{Song Reader}]{\textit{Song Reader}}
-
-
-      A classe \textit{Song Reader} é responsável pelo \textit{parser} de \textit{string} representado notas em formato Lilypond para instâncias da classe \textit{Note} e vice-versa. Sem a necessidade de atributos e com apenas métodos de classe, a classe age como uma biblioteca, sendo utilizada sem instanciação. Ela possui os seguintes métodos:
-
-
-      \begin{enumerate}
-        \item \textit{String To Note}: retorna uma instância de \textit{Note} ao receber uma \textit{string} e uma nota. A nota recebida como parâmetro é a nota anterior, pois o formato Lilypond omite a duração da nota se for a mesma da anterior.
-        \item \textit{Note To String}: retorna uma \textit{string} que representa uma nota em formato Lilypond ao receber um objeto \textit{Note}.
-        \item \textit{Scale To String}: retorna uma instância da \textit{Scale} ao receber uma \textit{string}.
-        \item \textit{String To Scale}: retorna uma \textit{string} que representa escalas no formato Lilypond ao receber um objeto da classe \textit{Scale}.
-        \item \textit{Compass Time To String}: retorna uma instância da \textit{CompassTime} ao receber uma \textit{string}.
-        \item \textit{String To Compass Time}: retorna uma \textit{string} que representa ritmo no formato Lilypond ao receber um objeto da classe \textit{CompassTime}.
-        \item \textit{Song Clef To String}: retorna uma \textit{string} que define em qual clave a melodia deve ser impressa baseada no valor médio da nota -- uma melodia com notas mais agudas é impressa na clave de sol e uma melodia com notas mais baixas é impressa na classe de fá.
-        \item \textit{Song To Voice String}: retorna uma \textit{string} que representa a voz do contraponto no Lilypond, a voz é impressa com clave, escala e ritmo seguidos das notas musicais.
-        \item \textit{New Staff String}: retorna uma \textit{string} que define uma nova voz no arquivo Lilypond, sendo essa voz nomeada de \textit{CounterpointVoice}.
-        \item \textit{Midi Indicator}: retorna uma \textit{string} que indica que o lilypond em que ela for adicionada deve gerar um arquivo MIDI além do PDF da partitura.
-        \item \textit{MSB}: retorna o bit mais significativo, utilizado no cálculo da figura musical baseado na duração da nota. Quanto maior for o valor da figura musical, menor a duração, mas pontos de aumento podem modificar a duração da nota e o bit mais significativo é usado para inferir o valor da figura musical, pois as figuras sem pontos de aumento sempre geram durações representadas por potências de 2.
-        \item \textit{Number Of On Bits}: retorna o número de bits ligados de um inteiro, útil pois deriva o número de pontos de aumento de uma nota (para gerar a \textit{string}) a partir da representação binária da duração.
-      \end{enumerate}
-
-      A Figura \ref{songreaderclass} representa os métodos da classe.
-
-      \begin{figure}[htb]
-        \centering
-        \includegraphics[scale=0.8]{figuras/songreaderclass.eps}
-        \caption{Diagrama da Classe \textit{Song Reader}}
-        \label{songreaderclass}
       \end{figure}
 
   \section[Módulo de Intervalos]{Módulo de Intervalos}
@@ -277,7 +247,63 @@
 
     Após a leitura, o algoritmo de contraponto é executado. É gerado um vetor de notas com o contraponto de primeira espécie. Esse vetor é impresso no terminal em notação musical padrão e em notação específica do Lilypond para fácil transferência do contraponto para o arquivo original.
 
-  \section[\textit{Ly Parser}]{\textit{Ly Parser}}
+  \section[Módulo de Construção do MIDI]{Módulo de Construção do MIDI}
+
+    O módulo de construção do MIDI é responsável por encapsular a solução de leitura de arquivos Lilypond e geração de um arquivo Lilypond com o contraponto gerado adicionado a ele. Além disso, ele utiliza as bibliotecas do Lilypond para gerar a partitura e o arquivo .mid a partir do arquivo gerado. Esse módulo é constituído pelas classes \textit{Song Reader} e \textit{Ly Parser} e pela aplicação \textit{Counterpoint Generator} desenvolvida em \textit{Ruby On Rails}.
+
+    \subsection[\textit{Song Reader}]{\textit{Song Reader}}
+
+
+      A classe \textit{Song Reader} é responsável pelo \textit{parser} de \textit{string} representando notas em formato Lilypond para instâncias da classe \textit{Note} e vice-versa. Sem a necessidade de atributos e com apenas métodos de classe, a classe age como uma biblioteca, sendo utilizada sem instanciação. Ela possui os seguintes métodos:
+
+
+      \begin{enumerate}
+        \item \textit{String To Note}: retorna uma instância de \textit{Note} ao receber uma \textit{string} e uma nota. A nota recebida como parâmetro é a nota anterior, pois o formato Lilypond omite a duração da nota se for a mesma da anterior.
+        \item \textit{Note To String}: retorna uma \textit{string} que representa uma nota em formato Lilypond ao receber um objeto \textit{Note}.
+        \item \textit{Scale To String}: retorna uma instância da \textit{Scale} ao receber uma \textit{string}.
+        \item \textit{String To Scale}: retorna uma \textit{string} que representa escalas no formato Lilypond ao receber um objeto da classe \textit{Scale}.
+        \item \textit{Compass Time To String}: retorna uma instância da \textit{CompassTime} ao receber uma \textit{string}.
+        \item \textit{String To Compass Time}: retorna uma \textit{string} que representa ritmo no formato Lilypond ao receber um objeto da classe \textit{CompassTime}.
+        \item \textit{Song Clef To String}: retorna uma \textit{string} que define em qual clave a melodia deve ser impressa baseada no valor médio da nota -- uma melodia com notas mais agudas é impressa na clave de sol e uma melodia com notas mais baixas é impressa na classe de fá.
+        \item \textit{Song To Voice String}: retorna uma \textit{string} que representa a voz do contraponto no Lilypond, a voz é impressa com clave, escala e ritmo seguidos das notas musicais.
+        \item \textit{New Staff String}: retorna uma \textit{string} que define uma nova voz no arquivo Lilypond, sendo essa voz nomeada de \textit{CounterpointVoice}.
+        \item \textit{Midi Indicator}: retorna uma \textit{string} que indica que o lilypond em que ela for adicionada deve gerar um arquivo MIDI além do PDF da partitura.
+        \item \textit{MSB}: retorna o bit mais significativo, utilizado no cálculo da figura musical baseado na duração da nota. Quanto maior for o valor da figura musical, menor a duração, mas pontos de aumento podem modificar a duração da nota e o bit mais significativo é usado para inferir o valor da figura musical, pois as figuras sem pontos de aumento sempre geram durações representadas por potências de 2.
+        \item \textit{Number Of On Bits}: retorna o número de bits ligados de um inteiro, útil pois deriva o número de pontos de aumento de uma nota (para gerar a \textit{string}) a partir da representação binária da duração.
+      \end{enumerate}
+
+      A Figura \ref{songreaderclass} representa os métodos da classe.
+
+      \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=0.8]{figuras/songreaderclass.eps}
+        \caption{Diagrama da Classe \textit{Song Reader}}
+        \label{songreaderclass}
+      \end{figure}
+
+    \subsection[\textit{Ly Parser}]{\textit{Ly Parser}}
+
+
+      A classe \textit{Ly Parser} é responsável pela leitura de um arquivo Lilypond completo e a geração de um novo arquivo Lilypond completo com o contraponto inserido. Para isso, ela primeiramente lê o arquivo original e gera um arquivo simplificado a partir dele. Após isso, ela lê os dados do arquivo simplificado utilizando a classe \textit{Song Reader}. Após a geração do contraponto, ela adiciona o contraponto ao arquivo original, gerando um novo arquivo Lilypond. Ela possui os seguintes métodos:
+
+      \begin{enumerate}
+        \item \textit{Read File}: lê um arquivo Lilypond simplificado em formato pré-estabelecido e retorna uma instância da classe \textit{Song} com escala, ritmo e notas lidas.
+        \item \textit{Convert File To Simple Format}: Recebe o caminho de um arquivo Lilypond completo e gera um arquivo Lilypond simplificado em outro caminho especificado.
+        \item \textit{Add Counterpoint to Lilypond}: Recebe um contraponto gerado, o caminho do arquivo original e gera um novo arquivo Lilypond com a voz do contraponto gerado adicionada.
+      \end{enumerate}
+
+      A Figura \ref{lyparserclass} apresenta os métodos e atributos da classe.
+
+      \begin{figure}[htb]
+        \centering
+        \includegraphics[scale=0.7]{figuras/lyparserclass.eps}
+        \caption{Diagrama da Classe \textit{Ly Parser}}
+        \label{lyparserclass}
+      \end{figure}
+
+    \subsection[\textit{Counterpoint Generator}]{\textit{Counterpoint Generator}}
+
+      O \textit{Counterpoint Generator} é uma aplicação \textit{web} simples, desenvolvida em \textit{Ruby On Rails}. Nela, seleciona-se o arquivo Lilypond escolhido para se gerar um contraponto, a espécie de contraponto e se ele será inferior ou superior. Utilizando o executável do algoritmo em C++, o contraponto é gerado e o novo arquivo Lilypond é utilizado para gerar a partitura em PDF e o arquivo .mid. A aplicação compacta o arquivo Lilypond, o PDF e o MIDI e os envia para o usuário.
 
   \section[Experimentos]{Experimentos}
 
