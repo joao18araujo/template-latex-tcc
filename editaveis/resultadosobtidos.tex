@@ -164,17 +164,17 @@
 
   \section[Módulo de Contraponto]{Módulo de Contraponto}
 
-    O módulo de contraponto é responsável pela geração de contrapontos. Utilizando todas as classes anteriormente citadas, atualmente possui duas classes: \textit{Counterpoint} e  \textit{First Order Counterpoint}.
+    O módulo de contraponto é responsável pela geração de contrapontos. Utilizando todas as classes anteriormente citadas, atualmente possui duas classes: \textit{Counterpoint} e  \textit{First Species Counterpoint}.
 
     \subsection[\textit{Counterpoint}]{\textit{Counterpoint}}
 
-    A classe \textit{Counterpoint} funciona como uma biblioteca e não possui atributos de instância. Inicialmente utilizada para a implementação do contraponto de primeira ordem, atualmente possui o método ad-hoc de geração de contrapontos e o método de análise de notas para inserção no contraponto chamado \textit{Analyse and Add Interval}.
+    A classe \textit{Counterpoint} funciona como uma biblioteca e não possui atributos de instância. Inicialmente utilizada para a implementação do contraponto de primeira espécie, atualmente possui o método ad-hoc de geração de contrapontos e o método de análise de notas para inserção no contraponto chamado \textit{Analyse and Add Interval}.
 
     A solução inicialmente concebida utiliza um algoritmo de seleção aleatório. Iniciando na primeira nota do \textit{cantus firmus}, monta-se um vetor de notas possíveis para o contraponto em seu estado atual, escolhe-se aleatoriamente uma das notas do vetor e a insere no vetor do contraponto, seguindo para a próxima nota. O vetor de notas possíveis era montado de acordo com as regras do contraponto de primeira espécie anteriormente citadas.
 
     O problema dessa solução era o fato de escolher randomicamente um caminho e não explorar os outros, o que podia levar a um caminho que não levava a uma solução. Para contornar isso, o algoritmo era rodado diversas vezes até se encontrar uma solução. Contudo, em músicas maiores o tempo de execução chegava a dois minutos ou mais, e em músicas impossíveis de se gerar contraponto, o algoritmo entrava em \textit{loop} infinito.
 
-    Atualmente, essa classe é utilizada como classe pai da \textit{First Order Counterpoint} e será pai das classes dos contrapontos de outras espécies. A Figura \ref{counterpointclass} apresenta os métodos da classe.
+    Atualmente, essa classe é utilizada como classe pai da \textit{First Species Counterpoint} e será pai das classes dos contrapontos de outras espécies. A Figura \ref{counterpointclass} apresenta os métodos da classe.
 
     \begin{figure}[htb]
       \centering
@@ -183,9 +183,9 @@
       \label{counterpointclass}
     \end{figure}
 
-    \subsection[\textit{First Order Counterpoint}]{\textit{First Order Counterpoint}}
+    \subsection[\textit{First Species Counterpoint}]{\textit{First Species Counterpoint}}
 
-      A classe \textit{First Order Counterpoint} herda da classe \textit{Counterpoint} e é uma biblioteca, possuindo atributos e métodos de classe. Possui os seguintes métodos:
+      A classe \textit{First Species Counterpoint} herda da classe \textit{Counterpoint} e é uma biblioteca, possuindo atributos e métodos de classe. Possui os seguintes métodos:
 
       \begin{enumerate}
         \item \textit{DFS Generate Counterpoint}: recebe uma instância de \textit{Song}, um booleano que define se o contraponto será superior ou inferior e os números de terças e sextas paralelas e movimentos paralelos permitidos. Retorna um vetor de notas correspondente ao contraponto gerado.
@@ -207,16 +207,23 @@
       \begin{figure}[htb]
         \centering
         \includegraphics[scale=0.7]{figuras/firstordercounterpointclass.eps}
-        \caption{Diagrama da Classe \textit{First Order Counterpoint}}
+        \caption{Diagrama da Classe \textit{First Species Counterpoint}}
         \label{firstordercounterpointclass}
       \end{figure}
 
+  \subsection[\textit{Second Species Counterpoint}]{\textit{Second Species Counterpoint}}
+
+  \subsection[\textit{Third Species Counterpoint}]{\textit{Third Species Counterpoint}}
+
+  \subsection[\textit{Fourth Species Counterpoint}]{\textit{Fourth Species Counterpoint}}
 
   \section[\textit{Main}]{\textit{Main}}
 
     A \textit{Main} é a função principal que executa o programa. Nela o arquivo .ly é lido -- primeiramente lendo a tônica e o modo da escala, seguido pela leitura do ritmo. Após isso, cada nota é lida e convertida para uma instância de \textit{Note} por meio da \textit{Note Reader}. Para efeitos de teste, atualmente, os intervalos melódicos são calculados e impressos no terminal, bem como a transformação de \textit{Note} para \textit{string} novamente.
 
     Após a leitura, o algoritmo de contraponto é executado. É gerado um vetor de notas com o contraponto de primeira espécie. Esse vetor é impresso no terminal em notação musical padrão e em notação específica do Lilypond para fácil transferência do contraponto para o arquivo original.
+
+  \section[\textit{Ly Parser}]{\textit{Ly Parser}}
 
   \section[Experimentos]{Experimentos}
 
