@@ -1,25 +1,25 @@
 \chapter[Metodologia]{Metodologia} \label{c2}
 
-  A implementação do \textit{software} utilizará a metodologia ágil \textit{Extreme Programming} (XP) como ciclo de vida de desenvolvimento, dado o escopo, o nível de definição dos requisitos e o tamanho da equipe. A XP é um ciclo de vida de desenvolvimento voltado para projetos com equipes pequenas, sistemas orientados a objeto e com desenvolvimento incremental, segundo \citeonline{vinicius}, sendo dividido em iterações que evoluem a aplicação de forma incremental. Primeiramente é definido o escopo e as ferramentas a serem utilizadas. Então há o desenvolvimento do protótipo e, por fim, o desenvolvimento da solução planejada.
+  A implementação do \textit{software} utilizou a metodologia ágil \textit{Extreme Programming} (XP) como ciclo de vida de desenvolvimento, dado o escopo, o nível de definição dos requisitos e o tamanho da equipe. A XP é um ciclo de vida de desenvolvimento voltado para projetos com equipes pequenas, sistemas orientados a objeto e com desenvolvimento incremental, segundo \citeonline{vinicius}, sendo dividido em iterações que evoluem a aplicação de forma incremental. Primeiramente é definido o escopo e as ferramentas a serem utilizadas. Então há o desenvolvimento do protótipo e, por fim, o desenvolvimento da solução planejada.
 
   \section[Ferramentas Utilizadas]{Ferramentas Utilizadas}
 
     Antes do início da implementação da solução, foram escolhidas as ferramentas a serem utilizadas no projeto, de acordo com os requisitos levantados. Durante o desenvolvimento, essas serão as ferramentas utilizadas:
 
   \begin{enumerate}
-    \item GitHub\footnotemark \footnotetext{\url{https://github.com/}}: plataforma para hospedagem de código-fonte que utiliza o Git como sistema de controle de versão. Será utilizado para o armazenamento do código da solução pelo seu caráter aberto e gratuito;
-    \item C++\footnotemark \footnotetext{\url{http://www.cplusplus.com/}}, linguagem de programação compilada multiparadigma. Será utilizada como linguagem de implementação principal pelo suporte à programação orientada a objetos e domínio que a equipe tem dela;
-    \item Lilypond\footnotemark \footnotetext{\url{http://lilypond.org/}}, formato de escrita musical baseado em TeX. Será utilizado para representação da melodia por ter um formato padronizado e menos verboso se comparado a outras opções como o MusicXML. Além disso, seu pacote para Linux conta com programas como \lstinline{midi2ly} e \lstinline{musicxml2ly}, que permite converter músicas de formatos populares para o formato \lstinline{.ly} padrão do Lilypond;
-    \item MuseScore\footnotemark \footnotetext{\url{https://musescore.com/}}, editor de partituras. Será utilizado para criação e edição de partitura pelo fato da equipe ter domínio sobre a ferramenta e ser compatível com Linux e Windows, ao contrário de alternativas similares como o Encore.
+    \item GitHub\footnotemark \footnotetext{\url{https://github.com/}}: plataforma para hospedagem de código-fonte que utiliza o Git como sistema de controle de versão. Utilizado para o armazenamento do código da solução pelo seu caráter aberto e gratuito;
+    \item C++\footnotemark \footnotetext{\url{http://www.cplusplus.com/}}, linguagem de programação compilada multiparadigma. Utilizada como linguagem de implementação principal pelo suporte à programação orientada a objetos e bibliotecas de leitura de arquivos e testes;
+    \item Lilypond\footnotemark \footnotetext{\url{http://lilypond.org/}}, formato de escrita musical baseado em TeX. Utilizado para representação da melodia por ter um formato padronizado e menos verboso se comparado a outras opções como o MusicXML. Além disso, seu pacote para Linux conta com programas como \lstinline{midi2ly} e \lstinline{musicxml2ly}, que permite converter músicas de formatos populares para o formato \lstinline{.ly} padrão do Lilypond;
+    \item MuseScore\footnotemark \footnotetext{\url{https://musescore.com/}}, editor de partituras. Utilizado para criação e edição de partitura pelo fato da equipe ter domínio sobre a ferramenta e ser compatível com Linux e Windows, ao contrário de alternativas similares como o Encore.
   \end{enumerate}
 
   \section[Ciclo de Vida de Desenvolvimento]{Ciclo de Vida de Desenvolvimento}
 
-    O ciclo de vida de desenvolvimento contará com três fases bem definidas. Primeiramente, serão levantados os requisitos. Então, serão escolhidas as ferramentas a serem utilizadas. Após isso, será desenvolvido um protótipo focado em contrapontos de primeira espécie. Os resultados do protótipo guiarão o desenvolvimento posterior, que será focado na composição algorítmica de contrapontos palestrinianos de até quinta espécie.
+    O ciclo de vida de desenvolvimento contou com três fases bem definidas. Primeiramente, foram levantados os requisitos. Então, escolhidas as ferramentas a serem utilizadas. Após isso, foi desenvolvido um protótipo focado em contrapontos de primeira espécie. Os resultados do protótipo guiaram o desenvolvimento posterior, que foi focado na composição algorítmica de contrapontos palestrinianos de até quarta espécie e no módulo de construção de MIDI.
 
   \subsection[Requisitos]{Requisitos} \label{sssec:req}
 
-    Os requisitos foram desenvolvidos na primeira parte do trabalho. O escopo inicial era de um \textit{software} capaz de ler uma melodia monofônica e gerar contrapontos palestrinianos de até quinta espécie para ela no formato Lilypond. Veja um fluxograma simplificado da aplicação na Figura \ref{fluxograma}.
+    O escopo inicial era de um \textit{software} capaz de ler uma melodia monofônica e gerar contrapontos palestrinianos de até quarta espécie para ela no formato Lilypond. Veja um fluxograma simplificado da aplicação na Figura \ref{fluxograma}.
 
     \begin{figure}[htb]
       \centering
@@ -39,7 +39,6 @@
       \item módulo de contrapontos de segunda espécie;
       \item módulo de contrapontos de terceira espécie;
       \item módulo de contrapontos de quarta espécie;
-      \item módulo de contrapontos de quinta espécie;
       \item módulo de construção do MIDI.
     \end{enumerate}
 
@@ -75,7 +74,7 @@
 
   \subsection[Protótipo]{Protótipo}
 
-    Assim como os requisitos, o protótipo também foi desenvolvido na primeira parte do trabalho. O protótipo possui a finalidade de testar o conceito da solução por meio um MVP (produto mínimo viável ou \textit{minimum viable product}). O protótipo proposto possuía as seguintes funcionalidades:
+    O protótipo possui a finalidade de testar o conceito da solução por meio um MVP (produto mínimo viável ou \textit{minimum viable product}). O protótipo proposto possui as seguintes funcionalidades:
 
     \begin{enumerate}
       \item módulo de notas musicais, incluindo leitura de arquivo Lilypond simplificado e armazenamentos de notas de uma melodia;
@@ -96,7 +95,7 @@
 
   \subsection[Desenvolvimento]{Desenvolvimento}
 
-    Após a definição dos requisitos e a construção do protótipo, o sistema terá o restante de suas funcionalidades implementadas e testadas. As atividades previstas para a fase de desenvolvimento são:
+    Após a definição dos requisitos e a construção do protótipo, o sistema teve o restante de suas funcionalidades implementadas e testadas. As atividades da fase de desenvolvimento são:
 
     \begin{enumerate}
       \item testes dos módulos de notação, intervalos e escalas;
@@ -108,16 +107,17 @@
       \item implementação e testes do módulo de construção de MIDI.
     \end{enumerate}
 
-    A segunda parte do trabalho, que engloba o desenvolvimento, começará com testes das funcionalidades implementadas no protótipo. O objetivo é garantir que a solução do protótipo é adequada e completa antes de começar a implementação definitiva, refatorando o código e removendo \textit{bugs} identificados.
+    O desenvolvimento iniciou com testes das funcionalidades implementadas no protótipo. O objetivo é garantir que a solução do protótipo é adequada e completa antes de começar a implementação definitiva, refatorando o código e removendo \textit{bugs} identificados.
 
-    Após isso, há a otimização do \textit{parser}. O \textit{parser} atual lê apenas um arquivo Lilypond modificado para conter apenas o tempo, a escala e as notas. Pretende-se criar um \textit{parser} que, ainda que simples, seja capaz de ler arquivos Lilypond sem tais modificações.
+    Após isso, houve a otimização do \textit{parser}. O \textit{parser} do potótipo lê apenas um arquivo Lilypond modificado para conter apenas o tempo, a escala e as notas. Foi implementado um \textit{parser} que, ainda que simples, é capaz de ler arquivos Lilypond sem tais modificações.
 
-    Seguindo a otimização do \textit{parser}, haverá a implementação e teste dos contrapontos de terceira, quarta e quinta espécie. Baseado no código já implementado dos contrapontos de primeira e segunda espécie, eles serão desenvolvidos sequencialmente, já que as novas regras de uma espécie somam-se às regras da espécie anterior.
+    Seguindo a otimização do \textit{parser}, houve a implementação e teste dos contrapontos de terceira e quarta espécie. Baseado no código já implementado dos contrapontos de primeira e segunda espécie, eles foram desenvolvidos sequencialmente, já que as novas regras de uma espécie somam-se às regras da espécie anterior.
 
-    Por fim, haverá a implementação e teste de um módulo de construção de MIDI com as especificações definidas na subseção \ref{sssec:req}.
-  \section[Atividades e Cronograma]{Atividades e Cronograma}
+    Por fim, houve a implementação de um módulo de construção de MIDI com as especificações definidas na subseção \ref{sssec:req}.
 
-  O desenvolvimento do sistema terá as seguintes atividades:
+  \section[Atividades]{Atividades}
+
+  O desenvolvimento do sistema teve as seguintes atividades:
 
   \begin{enumerate}
     \item \label{t1} definição dos requisitos do sistema;
@@ -139,57 +139,56 @@
     \item \label{t17} otimização do \textit{parser};
     \item \label{t18} implementação e testes do módulo de contrapontos de terceira espécie;
     \item \label{t19} implementação e testes do módulo de contrapontos de quarta espécie;
-    \item \label{t20} implementação e testes do módulo de contrapontos de quinta espécie;
-    \item \label{t21} implementação e testes do módulo de construção de MIDI;
-    \item \label{t22} escrita do TCC 2.
+    \item \label{t20} implementação e testes do módulo de construção de MIDI;
+    \item \label{t21} escrita do TCC 2.
   \end{enumerate}
 
-  O cronograma do trabalho está apresentado na Figura \ref{crono}.
-
-  \begin{figure}[htb]
-    \centering
-  \begin{ganttchart}[
-    vgrid,
-    hgrid,
-    bar label font=\Large,
-    bar label text={#1$\rightarrow$},
-    group label font=\color{orange},
-    group label text={#1},
-    bar/.append style={fill=green!50},
-    milestone label font=\color{red},
-    milestone label node/.append style={rotate=0},
-    milestone label text={#1},
-    x unit=1.2cm,
-    y unit title=1.2cm,
-    y unit chart=0.8cm,
-  ]{1}{10}
-    \gantttitle{Cronograma do Trabalho}{10} \\
-    \gantttitlecalendar*[compress calendar,time slot format=isodate]{2018-3-1}{2018-12-10}{year, month} \\
-    \ganttbar{\ref{t1}}{1}{1} \\
-    \ganttbar{\ref{t2}}{1}{2} \\
-    \ganttbar{\ref{t3}}{1}{1} \\
-    \ganttbar{\ref{t4}}{1}{1} \\
-    \ganttbar{\ref{t5}}{2}{2} \\
-    \ganttbar{\ref{t6}}{3}{3} \\
-    \ganttbar{\ref{t7}}{2}{3} \\
-    \ganttbar{\ref{t8}}{2}{2} \\
-    \ganttbar{\ref{t9}}{2}{3} \\
-    \ganttbar{\ref{t10}}{2}{4} \\
-    \ganttbar[bar/.append style={fill=yellow!50}]{\ref{t11}}{4}{5} \\
-    \ganttbar[bar/.append style={fill=red!50}]{\ref{t12}}{5}{6} \\
-    \ganttbar[bar/.append style={fill=red!50}]{\ref{t13}}{5}{6} \\
-    \ganttbar[bar/.append style={fill=red!50}]{\ref{t14}}{5}{6} \\
-    \ganttbar[bar/.append style={fill=red!50}]{\ref{t15}}{5}{6} \\
-    \ganttbar[bar/.append style={fill=red!50}]{\ref{t16}}{5}{6} \\
-    \ganttbar[bar/.append style={fill=red!50}]{\ref{t17}}{6}{6} \\
-    \ganttbar[bar/.append style={fill=red!50}]{\ref{t18}}{6}{7} \\
-    \ganttbar[bar/.append style={fill=red!50}]{\ref{t19}}{7}{8} \\
-    \ganttbar[bar/.append style={fill=red!50}]{\ref{t20}}{8}{9} \\
-    \ganttbar[bar/.append style={fill=red!50}]{\ref{t21}}{9}{10} \\
-    \ganttbar[bar/.append style={fill=red!50}]{\ref{t22}}{8}{10}
-
-  \end{ganttchart}
-  \caption{Cronograma}
-  \label{crono}
-
-\end{figure}
+%   O cronograma do trabalho está apresentado na Figura \ref{crono}.
+%
+%   \begin{figure}[htb]
+%     \centering
+%   \begin{ganttchart}[
+%     vgrid,
+%     hgrid,
+%     bar label font=\Large,
+%     bar label text={#1$\rightarrow$},
+%     group label font=\color{orange},
+%     group label text={#1},
+%     bar/.append style={fill=green!50},
+%     milestone label font=\color{red},
+%     milestone label node/.append style={rotate=0},
+%     milestone label text={#1},
+%     x unit=1.2cm,
+%     y unit title=1.2cm,
+%     y unit chart=0.8cm,
+%   ]{1}{10}
+%     \gantttitle{Cronograma do Trabalho}{10} \\
+%     \gantttitlecalendar*[compress calendar,time slot format=isodate]{2018-3-1}{2018-12-10}{year, month} \\
+%     \ganttbar{\ref{t1}}{1}{1} \\
+%     \ganttbar{\ref{t2}}{1}{2} \\
+%     \ganttbar{\ref{t3}}{1}{1} \\
+%     \ganttbar{\ref{t4}}{1}{1} \\
+%     \ganttbar{\ref{t5}}{2}{2} \\
+%     \ganttbar{\ref{t6}}{3}{3} \\
+%     \ganttbar{\ref{t7}}{2}{3} \\
+%     \ganttbar{\ref{t8}}{2}{2} \\
+%     \ganttbar{\ref{t9}}{2}{3} \\
+%     \ganttbar{\ref{t10}}{2}{4} \\
+%     \ganttbar[bar/.append style={fill=yellow!50}]{\ref{t11}}{4}{5} \\
+%     \ganttbar[bar/.append style={fill=red!50}]{\ref{t12}}{5}{6} \\
+%     \ganttbar[bar/.append style={fill=red!50}]{\ref{t13}}{5}{6} \\
+%     \ganttbar[bar/.append style={fill=red!50}]{\ref{t14}}{5}{6} \\
+%     \ganttbar[bar/.append style={fill=red!50}]{\ref{t15}}{5}{6} \\
+%     \ganttbar[bar/.append style={fill=red!50}]{\ref{t16}}{5}{6} \\
+%     \ganttbar[bar/.append style={fill=red!50}]{\ref{t17}}{6}{6} \\
+%     \ganttbar[bar/.append style={fill=red!50}]{\ref{t18}}{6}{7} \\
+%     \ganttbar[bar/.append style={fill=red!50}]{\ref{t19}}{7}{8} \\
+%     \ganttbar[bar/.append style={fill=red!50}]{\ref{t20}}{8}{9} \\
+%     \ganttbar[bar/.append style={fill=red!50}]{\ref{t21}}{9}{10} \\
+%     \ganttbar[bar/.append style={fill=red!50}]{\ref{t22}}{8}{10}
+%
+%   \end{ganttchart}
+%   \caption{Cronograma}
+%   \label{crono}
+%
+% \end{figure}
