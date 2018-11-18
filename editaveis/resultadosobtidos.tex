@@ -240,6 +240,15 @@
 
     Utilizando o vetor de DP, ele inicia todas as posições com \textit{true}. Quando o algoritmo encontra um estado que é não possui solução, memoriza como \textit{false} na posição do vetor de DP que representa aquele e todas as posteriores consultas àquele estado retornam falso sem explorar esse candidato de solução novamente. Um exemplo é se o algoritmo definir que o estado atual -- na posição 10, na terceira nota do contraponto para aquela nota do \textit{cantus firmus}, na nota C4 (\textit{MIDI number} 60), com 2 terças ou sextas paralelas e 13 movimentos paralelos -- não é uma solução, memoriza-se \textit{false} em dp[10][2][60][2][13]. Na próxima consulta a esse estado, retorna falso imediatamente sem explorar. Memorizar estados que retornam \textit{true} é irrelevante pois o primeiro estado completo que chega ao final retornando \textit{true} é definido como a solução.
 
+    A Figura \ref{algoritmo} apresenta o fluxograma do algoritmo.
+
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[scale=0.7]{figuras/algoritmo.eps}
+      \caption{Algoritmo de Geração de Contrapontos}
+      \label{algoritmo}
+    \end{figure}
+
 
   \section[\textit{Main}]{\textit{Main}}
 
@@ -305,11 +314,21 @@
 
       O \textit{Counterpoint Generator} é uma aplicação \textit{web} simples, desenvolvida em \textit{Ruby On Rails}. Nela, seleciona-se o arquivo Lilypond escolhido para se gerar um contraponto, a espécie de contraponto e se ele será inferior ou superior. Utilizando o executável do algoritmo em C++, o contraponto é gerado e o novo arquivo Lilypond é utilizado para gerar a partitura em PDF e o arquivo .mid. A aplicação compacta o arquivo Lilypond, o PDF e o MIDI e os envia para o usuário.
 
+
+            A Figura \ref{counterpointgenerator} apresenta o acesso ao \textit{front-end} da aplicação.
+
+            \begin{figure}[htb]
+              \centering
+              \includegraphics[scale=0.3]{figuras/counterpointgenerator.eps}
+              \caption{Página \textit{web} do \textit{Counterpoint Generator}}
+              \label{counterpointgenerator}
+            \end{figure}
+
   \section[Experimentos]{Experimentos}
 
-    Para validar os algoritmo construído, foram feitos experimentos em músicas pequenas para melhor análise do resultado. O teste da execução do algoritmo foi feito utilizando várias músicas. Serão apresentados os testes feitos com a música infantil \textit{Twinkle Twinkle Little Star}. O código-fonte da solução está disponível em \textit{\url{https://github.com/joao18araujo/ly_parser}}.
+    Para validar os algoritmo construído, foram feitos experimentos em músicas pequenas para melhor análise do resultado. O teste da execução do algoritmo foi feito utilizando várias músicas. Serão apresentados os testes feitos com a música infantil \textit{Twinkle Twinkle Little Star}. O código-fonte da solução está disponível em \textit{\url{https://github.com/joao18araujo/ly_parser}}, o código-fonte do \textit{front-end} da aplicação está disponível em \textit{\url{https://github.com/joao18araujo/counterpoint_generator}}. Todos os módulos implementados possuem testes automatizados. Para isso, utilizou-se a biblioteca Catch2. Para garantir a corretude dos testes durante o desenvolvimento, foi utilizada uma ferramenta de integração contínua no repositório. O resultado dos testes pode ser observado em \textit{\url{https://travis-ci.org/joao18araujo/ly_parser}}.
 
-    A música original pode ser observada em formato Lilypond e em pártitura no código \ref{twinklecode} e na figura \ref{twinkleoriginal}, respectivamente.
+    A música original pode ser observada em formato Lilypond e em partitura no código \ref{twinklecode} e na figura \ref{twinkleoriginal}, respectivamente.
 
     \begin{lstlisting}[language={C}, caption={\textit{Twinkle Twinkle Little Star}}, label={twinklecode}]
     \key c \major
@@ -335,71 +354,38 @@
       \label{twinkleoriginal}
     \end{figure}
 
-    Após a primeira execução do algoritmo, o contraponto gerado pode ser visto em formato Lilypond no código \ref{cont1.1} e em partitura na Figura \ref{cont1.2}.
-
-    \begin{lstlisting}[caption={Primeiro contraponto gerado}, label={cont1.1}]
-      c''4 c'4 e'4 e''4
-      c''4 f''4 e''2 d''4
-      d''4 c''4 g'4 b'4
-      f'4 a'2 g'4 b'4
-      d''4 d'4 c''4 g'4
-      b'2 g'4 b'4 d''4
-      d'4 c''4 g'4 d'2
-      a'4 e'4 e'4 b'4
-      a'4 c''4 g'2 d''4
-      d'4 e'4 g'4 b'4
-      f'4 c''2
-    \end{lstlisting}
+    Após a execução do algoritmo para contraponto de primeira espécie, o contraponto gerado pode ser visto em partitura na Figura \ref{cont1.2}.
 
     \begin{figure}[htb]
       \centering
       \includegraphics[scale=0.6]{figuras/cont1.2.eps}
-      \caption{Partitura do primeiro contraponto gerado}
+      \caption{Partitura do contraponto de primeira espécie gerado}
       \label{cont1.2}
     \end{figure}
 
-    Após a segunda execução do algoritmo, o contraponto gerado pode ser visto em formato Lilypond no código \ref{cont2.1} e em partitura na Figura \ref{cont2.2}.
+    Após a execução do algoritmo para contraponto de segunda espécie, o contraponto gerado pode ser visto em partitura na Figura \ref{cont2.2}.
 
-    \begin{lstlisting}[caption={Segundo contraponto gerado}, label={cont2.1}]
-      c'4 e'4 e'4 e''4
-      f'4 f''4 e''2 d''4
-      d''4 c''4 g'4 b'4
-      f'4 a'2 e'4 g'4
-      d''4 d'4 g'4 e'4
-      f'2 e'4 g'4 d''4
-      d'4 g'4 e'4 f'2
-      a'4 e'4 e'4 e''4
-      a'4 c''4 g'2 a'4
-      f'4 g'4 e'4 b'4
-      f'4 c''2
-    \end{lstlisting}
+        \begin{figure}[htb]
+          \centering
+          \includegraphics[scale=0.6]{figuras/cont2.2.eps}
+          \caption{Partitura do contraponto de segunda espécie gerado}
+          \label{cont2.2}
+        \end{figure}
 
-    \begin{figure}[htb]
-      \centering
-      \includegraphics[scale=0.6]{figuras/cont2.2.eps}
-      \caption{Partitura do segundo contraponto gerado}
-      \label{cont2.2}
-    \end{figure}
-
-    Após a terceira execução do algoritmo, o contraponto gerado pode ser visto em formato Lilypond no código \ref{cont3.1} e em partitura na Figura \ref{cont3.2}.
-
-    \begin{lstlisting}[caption={Terceiro contraponto gerado}, label={cont3.1}]
-      c''4 a'4 e'4 e''4
-      f'4 a'4 b'2 d''4
-      d''4 c''4 g'4 b'4
-      f'4 a'2 g'4 b'4
-      d''4 a'4 c''4 g'4
-      b'2 g'4 b'4 d''4
-      d'4 c''4 c'4 d'2
-      e'4 a'4 e'4 b'4
-      a'4 c''4 e''2 d''4
-      d'4 c''4 c'4 b'4
-      b'4 c''2
-    \end{lstlisting}
+    Após a execução do algoritmo para contraponto de terceira espécie, o contraponto gerado pode ser visto em partitura na Figura \ref{cont3.2}.
 
     \begin{figure}[htb]
       \centering
       \includegraphics[scale=0.6]{figuras/cont3.2.eps}
-      \caption{Partitura do terceiro contraponto gerado}
+      \caption{Partitura do contraponto de terceira espécie gerado}
       \label{cont3.2}
+    \end{figure}
+
+    Após a execução do algoritmo para contraponto de quarta espécie, o contraponto gerado pode ser visto em partitura na Figura \ref{cont4.2}.
+
+    \begin{figure}[htb]
+      \centering
+      \includegraphics[scale=0.6]{figuras/cont4.2.eps}
+      \caption{Partitura do contraponto de quarta espécie gerado}
+      \label{cont4.2}
     \end{figure}
