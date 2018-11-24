@@ -49,6 +49,14 @@
 
       O \textit{parser} de uma nota deve ser feito a partir de um arquivo Lilypond e armazenado na estrutura responsável pelo armazenamento de notas já citada. Além disso, ele deve ser capaz de retornar uma nota armazenada no mesmo formato lido.
 
+      O arquivo lido deve ter as seguintes caraterísticas para que funcione corretamente na solução:
+
+      \begin{enumerate}
+        \item Deve ter apenas uma melodia e ela deve ser monofônica. Se possuir mais de uma melodia, apenas a primeira será considerada para a geração do contraponto.
+        \item A melodia principal deve possuir escala e ritmo definidos explicitamente.
+        \item A nota mais curta da melodia principal deve ser uma colcheia sem pontos de aumento.
+      \end{enumerate}
+
       O armazenamento da melodia completa deve ser capaz de armazenar as notas de uma melodia preservando sua ordem, além de armazenar o tempo dos compassos e a escala da música.
 
     \subsubsection[Módulo de Intervalos]{Módulo de Intervalos}
@@ -77,7 +85,7 @@
 
     \subsubsection[Módulo de Construção do MIDI]{Módulo de Construção do MIDI}
 
-      % TODO: escrever sobre MIDI
+      Segundo \cite{midi}, o MIDI é um padrão de comunicação entre intrumentos musicais digitais amplamente aceito  com especificações para \textit{hardware} de comunicação, taxa de tranferência de dados e formato de dados tranferidos. Os arquivos .mid não são áudios, mas intruções digitais sobre como executar uma peça musical.
 
       O módulo de construção do MIDI é um módulo que deve automatizar a construção de um MIDI tendo como base o arquivo Lilypond original e o contraponto gerado. Com esses dois, esse módulo deve inserir o contraponto em uma cópia do arquivo original e gerar o MIDI utilizando o pacote do Lilypond para Linux.
 

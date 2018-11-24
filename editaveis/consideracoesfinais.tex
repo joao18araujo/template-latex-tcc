@@ -1,5 +1,15 @@
 \chapter[Considerações Finais]{Considerações Finais} \label{c4}
-  % TODO: expandir considerações finais
+
+  O principal desafio do trabalho foi a implementação de regras mais complexas dos contrapontos de segunda espécie em diante. A solução prevista no protótipo considerava cada nota como um elemento individual, sem considerar o compasso em que está inserida. Tal decisão teve que ser revista na implementação das outras espécies de contraponto, pois era necessário saber se a nota estava em tempo forte ou fraco, algo definido pela posição em que a nota ocupa no compasso.
+
+  O Lilypond provou ser um bom formato para se trabalhar com música programaticamente, os módulos de leitura de arquivo e construção de MIDI tiveram o desenvolvimento facilitado pelo modo compacto e não redundante que os arquivos .ly possuem. Contudo, devido à forma como vários formatos podem ser convertidos para Lilypond, não há garantia total de que o \textit{parser} implementado funciona com qualquer arquivo Lilypond que siga as regras pré-estabelecidas. Os testes conduzidos utilizando arquivos Lilypond gerados a partir de arquivos \textit{MusicXML} foram bem-sucedidos.
+
+  A solução utilizando DP possui limitações relacionadas ao número de estados possíveis. Quanto maior a espécie do contraponto, mais regras são aplicadas e nem todas podem ter a decisão relacionada a ela representada como um estado da DP por falta de memória.
+
+  Há regras que tiveram que ser aplicadas, mas não foram representadas em estado. Tal decisão cria a possibilidade de que possam ser devolvidas respostas indicando que não há solução, quando haveria se a ordem de aplicação das regras fosse diferente. A aleatoriedade do algoritmo pode ser utilizada para executar o algoritmo diversas vezes, retornando uma solução válida não considerada em iterações anteriores. Vale ressaltar que tal caso não ocorreu em nenhum dos testes executados. A possibilidade de acontecer é relativamente baixa pois a medida que os contrapontos aumentam em número de regras, mais contrapontos válidos podem ser gerados, mitigando esse problema.
+
+  A implementação de testes automatizados provou ser uma ótima ferramenta de detecção de \textit{bugs}. Sua construção teria sido ainda mais útil se construída junto com o protótipo, pois diminuiria a quantidade de \textit{bugs} simples que acabaram tendo resoluções mais complexas pelo fato de terem sido descobertos na fase de desenvolvimento.
+
   A partir de regras bem definidas e a representação de música de uma forma digital, foi possível gerar contrapontos palestrinianos de primeira a quarta espécie algoritmicamente. Com isso, pode-se afirmar que o trabalho foi concluído com sucesso. Os módulos de notação musical, escala, intervalo, contraponto e de construção de MIDI estão completos, funcionais e testados.
 
   \section[Trabalhos Futuros]{Trabalhos Futuros}
@@ -7,7 +17,9 @@
     Em relação aos trabalhos futuros, as seguintes tarefas podem ser listadas:
 
     \begin{enumerate}
-      \item Resolver \textit{bugs} da implementação incompleta do contraponto de quarta espécie, ele já é gerado, mas fere algumas regras mais complexas.
+      \item Resolver \textit{bugs} da implementação incompleta do contraponto de terceira e quarta espécie, eles já são gerados, mas ferem algumas regras mais complexas.
       \item Refatorar as classes já implementadas para aumentar a solidez do código.
+      \item Implementar geração de contrapontos para melodias polifônicas.
+      \item Melhorar interface do \textit{front-end} da aplicação, que atualmente possui caráter básico.
       \item Implementar os módulo de contrapontos livres e de quinta espécie.
     \end{enumerate}

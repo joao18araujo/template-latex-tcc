@@ -389,7 +389,7 @@
 
     \subsection[Grafos Direcionados Acíclicos]{Grafos Direcionados Acíclicos}
 
-      Um grafo pode possuir diversas classificações, sendo uma delas a classificação clássica é quanto à direção de suas arestas. Se as arestas de um grafo não definem a direção da ligação, isto é, se os vértices X e Y estão ligados por uma aresta, significa que X é diretamente alcançável (apenas um vértice é necessário para navegar da origem ao destino) a partir de Y e Y é diretamente alcançável a partir de X, esse grafo é classificado como não-direcionado. Mas se as arestas possuem direção e X ser diretamente alcançável por Y não garante que Y é diretamente alcançável a partir de X, esse grafo é direcionado, como afirma \citeonline{halim}. Veja a Figura \ref{nodirxdir}.
+      Um grafo pode possuir diversas classificações, sendo uma delas a classificação clássica é quanto à direção de suas arestas. Se as arestas de um grafo não definem a direção da ligação, isto é, se os vértices X e Y estão ligados por uma aresta, significa que X é diretamente alcançável (apenas um vértice é necessário para navegar da origem ao destino) a partir de Y e Y é diretamente alcançável a partir de X, esse grafo é classificado como não-direcionado. Mas se as arestas possuem direção e X ser diretamente alcançável por Y não garante que Y é diretamente alcançável a partir de X, esse grafo é direcionado, como afirma \citeonline{handbook}. Veja a Figura \ref{nodirxdir}.
 
       \begin{figure}[htb]
         \centering
@@ -442,7 +442,7 @@
 
     \subsection[Busca Completa]{Busca Completa}
 
-      \citeonline{halim} afirma que na Busca Completa, todo ou parte do espaço de soluções possíveis é explorado.
+      \citeonline{halim} afirma que na Busca Completa, todo ou parte do espaço de soluções possíveis é explorado. Esse paradigma é focado na completude e não necessariamente na otimização do processo de busca de uma solução. Soluções implementadas utilizando tal paradigma percorrem todas as possibilidades de solução a fim de encontrar uma solução específica ou a melhor solução de acordo com critérios estabelecidos. Algoritmos de Busca Completa possuem alta complexidade ciclomática se comparados com algoritmos de Programação Dinâmica, por exemplo.
 
       No Código \ref{codecs} é possível observar a geração de todas as combinações de notas possíveis para um contraponto por meio de um algoritmo de \textit{backtracking} (algoritmo recursivo de busca completa). Contudo, nesse caso, tal abordagem possui alta complexidade em termos de execução. Suponhando um espaço amostral com 88 notas disponíveis e um \textit{cantus firmus} com 50 notas, apenas para o contraponto de primeira espécie há $88^{50}$ sequências possíveis.
 
@@ -477,7 +477,7 @@
       % TODO: diversificar referências
       % TODO: colocar código em formato correto
 
-      A Programação Dinâmica (ou DP, sigla para \textit{Dynamic Programming}) é um paradigma de solução de problema baseado em estados, transições e casos-base, segundo \citeonline{halim}. Cada estado resolve um problema e para isso ele precisa resolver subproblemas. A forma como o estado atual se relaciona com seus subestados é denominada transição.
+      A Programação Dinâmica (ou DP, sigla para \textit{Dynamic Programming}) é um paradigma de solução de problema baseado em estados, transições e casos-base, segundo \citeonline{thomas}. Cada estado resolve um problema e para isso ele precisa resolver subproblemas. A forma como o estado atual se relaciona com seus subestados é denominada transição.
 
       Dada a forma recursiva como a DP funciona, casos-base garantem que o algoritmo não assuma uma forma infinita. Esses casos são aqueles com solução trivial que não necessita da resolução de subproblemas para respondê-la. A ideia central da DP é que subproblemas se repetem durante a solução, portanto, um estado já calculado deve ter seu resultado armazenado para futuras consultas que provavelmente acontecerão durante a resolução do problema.
 
