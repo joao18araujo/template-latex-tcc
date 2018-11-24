@@ -375,7 +375,7 @@
   \section[Grafos]{Grafos}
 
     Na geração de um contraponto, cada nota dele depende da nota dos \textit{cantus firmus} tocada em simultâneo devido a regras definidas com base no intervalo harmônico -- como a proibição de intervalos dissonantes, por exemplo. Porém, as notas disponíveis para um dado tempo do contraponto também depende das notas anteriores a ela devido a regras relacionadas à intervalos melódicos e repetição ou uso demasiado de intervalos harmônicos repetidos -- como a proibição de oitavas paralelas. Sendo assim, a nota atual define, em conjunto com a próxima nota do \textit{cantus firmus}, quais notas podem ser empregadas no próximo tempo. Dada tal organização, essa estrutura pode ser representada por um grafo.
-    % TODO: diversificar referências
+
     Grafo é uma estrutura formada por vértices (os nós que representam a unidade fundamental da estrutura) e arestas (ligações que indicam quais outros vértices podem ser alcançados a partir de um dado vértice).
 
     Na Figura \ref{grafonotas} está representado um exemplo de estrutura formada pelas notas possíveis em um contraponto. Vale ressaltar que, segundo \citeonline{halim}, como a estrutura do contraponto não é diretamente representada por um grafo na solução proposta, ela é definida como um grafo implícito.
@@ -446,7 +446,23 @@
 
       No Código \ref{codecs} é possível observar a geração de todas as combinações de notas possíveis para um contraponto por meio de um algoritmo de \textit{backtracking} (algoritmo recursivo de busca completa). Contudo, nesse caso, tal abordagem possui alta complexidade em termos de execução. Suponhando um espaço amostral com 88 notas disponíveis e um \textit{cantus firmus} com 50 notas, apenas para o contraponto de primeira espécie há $88^{50}$ sequências possíveis.
 
-      \begin{lstlisting}[language={C}, caption={Busca Completa}, label={codecs}]
+      \lstset{language=C++,
+       showstringspaces=false,
+               basicstyle=\footnotesize,
+               keywordstyle=\color{blue}\ttfamily,
+               stringstyle=\color{red}\ttfamily,
+               commentstyle=\color{green}\ttfamily,
+               morecomment=[l][\color{magenta}]{\#},
+       breaklines=true,
+               numbers=left,
+               xleftmargin=4em,
+               frame=single,
+               framexleftmargin=3em,
+               tabsize=2,
+         literate={\ \ }{{\ }}1
+      }
+
+      \begin{lstlisting}[language={C++}, caption={Busca Completa}, label={codecs}]
       // Vector with 88 musicais notes found on piano
       vector<Note> available_notes(88);
 
@@ -474,7 +490,6 @@
     \subsection[Programação Dinâmica]{Programação Dinâmica}
 
       Mesmo após a aplicações de todas as podas possíveis, ainda há o caso de diversos estados serem recalculados. Como explicado anteriormente, uma nota em nosso grafo pode ter mais de um pai, isto é, mais de uma nota pode ter a nota atual como a seguinte em uma possível solução. Entretanto, uma vez alcançada a nota atual, o resto da solução é o mesmo, sendo redundante calcular esse estado (e se ele levará a possíveis soluções ou não) mais de uma vez. Tendo estados que se repetem entre soluções, é possível aplicar um paradigma de solução de problemas chamado Programação Dinâmica.
-      % TODO: diversificar referências
       % TODO: colocar código em formato correto
 
       A Programação Dinâmica (ou DP, sigla para \textit{Dynamic Programming}) é um paradigma de solução de problema baseado em estados, transições e casos-base, segundo \citeonline{thomas}. Cada estado resolve um problema e para isso ele precisa resolver subproblemas. A forma como o estado atual se relaciona com seus subestados é denominada transição.
