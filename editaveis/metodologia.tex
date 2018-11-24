@@ -69,6 +69,10 @@
 
       Cada módulo deve ser capaz de gerar um contraponto palestriniano de acordo com as regras definidas pela espécie do contraponto. Eles devem receber uma melodia monofônica e gerar um contraponto daquela espécie de acordo com os parâmetros fornecidos em relação a número de movimentos reversos, consonâncias condicionais paralelas e outros parâmetros relacionados a regras que não sejam exatas. Como exemplo, tem-se a regra que se evita, mas não se proíbe movimentos paralelos, cabendo ao usuário definir o número de movimentos paralelos aceitáveis. Com tais parâmetros, o módulo deve ser capaz de gerar um contraponto aleatório para cada iteração do algoritmo.
 
+      No desenvolvimento desse módulo é usada a DFS por dois motivos. O primeiro é que a DFS chega a uma folha (vértice sem filhos) primeiro, o que é interessante para a solução pois busca-se a primeira solução disponível. O segundo motivo é que a DFS permite que seja utilizado um único vetor, inserindo e retirando no final deste (consequentemente, funcionando de forma análoga a uma pilha), economizando memória e diminuindo o tempo de execução que levaria para fazer cópias do vetor em uma BFS, pois o comportamento análogo a uma fila exigiria isso.
+
+      A DP é utilizada para a geração do contraponto. O estado é caracterizado por uma dada nota em uma dada posição no contraponto com um número específico de movimentos paralelos e terças e sextas paralelas. A transição é definida pela solução da próxima nota no contraponto, partindo da nota atual. O caso-base é definido por quando o algoritmo atinge o final do \textit{cantus firmus}, retornando que aquela solução é válida, já que não foi podada nenhuma vez durante a construção daquela solução.
+
     \subsubsection[Módulo de Construção do MIDI]{Módulo de Construção do MIDI}
 
       O módulo de construção do MIDI é um módulo que deve automatizar a construção de um MIDI tendo como base o arquivo Lilypond original e o contraponto gerado. Com esses dois, esse módulo deve inserir o contraponto em uma cópia do arquivo original e gerar o MIDI utilizando o pacote do Lilypond para Linux.

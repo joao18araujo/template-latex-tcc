@@ -1,6 +1,6 @@
 \chapter[Fundamentação Teórica]{Fundamentação Teórica} \label{c1}
 
-  Este capítulo apresenta a base teórica para o entendimento do algoritmo a ser implementado. Nele, são explicados conceitos referentes a teoria musical, grafos e paradigmas de solução de problemas. Na seção sobre teoria musical, são abordados os tópicos de notação musical, intervalos, escalas e contrapontos. Na seção sobre grafos, são explicadas classificações para um grafo, o que são grafos direcionados acíclicos e tipos de travessia em grafos. Na seção sobre paradigmas de solução de problemas, são abordados dois paradigmas de solução de problema: busca completa e programação dinâmica.
+  Este capítulo apresenta a base teórica para o entendimento do algoritmo a ser implementado. Nele são explicados conceitos referentes a teoria musical, grafos e paradigmas de solução de problemas. Na seção sobre teoria musical, são abordados os tópicos de notação musical, intervalos, escalas e contrapontos. Na seção sobre grafos são explicadas classificações para um grafo, o que são grafos direcionados acíclicos e tipos de travessia em grafos. Na seção sobre paradigmas de solução de problemas, são abordados dois paradigmas de solução de problemas: busca completa e programação dinâmica.
 
   \section[Teoria Musical]{Teoria Musical}
 
@@ -10,7 +10,7 @@
 
     \subsection[Notação Musical]{Notação Musical}
 
-      As notas musicais são utilizadas para representar os sons de uma música. Há sete notas musicais -- usualmente nomeadas Dó, Ré, Mi, Fá, Sol, Lá, Si ou, respectivamente, C, D, E, F, G, A, B -- que podem variar de acordo com a oitava ou acidentes musicais empregados, para representação de tais modificações, elas são dispostas em uma pauta, conforme exemplificado na Figura \ref{pauta}.
+      As notas musicais são utilizadas para representar os sons de uma música. Há sete notas musicais -- usualmente nomeadas Dó, Ré, Mi, Fá, Sol, Lá, Si ou, respectivamente, C, D, E, F, G, A, B -- que podem variar de acordo com a oitava ou acidentes musicais empregados. Para representação de tais modificações, elas são dispostas em uma pauta, conforme exemplificado na Figura \ref{pauta}.
 
       \begin{figure}[htb]
         \centering
@@ -19,7 +19,7 @@
         \label{pauta}
       \end{figure}
 
-      A pauta é utilizada para a representação de uma música, contendo linhas e espaços que definem a nota e em qual oitava está posicionada tendo como base a clave definida. Cada clave define uma nota específica e todas as outras notas da pauta são definidas a partir desta. Por exemplo, a clave de Sol é a mais comumente usada e define que a nota da linha 2 é o G4 (Sol da quarta oitava, Figura \ref{notas}).
+      A pauta é utilizada para a representação de uma música, contendo linhas e espaços que definem a nota e em qual oitava está posicionada, tendo como base a clave definida. Cada clave define uma nota específica e todas as outras notas da pauta são definidas a partir desta. Por exemplo, a clave de Sol é a mais comumente usada e define que a nota da linha 2 é o G4 (Sol da quarta oitava, Figura \ref{notas}).
 
       \begin{figure}[htb]
         \centering
@@ -28,8 +28,7 @@
         \label{notas}
       \end{figure}
 
-      % TODO: jeito certo de citar tabela
-      Além da altura, cada som possui uma duração representada pela figura musical na pauta. No sistema atual, começa-se pela semibreve, que possui valor 1. A partir dela, a próxima subdivisão equivale à metade do tempo da anterior. Sendo assim, a mínima possui metade da duração da semibreve e possui valor 2, a semínima possui metade da duração da mínima e possui valor 4 e assim sucessivamente. As figuras, seus valores e durações estão representados na Tabela \ref{figurasmusicais}.
+      Além da altura, cada som possui uma duração representada pela figura musical na pauta. Na notação musical moderna, começa-se pela semibreve, que possui valor 1. A partir dela, a próxima subdivisão equivale à metade do tempo da anterior. Sendo assim, a mínima possui metade da duração da semibreve e possui valor 2, a semínima possui metade da duração da mínima e possui valor 4 e assim sucessivamente. As figuras, seus valores e durações estão representados na Tabela \ref{figurasmusicais}.
 
       \begin{table}[h]
       	\centering
@@ -62,7 +61,7 @@
 
       Outro elemento que pode ser representado na pauta são os acidentes musicais. Cada nota possui a distância relativa de um tom ou um semitom das notas adjacentes, como representado na Figura \ref{acidentes}. Essa distância calculada em tons e semitons também é utilizada para a definição de intervalos e pode ser modificada por meio de acidentes musicais.
 
-      Existem dois tipos de acidentes musicais, o bemol (\fl) e o sustenido (\sh). O bemol abaixa a nota original em um semitom, como exemplo, o Fá e o Sol possuem um tom entre eles, porém, o Fá e o Sol bemol possuem um semitom entre eles. Já o sustenido aumenta a nota original em um semitom. Outras variações desses acidentes são o dobrado bemol, que abaixa a nota em um tom, o dobrado sustenido, que aumenta a nota em um tom e o bequadro, que retorna uma nota modificada ao seu valor original. Os símbolos de cada acidente estão representados na Figura \ref{acidentes}.
+      Existem dois tipos de acidentes musicais, o bemol (\fl) e o sustenido (\sh). O bemol abaixa a nota original em um semitom. Como exemplo, o Fá e o Sol possuem um tom entre eles, porém, o Fá e o Sol bemol possuem um semitom entre eles. Já o sustenido aumenta a nota original em um semitom. Outras variações desses acidentes são o dobrado bemol, que abaixa a nota em um tom, o dobrado sustenido, que aumenta a nota em um tom e o bequadro, que retorna uma nota modificada ao seu valor original. Os símbolos de cada acidente estão representados na Figura \ref{acidentes}.
 
       \begin{figure}[htb]
         \centering
@@ -90,10 +89,9 @@
 
       \subsubsection[Intervalos Justos]{Intervalos Justos}
 
-        % TODO: colocar abreviações nos primeiros exemplos de cada (1ªJ ou P1, 2ªM ou M2, etc)
         Os intervalos de primeira, quarta, quinta e oitava podem ser classificados como justos, dependendo da distância em semitons.
 
-        Uma nota é a primeira justa (1ªJ ou P1\footnotemark \footnotetext{Sigla para \textit{perfect first}}) de outra se elas tiverem a mesma altura, ou seja, apenas uma nota entre elas e nenhum semitom de diferença, esse intervalo também é chamado de uníssono (Figura \ref{primeirajusta}).
+        Uma nota é a primeira justa (1ªJ ou P1\footnotemark \footnotetext{Sigla para \textit{perfect first}}) de outra se elas tiverem a mesma altura, ou seja, apenas uma nota entre elas e nenhum semitom de diferença. Esse intervalo também é chamado de uníssono (Figura \ref{primeirajusta}).
 
         \begin{figure}[htb]
           \centering
@@ -183,16 +181,16 @@
 
         \begin{figure}[htb]
           \centering
-          \includegraphics[scale=0.4]{figuras/aumentadas.eps}
+          \includegraphics[scale=0.35]{figuras/aumentadas.eps}
           \caption{Exemplos de Intervalos Aumentados}
           \label{aumentadas}
         \end{figure}
 
-        Intervalos diminutos possuem menos semitons que os intervalos justos ou menores. Se o intervalo possuir um semitom a menos, ele é chamado de diminutos, se forem dois semitons a menos, é chamado de superdiminuto, se forem três semitons a menos, é chamado de três vezes diminuto e assim sucessivamente, até os menores intervalos possíveis que são os cinco vezes diminutos. Na Figura \ref{diminutas}, há exemplos de sexta diminuta (6ªd ou d6), sexta superaumentada (6ªsd ou sd6\footnotemark \footnotetext{Notação utilizada no código para intervalos superdiminutos}) e sexta 3x aumentada (6ª3xd ou 3xd6\footnotemark \footnotetext{Notação utilizada no código para intervalos 3x, 4x e 5x diminutos}).
+        Intervalos diminutos possuem menos semitons que os intervalos justos ou menores. Se o intervalo possuir um semitom a menos, ele é chamado de diminuto, se forem dois semitons a menos, é chamado de superdiminuto, se forem três semitons a menos, é chamado de três vezes diminuto e assim sucessivamente, até os menores intervalos possíveis que são os cinco vezes diminutos. Na Figura \ref{diminutas}, há exemplos de sexta diminuta (6ªd ou d6), sexta superaumentada (6ªsd ou sd6\footnotemark \footnotetext{Notação utilizada no código para intervalos superdiminutos}) e sexta 3x aumentada (6ª3xd ou 3xd6\footnotemark \footnotetext{Notação utilizada no código para intervalos 3x, 4x e 5x diminutos}).
 
         \begin{figure}[htb]
           \centering
-          \includegraphics[scale=0.5]{figuras/diminutas.eps}
+          \includegraphics[scale=0.4]{figuras/diminutas.eps}
           \caption{Exemplos de Intervalos Diminutos}
           \label{diminutas}
         \end{figure}
@@ -204,13 +202,13 @@
 
         Se um intervalo ultrapassar a oitava justa, quantitativa ou qualitativamente, ele é considerado composto. Intervalos compostos tem sua classificação definida de acordo com seus correspondentes simples. Para classificar um intervalo composto, divide-se o valor quantitativo por 7 e o resto é utilizado para definir seu equivalente simples, por exemplo, uma 15ª corresponde a uma 1ª.
 
-        Para a análise quantitativa, divide-se o valor de semitons por 12 e o resto é utilizado para definir se ele é justo, maior, menor, diminuto ou aumentado, por exemplo uma 10ª com uma diferença de 16 semitons é equivalente a uma 3ª com 4 semitons, sendo uma 3ª maior, logo, o intervalo analisado é uma 10ª maior.
+        Para a análise quantitativa, divide-se o valor de semitons por 12 e o resto é utilizado para definir se ele é justo, maior, menor, diminuto ou aumentado. Por exemplo, uma 10ª com uma diferença de 16 semitons é equivalente a uma 3ª com 4 semitons, sendo uma 3ª maior, logo, o intervalo analisado é uma 10ª maior.
 
         Os intervalos compostos são, basicamente, seus equivalentes simples somados a oitavas justas, como exemplificado na Figura \ref{compostos}. O intervalo de oitava aumentada é considerado composto e é equivalente ao intervalo de primeira aumentada.
 
         \begin{figure}[htb]
           \centering
-          \includegraphics[scale=0.5]{figuras/compostos.eps}
+          \includegraphics[scale=0.4]{figuras/compostos.eps}
           \caption{Exemplo de Intervalo Composto}
           \label{compostos}
         \end{figure}
@@ -218,7 +216,7 @@
 
     \subsection[Escalas]{Escalas}
 
-      Segundo Med, escala é o conjunto de notas disponíveis em um sistema musical. As notas presentes em uma escala possuem intervalos específicos entre si. As escalas podem ser classificadas quanto ao número de notas, sendo as mais conhecidas a pentatônica (cinco notas), a hexacordal (seis notas), a heptatônica (sete notas) e a cromática (doze notas). A escala cromática, por exemplo, possui todas as dozes notas (com e sem acidentes) de uma oitava, tendo intervalos de segunda menor ou primeira aumentada entre elas (Figura \ref{cromatica}).
+      Segundo \citeonline{bohumil}, escala é o conjunto de notas disponíveis em um sistema musical. As notas presentes em uma escala possuem intervalos específicos entre si. As escalas podem ser classificadas quanto ao número de notas, sendo as mais conhecidas a pentatônica (cinco notas), a hexacordal (seis notas), a heptatônica (sete notas) e a cromática (doze notas). A escala cromática, por exemplo, possui todas as dozes notas (com e sem acidentes) de uma oitava, tendo intervalos de segunda menor ou primeira aumentada entre elas (Figura \ref{cromatica}).
 
       \begin{figure}[htb]
         \centering
@@ -227,8 +225,11 @@
         \label{cromatica}
       \end{figure}
 
-      % TODO: como citar figura?
-      Outra classificação é quanto à utilização, as mais conhecidas são as escalas classificadas como diatônicas, que possuem oito notas, sete distintas e a última sendo a primeira uma oitava acima, possuindo intervalos de segunda maior ou menor entre elas. Em uma escala diatônica, pode-se definir quais notas fazem parte dela observando a armadura de clave presente na partitura. Por exemplo, na escala representada na figura \ref{escaladiatonica}, há uma armadura de sustenindo em F (Fá) e em C (Dó), logo, a escala possui as seguintes notas: D, E, F\sh, G, A, B e C\sh. Músicas compostas nessa escala não podem possuir notas como A\fl, B\sh{} ou C, a não ser em caso de acidentes pontuais, definidos pelo compositor. Cada nota de uma escala diatônica possui um grau (que varia de um a sete) e um nome específicos. A principal nota é a de grau I, chamada tônica. Ela dá nome à escala e a inicia, tendo todas as outras notas definidas a partir dela.
+      Outra classificação é quanto à utilização. As mais conhecidas são as escalas classificadas como diatônicas, que possuem oito notas, sete distintas e a última sendo a primeira uma oitava acima, possuindo intervalos de segunda maior ou menor entre elas.
+
+      Em uma escala diatônica, pode-se definir quais notas fazem parte dela observando a armadura de clave presente na partitura. Por exemplo, na escala representada na Figura \ref{escaladiatonica}, há uma armadura de sustenindo em F (Fá) e em C (Dó), logo, a escala possui as seguintes notas: D, E, F\sh, G, A, B e C\sh. Músicas compostas nessa escala não podem possuir notas como A\fl, B\sh{} ou C, a não ser em caso de acidentes pontuais, definidos pelo compositor.
+
+      Cada nota de uma escala diatônica possui um grau (que varia de um a sete) e um nome específicos. A principal nota é a de grau I, chamada tônica. Ela dá nome à escala e a inicia, tendo todas as outras notas definidas a partir dela.
 
       \begin{figure}[htb]
         \centering
@@ -239,7 +240,7 @@
 
       \subsubsection[Escalas Maiores]{Escalas Maiores}
 
-        As escalas diatõnicas podem ser classificadas como maiores ou menores. As escalas maiores iniciam na tônica e possuem os seguintes intervalos, em tons, entre notas consecutivas: tom - tom - semitom - tom - tom - tom - semitom. Classificando os intervalos, são: 2ªM - 2ªM - 2ªm - 2ªM - 2ªM - 2ªM - 2ªm. Nas Figuras \ref{escaladomaior} e \ref{escalafamaior}, estão representadas as escalas de Dó maior (que não possui nenhum acidente musical em sua armadura) e a de Fá maior (que possui um bemol em Si em sua armadura), respectivamente.
+        As escalas diatônicas podem ser classificadas como maiores ou menores. As escalas maiores iniciam na tônica e possuem os seguintes intervalos, em tons, entre notas consecutivas: tom - tom - semitom - tom - tom - tom - semitom. Classificando os intervalos, são: 2ªM - 2ªM - 2ªm - 2ªM - 2ªM - 2ªM - 2ªm. Nas Figuras \ref{escaladomaior} e \ref{escalafamaior}, estão representadas as escalas de Dó maior (que não possui nenhum acidente musical em sua armadura) e a de Fá maior (que possui um bemol em Si em sua armadura), respectivamente.
 
         \begin{figure}[htb]
           \centering
@@ -277,7 +278,9 @@
 
     \subsection[Contraponto]{Contraponto}
 
-      \citeonline{koellreuter} afirmam que contraponto é a arte de tornar independentes linhas melódicas de expressão autônoma, ou seja, combinar duas linhas melódicas simultâneas de forma que sejam melódicamente independentes, mas harmonicamente interdependentes. O objeto de estudo desse trabalho é o contraponto modal do século XVI, também chamado de contraponto palestriniano. Esse tipo de contraponto possui diversas espécies, cada uma definida pelo número de notas que um contraponto deve ter para cada nota da melodia principal (ou \textit{cantus firmus}). Nesse trabalho, serão tratados os contrapontos de primeira, segunda, terceira e quarta espécie (Figuras \ref{contrapontoprimeira}, \ref{contrapontosegunda},  \ref{contrapontoterceira} e  \ref{contrapontoquarta}).
+      \citeonline{koellreuter} afirmam que contraponto é a arte de tornar independentes linhas melódicas de expressão autônoma, ou seja, combinar duas linhas melódicas simultâneas de forma que sejam melódicamente independentes, mas harmonicamente interdependentes.
+
+      O objeto de estudo desse trabalho é o contraponto modal do século XVI, também chamado de contraponto palestriniano. Esse tipo de contraponto possui diversas espécies, cada uma definida pelo número de notas que um contraponto deve ter para cada nota da melodia principal (ou \textit{cantus firmus}). Nesse trabalho, serão tratados os contrapontos de primeira, segunda, terceira e quarta espécie (Figuras \ref{contrapontoprimeira}, \ref{contrapontosegunda},  \ref{contrapontoterceira} e  \ref{contrapontoquarta}).
 
       \subsubsection[Contraponto de Primeira Espécie]{Contraponto de Primeira Espécie}
 
@@ -332,8 +335,8 @@
           \item deve haver quatro notas no contraponto para cada nota do \textit{cantus firmus};
           \item deve haver uma nota no contraponto para a última nota do \textit{cantus firmus};
           \item dissonâncias podem ser utilizadas em \textit{arsis} (porções não-acentuadas do compasso);
-          \item as dissonâncias podem ser utilizadas como nota de passagem ou como notas auxiliares (bordaduras) inferiores - bordaduras são alcançadas e deixadas em grau conjunto, mas em direções opostas;
-          \item As dissonâncias também podem ser empregadas por meio de \textit{cambiatas} - sequência de cinco notas com intervalos de segunda descendente, terça ascendente e segunda ascendente - que iniciem em semínimas acentuadas;
+          \item as dissonâncias podem ser utilizadas como nota de passagem ou como notas auxiliares (bordaduras) inferiores -- bordaduras são alcançadas e deixadas em grau conjunto, mas em direções opostas;
+          \item As dissonâncias também podem ser empregadas por meio de \textit{cambiatas} - sequência de cinco notas com intervalos de segunda descendente, terça ascendente e segunda ascendente - que iniciem em semínimas acentuadas (Figura \ref{cambiata});
         \end{enumerate}
 
         \begin{figure}[htb]
@@ -341,6 +344,13 @@
           \includegraphics[scale=0.55]{figuras/contrapontoterceira.eps}
           \caption{Exemplo de Contraponto de Terceira Espécie}
           \label{contrapontoterceira}
+        \end{figure}
+
+        \begin{figure}[htb]
+          \centering
+          \includegraphics[scale=0.55]{figuras/cambiata.eps}
+          \caption{Exemplo de Cambiata}
+          \label{cambiata}
         \end{figure}
 
       \subsubsection[Contraponto de Quarta Espécie]{Contraponto de Quarta Espécie}
@@ -352,7 +362,7 @@
           \item dissonâncias devem ser utilizadas em \textit{thesis} (porções acentuadas do compasso) e vir ligadas das \textit{arsis} precedentes (síncope);
           \item consonâncias devem ser utilizadas em \textit{arsis} e resolver dissonâncias precedentes;
           \item as dissonâncias devem ser resolvidas seguindo as seguintes regras: se o contraponto for superior, devem ser utilizadas quartas e sétimas resolvidas em terças e sextas, respectivamente, se ele for inferior, devem ser utilizadas segundas e nonas resolvidas em terças e décimas, respectivamente;
-          \item o uníssono pode ser utilizado livremente se estiver em cadeia de síncopes, se a cadeira for quebrada, deve seguir as regras previstas na segunda espécie;
+          \item o uníssono pode ser utilizado livremente se estiver em cadeia de síncopes, se a cadeia for quebrada, deve seguir as regras previstas na segunda espécie;
         \end{enumerate}
 
         \begin{figure}[htb]
@@ -366,7 +376,9 @@
 
     Na geração de um contraponto, cada nota dele depende da nota dos \textit{cantus firmus} tocada em simultâneo devido a regras definidas com base no intervalo harmônico -- como a proibição de intervalos dissonantes, por exemplo. Porém, as notas disponíveis para um dado tempo do contraponto também depende das notas anteriores a ela devido a regras relacionadas à intervalos melódicos e repetição ou uso demasiado de intervalos harmônicos repetidos -- como a proibição de oitavas paralelas. Sendo assim, a nota atual define, em conjunto com a próxima nota do \textit{cantus firmus}, quais notas podem ser empregadas no próximo tempo. Dada tal organização, essa estrutura pode ser representada por um grafo.
 
-    Grafo é uma estrutura formada por vértices (os nós que representam a unidade fundamental da estrutura) e arestas (ligações que indicam quais outros vértices podem ser alcançados a partir de um). Na Figura \ref{grafonotas} está representado um exemplo de estrutura formada pelas notas possíveis em um contraponto. Vale ressaltar que, segundo \citeonline{halim}, como a estrutura do contraponto não é diretamente representada por um grafo na solução proposta, ela é definida como um grafo implícito.
+    Grafo é uma estrutura formada por vértices (os nós que representam a unidade fundamental da estrutura) e arestas (ligações que indicam quais outros vértices podem ser alcançados a partir de um dado vértice).
+
+    Na Figura \ref{grafonotas} está representado um exemplo de estrutura formada pelas notas possíveis em um contraponto. Vale ressaltar que, segundo \citeonline{halim}, como a estrutura do contraponto não é diretamente representada por um grafo na solução proposta, ela é definida como um grafo implícito.
 
     \begin{figure}[htb]
       \centering
@@ -377,7 +389,7 @@
 
     \subsection[Grafos Direcionados Acíclicos]{Grafos Direcionados Acíclicos}
 
-      Um grafo pode possui diversas classificações. Uma classificação clássica é quanto à sua direção. Se as arestas de um grafo não definem a direção da ligação, isto é, se os vértices X e Y estão ligados por uma aresta, significa que X é diretamente alcançável (apenas um vértice é necessário para navegar da origem ao destino) a partir de Y e Y é diretamente alcançável a partir de X, esse grafo é classificado como não-direcionado. Mas se as arestas possuem direção e X ser diretamente alcançável por Y não garante que Y é diretamente alcançável a partir de X, esse grafo é direcionado, como afirma \citeonline{halim}. Veja a Figura \ref{nodirxdir}.
+      Um grafo pode possuir diversas classificações, sendo uma delas a classificação clássica é quanto à direção de suas arestas. Se as arestas de um grafo não definem a direção da ligação, isto é, se os vértices X e Y estão ligados por uma aresta, significa que X é diretamente alcançável (apenas um vértice é necessário para navegar da origem ao destino) a partir de Y e Y é diretamente alcançável a partir de X, esse grafo é classificado como não-direcionado. Mas se as arestas possuem direção e X ser diretamente alcançável por Y não garante que Y é diretamente alcançável a partir de X, esse grafo é direcionado, como afirma \citeonline{halim}. Veja a Figura \ref{nodirxdir}.
 
       \begin{figure}[htb]
         \centering
@@ -386,7 +398,7 @@
         \label{nodirxdir}
       \end{figure}
 
-      Grafos direcionados podem ser classificados como cíclicos ou acíclicos. Grafos acíclicos são grafos que não possuem ciclos, isto é, para todo vértice A, se A alcança B, B não alcança A. Se para pelo menos um par de vértices A e B, A alcançar B e B alcançar A, esse grafo é considerado cíclico.
+      Grafos direcionados podem ser classificados como acíclicos ou não. Grafos acíclicos são grafos que não possuem ciclos, isto é, para todo vértice A, se A alcança B, B não alcança A. Se para pelo menos um par de vértices A e B, A alcançar B e B alcançar A, esse grafo é considerado não acíclico.
 
       Dadas tais definições, é possível perceber que a estrutura do contraponto é um grafo direcionado acíclico (ou DAG, sigla para \textit{Direct Acyclic Graph}). Nesse tipo de grafo, cada vértice possui um ou mais pais -- vértices que apontam para ele. Assemelhando-se à estrutura de uma árvore (grafo com raiz definida como o único vértice sem pai e que cada outro vértice tem apenas um pai), o DAG difere-se por cada vértice por ter mais de um pai e vários vértices sem pai, mas mantém a propriedade de ser navegável em apenas uma direção, impedindo a formação de \textit{loops} que tornariam a exploração da solução um processo infinito. A Figura \ref{naodagdagarvore} exemplifica esses três tipos de grafos.
 
@@ -401,27 +413,28 @@
 
       Há diversas formas de se visitar todos os vértices de um grafo. O número total de formas é igual ao fatorial do número de vértices, pois uma travessia difere-se de outra apenas pela ordem em que os vértices são visitados. Contudo, algumas travessias possuem propriedades específicas e utilizam as arestas para definí-las. As duas travessias mais conhecidas são a busca por profundidade (DFS, sigla para \textit{Depth-First Search}) e a busca por largura (BFS, sigla para \textit{Breadth-First Search}).
 
-      A busca por profundidade funciona de forma recursiva. Primeiramente, um vértice é escolhido como o vértice inicial, antes de explorá-lo (analisar o valor contido no vértice), visitamos todos as suas conexões, para cada vértice conectado, antes de explorá-lo, visitamos sua conexões. Esse processo de visita ocorre até atingir um vértice que não possui arestas ou possui apenas conexões já visitadas. Ao chegar nesse ponto, o algoritmo explora, recursivamente, os vértices previamente visitados. Utilizando uma estrutura de dados conhecida, uma DFS pode ser implementada por meio do uso de pilhas, devido à propriedade delas que definem que o último a entrar na estrutura é o primeiro a sair. Veja a Figura \ref{dfs}.
+      A busca por profundidade funciona de forma recursiva. Primeiramente, um vértice é escolhido como o vértice inicial, antes de explorá-lo (analisar o valor contido no vértice), visitamos todos as suas conexões, para cada vértice conectado, antes de explorá-lo, visitamos sua conexões. Esse processo de visita ocorre até atingir um vértice que não possui arestas ou possui apenas conexões já visitadas. Ao chegar nesse ponto, o algoritmo explora, recursivamente, os vértices previamente visitados.
+
+      Utilizando uma estrutura de dados conhecida, uma DFS pode ser implementada por meio do uso de pilhas, devido à propriedade delas que definem que o último a entrar na estrutura é o primeiro a sair. Veja a Figura \ref{dfs}.
 
       \begin{figure}[htb]
         \centering
-        \includegraphics[scale=0.25]{figuras/dfs.eps}
+        \includegraphics[scale=0.2]{figuras/dfs.eps}
         \caption{Exemplo de DFS}
         \label{dfs}
       \end{figure}
 
 
-      A busca por largura inicia em um vértice e visita todos os filhos (vértices para os quais o vértice atual aponta) antes de visitar os filhos destes. Desse modo, em um DAG, o primeiro nível (composto por vértices sem pai) é completamente visitado antes de o segundo nível (filhos destes) ser visitado e assim sucessivamente. Utilizando uma estrutura de dados conhecida, uma BFS pode ser implementado por meio do uso de filas devida à propriedade delas que define que o primeiro a entrar na estrutura é o primeiro a sair. Veja a Figura \ref{bfs}.
+      A busca por largura inicia em um vértice e visita todos os filhos (vértices para os quais o vértice atual aponta) antes de visitar os filhos destes. Desse modo, em um DAG, o primeiro nível (composto por vértices sem pai) é completamente visitado antes de o segundo nível (filhos destes) ser visitado e assim sucessivamente.
+
+      Utilizando uma estrutura de dados conhecida, uma BFS pode ser implementado por meio do uso de filas devida à propriedade delas que define que o primeiro a entrar na estrutura é o primeiro a sair. Veja a Figura \ref{bfs}.
 
       \begin{figure}[htb]
         \centering
-        \includegraphics[scale=0.25]{figuras/bfs.eps}
+        \includegraphics[scale=0.2]{figuras/bfs.eps}
         \caption{Exemplo de BFS}
         \label{bfs}
       \end{figure}
-
-      Para a solução proposta nesse trabalho será usada a DFS por dois motivos. O primeiro é que a DFS chega a uma folha (vértice sem filhos) primeiro, o que é interessante para a solução pois busca-se a primeira solução disponível. O segundo motivo é que a DFS permite que seja utilizado um único vetor, inserindo e retirando no final deste (consequentemente, funcionando de forma análoga a uma pilha), economizando memória e diminuindo o tempo de execução que levaria para fazer cópias do vetor em uma BFS, pois o comportamento análogo a uma fila exigiria isso.
-
 
   \section[Paradigmas de Solução de Problema]{Paradigmas de Solução de Problema}
 
@@ -429,7 +442,9 @@
 
     \subsection[Busca Completa]{Busca Completa}
 
-      \citeonline{halim} afirma que na Busca Completa, todo ou parte do espaço de soluções possíveis é explorado. No código \ref{codecs} é possível observar a geração de todas as combinações de notas possíveis para um contraponto por meio de um algoritmo de \textit{backtracking} (algoritmo recursivo de busca completa). Contudo, nesse caso, tal abordagem possui alta complexidade em termos de execução. Suponhando um espaço amostral com 88 notas disponíveis e um \textit{cantus firmus} com 50 notas, apenas para o contraponto de primeira espécie há $88^{50}$ sequências possíveis.
+      \citeonline{halim} afirma que na Busca Completa, todo ou parte do espaço de soluções possíveis é explorado.
+
+      No Código \ref{codecs} é possível observar a geração de todas as combinações de notas possíveis para um contraponto por meio de um algoritmo de \textit{backtracking} (algoritmo recursivo de busca completa). Contudo, nesse caso, tal abordagem possui alta complexidade em termos de execução. Suponhando um espaço amostral com 88 notas disponíveis e um \textit{cantus firmus} com 50 notas, apenas para o contraponto de primeira espécie há $88^{50}$ sequências possíveis.
 
       \begin{lstlisting}[language={C}, caption={Busca Completa}, label={codecs}]
       // Vector with 88 musicais notes found on piano
@@ -452,7 +467,9 @@
       }
       \end{lstlisting}
 
-      Para diminuir a complexidade de uma busca completa, podas podem ser aplicadas. Podas são aplicadas quando uma parte gerada da solução já indica que ela certamente não gerará uma solução. No caso do contraponto, por exemplo, podemos podar soluções parciais que já apresentem um número de movimentos reversos maior que o definido pelas regras mesmo antes de chegarem à última nota.
+      Para diminuir a complexidade de uma busca completa, podas podem ser aplicadas. Podas são aplicadas quando uma parte gerada da solução já indica que ela certamente não gerará uma solução.
+
+      No caso do contraponto, por exemplo, podemos podar soluções parciais que já apresentem um número de movimentos reversos maior que o definido pelas regras mesmo antes de chegarem à última nota.
 
     \subsection[Programação Dinâmica]{Programação Dinâmica}
 
@@ -466,11 +483,13 @@
 
       \[ F(n) = \left\{ \begin{array}{ll}
          n & \mbox{se $n \leqslant 1$}\\
-        F(n-1) + F(n-2) & \mbox{c.c.}\end{array} \right. \]
+        F(n-1) + F(n-2) & \mbox{caso contrário}\end{array} \right. \]
 
-      No cálculo dos números de Fibonacci, o estado em uma dada posição N é o valor do N-ésimo número de Fibonacci. Para calculá-lo, utiliza-se os dois números de Fibonacci anteriores a ele na sequência, sendo essa a transição do algoritmo. Os únicos dois casos em que o cálculo não necessita dos dois anteriores são os números de Fibonacci nas posições 0 e 1, para esses, a solução é, por definição, 0 e 1, respectivamente. Dessa forma, 0 e 1 são nossos casos-base.
+      No cálculo dos números de Fibonacci, o estado em uma dada posição $N$ é o valor do N-ésimo número de Fibonacci. Para calculá-lo, utiliza-se os dois números de Fibonacci anteriores a ele na sequência, sendo essa a transição do algoritmo. Os únicos dois casos em que o cálculo não necessita dos dois anteriores são os números de Fibonacci nas posições 0 e 1: para esses, a solução é, por definição, 0 e 1, respectivamente. Dessa forma, 0 e 1 são nossos casos-base.
 
-      Tomando como exemplo o cálculo de F(5), calculando-o sem memorização de estados, é necessário calcular F(4) e F(3). Para calcular o F(4), é preciso calcular o F(3) e o F(2). Sem a memorização, após o cálculo do F(4), o F(3), que já havia sido calculado para o F(4), será recalculado, bem como o F(2) para o cálculo do F(3). Contudo, se o valor de F(3) for memorizado em alguma estrutura de dados (geralmente um vetor) para consultas futuras, seria necessário calcular cada estado apenas uma vez. Na figura \ref{nodpxdp} há um comparativo entre a árvore de chamadas para F(5) com e sem a memorização característica de uma DP, os nós em amarelo representam os nós que utilizam recursão, os nós vermelhos são os casos-base e os nós verdes utilizam valores previamente memorizados.
+      Tomando como exemplo o cálculo de F(5), calculando-o sem memorização de estados, é necessário calcular F(4) e F(3). Para calcular o F(4), é preciso calcular o F(3) e o F(2). Sem a memorização, após o cálculo do F(4), o F(3), que já havia sido calculado para o F(4), será recalculado, bem como o F(2) para o cálculo do F(3). Contudo, se o valor de F(3) for memorizado em alguma estrutura de dados (geralmente um vetor) para consultas futuras, seria necessário calcular cada estado apenas uma vez.
+
+      Na Figura \ref{nodpxdp} há um comparativo entre a árvore de chamadas para F(5) com e sem a memorização característica de uma DP: os nós em amarelo representam os nós que utilizam recursão, os nós vermelhos são os casos-base e os nós verdes utilizam valores previamente memorizados.
 
       \begin{figure}[htb]
         \centering
@@ -478,5 +497,3 @@
         \caption{Comparativo entre a abordagem não-DP e DP para o cálculo do F(5)}
         \label{nodpxdp}
       \end{figure}
-
-      Neste trabalho, a DP será utilizada para a geração do contraponto. O estado sendo caracterizado por uma dada nota em uma dada posição no contraponto com um número específico de movimentos paralelos e terças e sextas paralelas. A transição é definida pela solução da próxima nota no contraponto, partindo da nota atual. O caso-base é definido por quando o algoritmo atinge o final do \textit{cantus firmus}, retornando que aquela solução é válida, já que não foi podada nenhuma vez durante a construção daquela solução.
