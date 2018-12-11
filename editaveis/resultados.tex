@@ -39,7 +39,7 @@
         \label{noteclass}
       \end{figure}
 
-    \subsection[Classe \texttt{Compass Time}]{\texttt{Compass Time}}
+    \subsection[Classe \texttt{Compass Time}]{Classe \texttt{Compass Time}}
 
       A classe \texttt{Compass Time} armazena o tempo de compasso de uma música. Possui os seguintes atributos:
 
@@ -65,7 +65,7 @@
         \label{compasstimeclass}
       \end{figure}
 
-    \subsection[\texttt{Song}]{\texttt{Song}}
+    \subsection[Classe \texttt{Song}]{Classe \texttt{Song}}
 
       A classe \texttt{Song} armazena as informações básicas de uma música. Possui os seguintes atributos:
 
@@ -99,7 +99,7 @@
     Responsável pela geração e armazenamento de intervalos, este módulo possui a classe \texttt{Interval}.
 
 
-    \subsection[\texttt{Interval}]{\texttt{Interval}}
+    \subsection[Classe \texttt{Interval}]{Classe \texttt{Interval}}
 
       A classe \texttt{Interval} armazena intervalos e possui método para gerar uma nota a partir de outra e um intervalos. Ela possui os seguintes atributos:
 
@@ -135,7 +135,7 @@
 
     O módulo de escalas é responsável pela geração e armazenamento de escalas musicais. Ele possui uma classe, a \texttt{Scale}.
 
-    \subsection[\texttt{Scale}]{\texttt{Scale}}
+    \subsection[Classe \texttt{Scale}]{Classe \texttt{Scale}}
 
     A classe \texttt{Scale} armazena as notas de uma escala, possuindo apenas um atributo, um \texttt{set} de \texttt{strings} chamado \texttt{permitted\_notes} que define as notas permitidas para aquela escala. Além disso, ela possui os seguintes métodos:
 
@@ -158,7 +158,7 @@
 
     O módulo de contraponto é responsável pela geração de contrapontos. Utilizando todas as classes anteriormente citadas, possui cinco classes: \texttt{Counterpoint}, \texttt{First Species Counterpoint}, \texttt{Second Species Counterpoint}, \texttt{Third Species Counterpoint} e \texttt{Fourth Species Counterpoint}.
 
-    \subsection[\textit{Counterpoint}]{\textit{Counterpoint}}
+    \subsection[Classe \texttt{Counterpoint}]{Classe \texttt{Counterpoint}}
 
     A classe \texttt{Counterpoint} funciona como uma biblioteca e não possui atributos de instância. Inicialmente utilizada para a implementação do contraponto de primeira espécie, atualmente possui atributos estáticos como a matriz \textit{DP} utilizada para armazenar estados da solução e um ponteiro para \texttt{Song} utilizado para guardar referência para o \textit{cantus firmus} durante toda a solução, possui ainda o método ad-hoc de geração de contrapontos e o método \texttt{analyse\_and\_add\_interval()}.
 
@@ -177,7 +177,7 @@
       \label{counterpointclass}
     \end{figure}
 
-    \subsection[\texttt{First Species Counterpoint}]{\texttt{First Species Counterpoint}} \label{ssec:fec}
+    \subsection[Classe \texttt{First Species Counterpoint}]{Classe \texttt{First Species Counterpoint}} \label{ssec:fec}
 
       A classe \texttt{First Species Counterpoint} herda da classe \texttt{Counterpoint} e é uma biblioteca, possuindo métodos de classe. Ela possui os seguintes métodos:
 
@@ -196,7 +196,7 @@
         \label{firstspeciescounterpointclass}
       \end{figure}
 
-    \subsection[\texttt{Second Species Counterpoint} a \texttt{Fourth Species Counterpoint}]{\texttt{Second Species Counterpoint}}
+    \subsection[Classes \texttt{Second Species Counterpoint} a \texttt{Fourth Species Counterpoint}]{Classes \texttt{Second Species Counterpoint} a \texttt{Fourth Species Counterpoint}}
 
       A classes de \texttt{Second Species Counterpoint}, \texttt{Third Species Counterpoint} e \texttt{Fourth Species Counterpoint} herdam da classe \texttt{Counterpoint} e possuem os mesmos métodos apresentados em \ref{ssec:fec}. A Figuras \ref{secondspeciescounterpointclass}, \ref{thirdspeciescounterpointclass} e \ref{thirdspeciescounterpointclass} apresentam os métodos e atributos das classes.
 
@@ -257,7 +257,7 @@
 
     O módulo de construção do MIDI é responsável por encapsular a solução de leitura de arquivos Lilypond e geração de um arquivo Lilypond com o contraponto gerado adicionado a ele. Além disso, ele utiliza as bibliotecas do Lilypond para gerar a partitura e o arquivo .mid a partir do arquivo gerado. Esse módulo é constituído pelas classes \texttt{Song Reader} e \texttt{Ly Parser} e pela aplicação \texttt{Counterpoint Generator} desenvolvida em \textit{Ruby On Rails}.
 
-    \subsection[\texttt{Song Reader}]{\texttt{Song Reader}}
+    \subsection[Classe \texttt{Song Reader}]{Classe \texttt{Song Reader}}
 
       A classe \texttt{Song Reader} é responsável pelo \textit{parser} de \texttt{string} representando notas em formato Lilypond para instâncias da classe \texttt{Note} e vice-versa. Sem a necessidade de atributos e com apenas métodos de classe, a classe age como uma biblioteca, sendo utilizada sem instanciação. Ela possui os seguintes métodos:
 
@@ -286,7 +286,7 @@
         \label{songreaderclass}
       \end{figure}
 
-    \subsection[\texttt{Ly Parser}]{\texttt{Ly Parser}}
+    \subsection[Classe \texttt{Ly Parser}]{Classe \texttt{Ly Parser}}
 
 
       A classe \texttt{Ly Parser} é responsável pela leitura de um arquivo Lilypond completo e a geração de um novo arquivo Lilypond completo com o contraponto inserido. Para isso, ela primeiramente lê o arquivo original e gera um arquivo simplificado a partir dele. Após isso, ela lê os dados do arquivo simplificado utilizando a classe \texttt{Song Reader}. Após a geração do contraponto, ela adiciona o contraponto ao arquivo original, gerando um novo arquivo Lilypond. Ela possui os seguintes métodos:
